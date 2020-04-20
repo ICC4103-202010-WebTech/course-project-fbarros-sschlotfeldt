@@ -3,9 +3,9 @@
 one:
   comment: one
   event: one
-  o_homepage: one
+  orgHomepage: one
 
 two:
   comment: two
   event: two
-  o_homepage: two
+  orgHomepage: two

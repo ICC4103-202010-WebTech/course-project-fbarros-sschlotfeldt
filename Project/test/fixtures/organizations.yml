@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  admin: one
+  user: one
   event: one
 
 two:
   name: MyString
-  admin: two
+  user: two
   event: two

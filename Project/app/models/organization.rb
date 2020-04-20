@@ -1,6 +1,6 @@
 class Organization < ApplicationRecord
-  has_one :user
+  belongs_to :user
   has_many :events
-  has_many :organization_ms
   has_one :org_homepage
+  has_many :organization_ms
 end
