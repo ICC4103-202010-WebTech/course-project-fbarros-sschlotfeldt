@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_035349) do
+ActiveRecord::Schema.define(version: 2020_04_20_161304) do
 
   create_table "attachments", force: :cascade do |t|
     t.integer "comment_id", null: false

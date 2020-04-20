@@ -12,31 +12,29 @@ u3 = User.create!(userName: "Pepito", email: "pepito@gmail.com", password: "1234
 v1 = Venue.create!(name: "Venue1", description: "Description1", address: "Address1")
 v2 = Venue.create!(name: "Venue2", description: "Description2", address: "Address2")
 
-e1 = Event.create!(title: "Event1", user: u1, description: "Description1", venue: v1, visibility: true)
-e2 = Event.create!(title: "Event2", user: u2, description: "Description2", venue: v2, visibility: false)
+e1 = Event.create!(title: "Event1", user_id: u1.id, description: "Description1", venue_id: v1.id, visibility: true)
+e2 = Event.create!(title: "Event2", user_id: u2.id, description: "Description2", venue_id: v2.id, visibility: false)
 
-vote1 = Vote.create!(user: u2, event: e1, date: nil)
-vote2 = Vote.create!(user: u1, event: e2, date: nil)
-vote3 = Vote.create!(user: u3, event: e1, date: nil)
-vote4 = Vote.create!(user: u3, event: e2, date: nil)
+vote1 = Vote.create!(user_id: u2.id, event_id: e1.id, date: nil)
+vote2 = Vote.create!(user_id: u1.id, event_id: e2.id, date: nil)
+vote3 = Vote.create!(user_id: u3.id, event_id: e1.id, date: nil)
+vote4 = Vote.create!(user_id: u3.id, event_id: e2.id, date: nil)
 
-em1 = EventM.create!(members: u2, event: e1)
-em2 = EventM.create!(members: u3, event: e1)
-em3 = EventM.create!(members: u1, event: e2)
-em4 = EventM.create!(members: u3, event: e2)
+em1 = EventM.create!(user_id: u2.id, event_id: e1.id)
+em2 = EventM.create!(user_id: u3.id, event_id: e1.id)
+em3 = EventM.create!(user_id: u1.id, event_id: e2.id)
+em4 = EventM.create!(user_id: u3.id, event_id: e2.id)
 
-o1 = Organization.create!(name: "Organization1", admin: u1, event: e1)
-o2 = Organization.create!(name: "Organization2", admin: u2, event: e2)
+o1 = Organization.create!(name: "Organization1", user_id: u1.id, event_id: e1.id)
+o2 = Organization.create!(name: "Organization2", user_id: u2.id, event_id: e2.id)
 
-om1= OrganizationM.create!(member: u2, organization: o1)
-om2= OrganizationM.create!(member: u3, organization: o1)
-om3= OrganizationM.create!(member: u1, organization: o2)
-om4= OrganizationM.create!(member: u3, organization: o2)
+om1= OrganizationM.create!(user_id: u2.id, organization_id: o1.id)
+om2= OrganizationM.create!(user_id: u3.id, organization_id: o1.id)
+om3= OrganizationM.create!(user_id: u1.id, organization_id: o2.id)
+om4= OrganizationM.create!(user_id: u3.id, organization_id: o2.id)
 
-pp1= ProfilePage.create!(user: u1, name: "Francisco", lastName: "Barros", bio: "bio1", address: "Address1")
+pp1= ProfilePage.create!(user_id: u1.id, name: "Francisco", lastName: "Barros", bio: "bio1", address: "Address1")
 
-ohp= OrgHomepage.create!(name: "Organization1", description: "Description1", organization: o1)
+ohp= OrgHomepage.create!(name: "Organization1", description: "Description1", organization_id: o1.id)
 
-comment1= Comment.create!(user: u1, text: "txt1", event:e1)
-
-a= Attachment.create!(comment: comment1, event: e1, o_homepage: ohp)
+comment1= Comment.create!(user_id: u1.id, text: "txt1", event_id:e1.id)
