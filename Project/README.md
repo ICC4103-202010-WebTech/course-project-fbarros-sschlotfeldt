@@ -23,6 +23,10 @@ Things you may want to cover:
 
 * ...
 
+Members: 
+- Sebastian Schlotfeldt V.
+- Francisco Barros C.
+
 As you can see in the following queries, there is an ID Character, this is the one that has to be changed in order to get the requested tables in the data base.
 
 Project1.2 Querys:
