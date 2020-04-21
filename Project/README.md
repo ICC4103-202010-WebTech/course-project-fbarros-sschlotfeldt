@@ -39,3 +39,5 @@ Project1.2 Querys:
 
 IMPORTANT:
 Some of the requested information will be presented with the id of the corresponding user/event.
+
+13,14,15. Due the dependencies we put in our models, once an upper subject is destroyed, by cascade, the dependant subjects are also destroyed, so there won't be any incomplete data.
