@@ -6,11 +6,6 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :password
       t.boolean :adm
 
-      #validates :userName, presence: true, uniqueness: true
-      #validates :email, presence: true, uniqueness: true
-
-      #validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-
       t.timestamps
     end
   end
