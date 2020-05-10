@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%=@comment.user.userName%>: <%= @comment.text %>
+<%= link_to 'Edit', edit_comment_path(@comment) %> /
+<%= link_to 'Destroy', comment_path, method: :delete, data: { confirm: 'Are you sure?' } %>  /
 <%= link_to 'Back', comments_path %>
