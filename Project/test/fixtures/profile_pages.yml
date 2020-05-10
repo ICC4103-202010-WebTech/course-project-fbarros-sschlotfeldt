@@ -4,6 +4,7 @@ one:
   user: one
   name: MyString
   lastName: MyString
+  picture: MyString
   bio: MyString
   address: MyString
 
@@ -11,5 +12,6 @@ two:
   user: two
   name: MyString
   lastName: MyString
+  picture: MyString
   bio: MyString
   address: MyString

@@ -2,10 +2,12 @@
 
 one:
   name: MyString
+  banner: MyString
   description: MyString
   organization: one
 
 two:
   name: MyString
+  banner: MyString
   description: MyString
   organization: two

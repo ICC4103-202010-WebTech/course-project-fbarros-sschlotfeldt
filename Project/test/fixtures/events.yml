@@ -3,6 +3,7 @@
 one:
   title: MyString
   user: one
+  organization: one
   description: MyString
   venue: one
   visibility: false
@@ -10,6 +11,7 @@ one:
 two:
   title: MyString
   user: two
+  organization: two
   description: MyString
   venue: two
   visibility: false

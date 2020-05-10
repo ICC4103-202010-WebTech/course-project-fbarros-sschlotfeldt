@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def index
-    @events = Event.all
+    @events = Event.find(1)
   end
 
 end

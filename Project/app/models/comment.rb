@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :event
-  has_one :attachment
+  has_many :attachments
 end

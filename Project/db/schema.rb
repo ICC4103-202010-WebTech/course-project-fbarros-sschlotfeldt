@@ -10,17 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_09_221231) do
+ActiveRecord::Schema.define(version: 2020_05_10_193906) do
 
   create_table "attachments", force: :cascade do |t|
+    t.string "attachment"
     t.integer "comment_id", null: false
-    t.integer "event_id", null: false
-    t.integer "orgHomepage_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["comment_id"], name: "index_attachments_on_comment_id"
-    t.index ["event_id"], name: "index_attachments_on_event_id"
-    t.index ["orgHomepage_id"], name: "index_attachments_on_orgHomepage_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -45,11 +42,13 @@ ActiveRecord::Schema.define(version: 2020_05_09_221231) do
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.integer "user_id", null: false
+    t.integer "organization_id", null: false
     t.string "description"
     t.integer "venue_id", null: false
     t.boolean "visibility"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["organization_id"], name: "index_events_on_organization_id"
     t.index ["user_id"], name: "index_events_on_user_id"
     t.index ["venue_id"], name: "index_events_on_venue_id"
   end
@@ -63,7 +62,7 @@ ActiveRecord::Schema.define(version: 2020_05_09_221231) do
 
   create_table "messages", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "message"
+    t.string "text"
     t.integer "inbox_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -73,6 +72,7 @@ ActiveRecord::Schema.define(version: 2020_05_09_221231) do
 
   create_table "org_homepages", force: :cascade do |t|
     t.string "name"
+    t.string "banner"
     t.string "description"
     t.integer "organization_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -92,10 +92,8 @@ ActiveRecord::Schema.define(version: 2020_05_09_221231) do
   create_table "organizations", force: :cascade do |t|
     t.string "name"
     t.integer "user_id", null: false
-    t.integer "event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["event_id"], name: "index_organizations_on_event_id"
     t.index ["user_id"], name: "index_organizations_on_user_id"
   end
 
@@ -103,6 +101,7 @@ ActiveRecord::Schema.define(version: 2020_05_09_221231) do
     t.integer "user_id", null: false
     t.string "name"
     t.string "lastName"
+    t.string "picture"
     t.string "bio"
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
@@ -138,12 +137,11 @@ ActiveRecord::Schema.define(version: 2020_05_09_221231) do
   end
 
   add_foreign_key "attachments", "comments"
-  add_foreign_key "attachments", "events"
-  add_foreign_key "attachments", "orgHomepages"
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users"
   add_foreign_key "event_ms", "events"
   add_foreign_key "event_ms", "users"
+  add_foreign_key "events", "organizations"
   add_foreign_key "events", "users"
   add_foreign_key "events", "venues"
   add_foreign_key "inboxes", "users"
@@ -152,7 +150,6 @@ ActiveRecord::Schema.define(version: 2020_05_09_221231) do
   add_foreign_key "org_homepages", "organizations"
   add_foreign_key "organization_ms", "organizations"
   add_foreign_key "organization_ms", "users"
-  add_foreign_key "organizations", "events"
   add_foreign_key "organizations", "users"
   add_foreign_key "profile_pages", "users"
   add_foreign_key "votes", "events"

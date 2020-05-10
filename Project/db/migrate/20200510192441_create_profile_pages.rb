@@ -4,6 +4,7 @@ class CreateProfilePages < ActiveRecord::Migration[6.0]
       t.references :user, null: false, foreign_key: true
       t.string :name
       t.string :lastName
+      t.string :picture
       t.string :bio
       t.string :address
 

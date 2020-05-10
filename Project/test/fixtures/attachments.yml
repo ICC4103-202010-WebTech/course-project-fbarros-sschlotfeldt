@@ -1,11 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  attachment: MyString
   comment: one
-  event: one
-  orgHomepage: one
 
 two:
+  attachment: MyString
   comment: two
-  event: two
-  orgHomepage: two
