@@ -6,13 +6,12 @@
 </head>
 <body>
 
-<% @events.each do |v| %>
- <ul>
-   <li><h5><%=link_to v.title, events_path(v.id)%></h5></li>
-   <li><%=[v.venue] %></li>
-   <li><%=[v.comments] %></li>
- </ul>
+<% @p_events.each do|v| %>
+  <li><h4><%=link_to [v.title], event_path(v.id)%></h4></li>
+  <li><p>Host : <%=[v.user.userName]%></p></li>
+  <li><p>Description : <%=[v.description]%></p></li>
+
 <% end %>
 
 </body>
-</html>rai
+</html>

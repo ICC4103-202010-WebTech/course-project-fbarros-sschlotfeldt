@@ -1,7 +1,5 @@
 class PagesController < ApplicationController
-
-  def index
-    @events = Event.find(1)
+  def home
+    @p_events = Event.limit(1)
   end
-
 end
