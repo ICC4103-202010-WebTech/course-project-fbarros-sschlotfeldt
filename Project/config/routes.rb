@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :events do
         resources :comments, shallow:true
       end
+      resources :votes
       resources :profile_pages do
         resources :users
       end
@@ -26,4 +27,5 @@ Rails.application.routes.draw do
   resources :organizations, defaults: { format: :html }
   resources :comments, defaults: { format: :html }
   resources :inboxs, defaults: { format: :html }
+  resources :votes, defaults: { format: :html }
 end
