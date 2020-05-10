@@ -8,11 +8,11 @@
 
 <% @events.each do |v| %>
  <ul>
-   <li><h5><%=link_to v.name, event_path(v.id)%></h5></li>
-   <li><%=[v..banner] %></li>
+   <li><h5><%=link_to v.title, events_path(v.id)%></h5></li>
+   <li><%=[v.venue] %></li>
    <li><%=[v.comments] %></li>
  </ul>
 <% end %>
 
 </body>
-</html>
+</html>rai
