@@ -6,7 +6,8 @@ class User < ApplicationRecord
   has_many :event_ms, :dependent => :destroy
   has_many :events, :dependent => :destroy
   has_many :comments, :dependent => :destroy
-
+  has_one :inbox
+  has_many :messages
 
   validates :userName, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true

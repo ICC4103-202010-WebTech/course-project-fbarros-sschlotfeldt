@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      resources :comments
       resources :events do
         resources :comments, shallow:true
       end
@@ -13,10 +14,16 @@ Rails.application.routes.draw do
       resources :org_homepages do
         resources :organizations
       end
+      resources :inboxs
+
     end
   end
 
   resources :events, defaults: { format: :html }
   resources :profile_pages, defaults: { format: :html }
   resources :org_homepages, defaults: { format: :html }
+  resources :users, defaults: { format: :html }
+  resources :organizations, defaults: { format: :html }
+  resources :comments, defaults: { format: :html }
+  resources :inboxs, defaults: { format: :html }
 end

@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Project</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<h1><%= link_to "BACILE CON LOS K", root_path %></h1>
+<nav>
+    <%=link_to "Event", :events%>
+    <%=link_to "Profile", :profile_pages%>
+    <%=link_to "Organization", :org_homepages%>
+    <%=link_to "Inbox", :inboxs %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
+</nav>
   <body>
     <%= yield %>
   </body>

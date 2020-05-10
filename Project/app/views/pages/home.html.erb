@@ -5,9 +5,14 @@
     <title>Welcome to Lab Assignment 6!</title>
 </head>
 <body>
-<h1><%= link_to "BACILE CON LOS K", root_path %></h1>
-<ul>
-  <li> <%=link_to("See events", :events) %></li>
-</ul>
+
+<% @events.each do |v| %>
+ <ul>
+   <li><h5><%=[v.name]%></h5></li>
+   <li><%= [v]%> </li>
+   <li><%=[v.comments] %></li>
+ </ul>
+<% end %>
+
 </body>
 </html>
