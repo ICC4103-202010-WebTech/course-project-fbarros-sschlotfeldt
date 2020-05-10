@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_161304) do
+ActiveRecord::Schema.define(version: 2020_05_09_221231) do
 
   create_table "attachments", force: :cascade do |t|
     t.integer "comment_id", null: false
@@ -52,6 +52,23 @@ ActiveRecord::Schema.define(version: 2020_04_20_161304) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_events_on_user_id"
     t.index ["venue_id"], name: "index_events_on_venue_id"
+  end
+
+  create_table "inboxes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_inboxes_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "message"
+    t.integer "inbox_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["inbox_id"], name: "index_messages_on_inbox_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "org_homepages", force: :cascade do |t|
@@ -129,6 +146,9 @@ ActiveRecord::Schema.define(version: 2020_04_20_161304) do
   add_foreign_key "event_ms", "users"
   add_foreign_key "events", "users"
   add_foreign_key "events", "venues"
+  add_foreign_key "inboxes", "users"
+  add_foreign_key "messages", "inboxes"
+  add_foreign_key "messages", "users"
   add_foreign_key "org_homepages", "organizations"
   add_foreign_key "organization_ms", "organizations"
   add_foreign_key "organization_ms", "users"

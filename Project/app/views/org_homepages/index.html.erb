@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Org Homepages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @org_homepages.each do |org_homepage| %>
+      <tr>
+        <td><%= link_to 'Show', org_homepage %></td>
+        <td><%= link_to 'Edit', edit_org_homepage_path(org_homepage) %></td>
+        <td><%= link_to 'Destroy', org_homepage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Org Homepage', new_org_homepage_path %>
