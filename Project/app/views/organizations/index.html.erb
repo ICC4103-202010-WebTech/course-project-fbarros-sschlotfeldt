@@ -10,12 +10,15 @@
   </thead>
 
   <tbody>
-    <% @organizations.each do |organization| %>
-      <tr>
-        <td><%= link_to 'Show', organization %></td>
-        <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
-        <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% @organizations.each do |v| %>
+      <ul>
+
+        <il><p>Name: <%=v.name%></p></il>
+        <il><p>Adm: <%=v.user.userName%></p></il>
+
+        <il><%=link_to 'link to Homepage', org_homepage_path(v.org_homepage.id)%></il>
+
+      </ul>
     <% end %>
   </tbody>
 </table>

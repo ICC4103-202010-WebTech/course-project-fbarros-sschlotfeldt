@@ -4,13 +4,14 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @comments = Comment.includes(:attachments, :event, :user)
   end
 
   # GET /comments/1
   # GET /comments/1.json
   def show
-    @comment = Comment.joins(:attachments)
+    @comments = Comment.includes(:attachments, :event, :user)
+    @x = Event.joins(:comments).distinct
   end
 
   # GET /comments/new

@@ -1,7 +1,3 @@
 <p id="notice"><%= notice %></p>
 
-<% @organization.each do |v| %>
-  <li><p>Name: <%=v.name%><br></p></li>
-  <li><p>Adm: <%=v.user.userName%><br></p></li>
-  <li><br><%=link_to 'link to Homepage', org_homepages_path(v.org_homepage.id)%></li>
-<% end %>
+

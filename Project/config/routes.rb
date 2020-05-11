@@ -8,10 +8,12 @@ Rails.application.routes.draw do
       resources :events do
         resources :comments, shallow:true
       end
+      resources :users
       resources :votes
       resources :profile_pages do
         resources :users
       end
+      resources :organizations
       resources :organizations do
         resources :org_homepages
       end

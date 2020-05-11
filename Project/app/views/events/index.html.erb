@@ -14,6 +14,7 @@
       <tr>
         <li><h5><%=link_to event.title, event_path(event.id)%></h5></li>
         <li><%= [event.title, event.description] %></li>
+        <li><h5><%=link_to "Event Comments", comment_path(event.comments.ids) %></h5></li>
       </tr>
     <% end %>
   </tbody>

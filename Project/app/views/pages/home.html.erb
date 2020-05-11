@@ -7,10 +7,19 @@
 <body>
 
 <% @p_events.each do|v| %>
-  <li><h4><%=link_to v.title, event_path(v.id)%></h4></li>
-  <li><p>Host : <%=[v.user.userName]%></p></li>
-  <li><p>Description : <%=[v.description]%></p></li>
-  <li><h5><%=link_to "Event Comments", comment_path(v.comments.ids) %></h5></li>
+  <div>
+    <li><h4><%=link_to v.title, event_path(v.id)%></h4></li>
+    <li><p>Host : <%=[v.user.userName]%></p></li>
+    <li><p>Description : <%=[v.description]%></p></li>
+    <% @comments.each { |x|  %>
+    <% if (v.id = x.event.id )  %>
+      <tr>
+        <td> <%= x.user.userName %>: <%= x.text %></td><br>
+          </tr>
+          <% end %>
+    <% } %>
+
+  </div>
 
 <% end %>
 
