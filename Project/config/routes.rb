@@ -12,8 +12,8 @@ Rails.application.routes.draw do
       resources :profile_pages do
         resources :users
       end
-      resources :org_homepages do
-        resources :organizations
+      resources :organizations do
+        resources :org_homepages
       end
       resources :inboxs
 
