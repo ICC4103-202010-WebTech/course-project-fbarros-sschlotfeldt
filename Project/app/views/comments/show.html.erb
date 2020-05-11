@@ -1,5 +1,15 @@
 <p id="notice"><%= notice %></p>
-<%=@comment.user.userName%>: <%= @comment.text %>
+
+<h2>Comments</h2>
+
+<h3><%=@comment.event.title %></h3>
+
+Name: <%=@comment.user.userName%><br>
+Comment: <%= @comment.text %><br>
+Attachment: <%=@comment.attachments %><br>
+
+<li><br>
 <%= link_to 'Edit', edit_comment_path(@comment) %> /
 <%= link_to 'Destroy', comment_path, method: :delete, data: { confirm: 'Are you sure?' } %>  /
 <%= link_to 'Back', comments_path %>
+</li>

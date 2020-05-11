@@ -1,4 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+Name: <%=@org_homepage.title%><br>
+Host: <%=@org_homepage.user.userName%><br>
+Description: <%=@org_homepage.description%><br>
+
 <%= link_to 'Edit', edit_org_homepage_path(@org_homepage) %> |
 <%= link_to 'Back', org_homepages_path %>

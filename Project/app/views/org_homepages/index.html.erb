@@ -12,9 +12,8 @@
   <tbody>
     <% @org_homepages.each do |org_homepage| %>
       <tr>
-        <td><%= link_to 'Show', org_homepage %></td>
-        <td><%= link_to 'Edit', edit_org_homepage_path(org_homepage) %></td>
-        <td><%= link_to 'Destroy', org_homepage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <li><h5><%=link_to org_homepage.name, org_homepage_path(org_homepage.id)%></h5></li>
+        <li><%= [org_homepage.name] %></li>
       </tr>
     <% end %>
   </tbody>

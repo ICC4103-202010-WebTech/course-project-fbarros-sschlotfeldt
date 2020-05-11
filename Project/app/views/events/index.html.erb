@@ -12,8 +12,8 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><h5><%=link_to event.title, event_path(event.id)%></h5></td>
-        <td><%= [event.title, event.description] %></td>
+        <li><h5><%=link_to event.title, event_path(event.id)%></h5></li>
+        <li><%= [event.title, event.description] %></li>
       </tr>
     <% end %>
   </tbody>

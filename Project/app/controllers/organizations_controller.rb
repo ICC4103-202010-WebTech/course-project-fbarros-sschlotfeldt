@@ -10,7 +10,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1
   # GET /organizations/1.json
   def show
-    @organizations = Organization.all
+    @organization = Organization.joins(:org_homepage)
   end
 
   # GET /organizations/new
