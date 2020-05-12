@@ -8,16 +8,29 @@
 
 <% @p_events.each do|v| %>
   <div>
-    <li><h4><%=link_to v.title, event_path(v.id)%></h4></li>
-    <li><p>Host : <%=[v.user.userName]%></p></li>
+    <li><h3><%=link_to v.title, event_path(v.id)%></h3></li>
+
+    <%if (v.user.userName == "Null") %>
+      <%@p_organizations.each do |w| %>
+        <% if (v.organization_id == w.id )  %>
+          <li><p>Host : <%=[w.name]%></p></li>
+        <%end %>
+      <%end %>
+    <%else %>
+      <li><p>Host : <%=[v.user.userName]%></p></li>
+    <%end %>
+
     <li><p>Description : <%=[v.description]%></p></li>
-    <% @comments.each { |x|  %>
-    <% if (v.id = x.event.id )  %>
+
+    <h4>Comments:</h4>
+
+    <% @p_comments.each do |x|  %>
+    <% if (v.id == x.event_id )  %>
       <tr>
         <td> <%= x.user.userName %>: <%= x.text %></td><br>
           </tr>
-          <% end %>
-    <% } %>
+      <% end %>
+    <% end %>
 
   </div>
 

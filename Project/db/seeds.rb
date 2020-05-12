@@ -42,9 +42,9 @@ ohp= OrgHomepage.create!(name: "Organization1", banner:"Logo1", description: "De
 ohp= OrgHomepage.create!(name: "Organization2", banner:"Logo2", description: "Description2", organization_id: o2.id)
 
 comment1= Comment.create!(user_id: u1.id, text: "txt1", event_id:e1.id)
-comment2= Comment.create!(user_id: u1.id, text: "txt2", event_id:e1.id)
+comment2= Comment.create!(user_id: u2.id, text: "txt2", event_id:e2.id)
 comment3= Comment.create!(user_id: u1.id, text: "txt3", event_id:e2.id)
-comment4= Comment.create!(user_id: u1.id, text: "txt4", event_id:e3.id)
+comment4= Comment.create!(user_id: u3.id, text: "txt4", event_id:e3.id)
 
 att1= Attachment.create!(attachment: "Img1", comment_id: comment1.id)
 att1= Attachment.create!(attachment: "Img2", comment_id: comment2.id)
