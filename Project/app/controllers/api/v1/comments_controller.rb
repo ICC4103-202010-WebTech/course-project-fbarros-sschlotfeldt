@@ -4,12 +4,14 @@ class API::V1::CommentsController < APIController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @comments = Comment.includes(:attachments, :event, :user)
   end
 
   # GET /comments/1
   # GET /comments/1.json
   def show
+    @comments = Comment.where(event_id:params[:id])
+    @comment_a = Attachment.all
   end
 
   # GET /comments/new

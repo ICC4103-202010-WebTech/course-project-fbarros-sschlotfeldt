@@ -1,15 +1,16 @@
-class API::V1::OrganizationController < APIController
+class API::V1::OrganizationsController < APIController
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
 
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = Organization.all
+    @organizations = Organization.joins(:org_homepage)
   end
 
   # GET /organizations/1
   # GET /organizations/1.json
   def show
+    @organization = Organization.joins(:org_homepage)
   end
 
   # GET /organizations/new

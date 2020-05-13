@@ -10,6 +10,8 @@ class API::V1::EventsController < APIController
   # GET /events/1
   # GET /events/1.json
   def show
+    @event = Event.where(id:params[:id])
+    @event_o = Organization.all
   end
 
   # GET /events/new
