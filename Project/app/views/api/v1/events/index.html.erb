@@ -1,0 +1,22 @@
+<%=stylesheet_link_tag 'custom'%>
+<p id="notice"><%= notice %></p>
+
+<head>
+  <h1 id="head1">Events</h1>
+</head>
+
+<body>
+<div class = "p-2 border">
+  <p><% @events.each do |event| %>
+    <tr >
+      <td ><%=event.title %>
+      <td ><button><%=link_to 'Go to Event', event_path(event.id)%></button></td><br><br><br>
+    </tr>
+    <% end %>
+  </p>
+</div>
+</body>
+<br>
+<footer>
+<% link_to 'New Event', new_event_path %>
+</footer>

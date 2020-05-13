@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Chats</h1>
+<div class = "wrapper">
+  <div class ="box">
+  <% @chats.each do |chat| %>
+    <li>
+      <%=chat.user.userName %>
+      : <%=chat.text %>
+    </li>
+<% end %>
+
+  </div>
+</div>
+
+<footer>
+<br>
+<%= link_to 'Back', root_path %>
+</footer>

@@ -27,6 +27,8 @@ Members:
 - Sebastian Schlotfeldt V.
 - Francisco Barros C.
 
+LINK POSTMAN PROJECT 2: https://www.getpostman.com/collections/b9b9fa6daba2b5d48eca
+
 As you can see in the following queries, there is an ID Character, this is the one that has to be changed in order to get the requested tables in the data base.
 
 Project1.2 Querys:

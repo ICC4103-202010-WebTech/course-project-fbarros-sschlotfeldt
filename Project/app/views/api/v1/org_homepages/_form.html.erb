@@ -1,0 +1,26 @@
+<%= form_with(model: org_homepage, local: true) do |form| %>
+  <% if org_homepage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(org_homepage.errors.count, "error") %> prohibited this org_homepage from being saved:</h2>
+
+      <ul>
+        <% org_homepage.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<body>
+
+<% @org_homepage.each do|v| %>
+  <li><h4><%=link_to [v.name], org_homepage_path(v.id)%></h4></li>
+
+<% end %>
+
+</body>

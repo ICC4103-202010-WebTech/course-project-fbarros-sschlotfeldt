@@ -1,0 +1,18 @@
+<%=stylesheet_link_tag 'custom'%>
+<p id="notice"><%= notice %></p>
+
+<body>
+<h1>Organizations</h1>
+
+  <p class = "p-2 border">
+    <% @organizations.each do |v| %>
+        <a><strong><%=v.name%></strong></a> <a><button><%=link_to 'Go to Homepage', org_homepage_path(v.org_homepage.id)%></button></a><br><br>
+
+    <% end %>
+  </p>
+</body>
+<br>
+<footer>
+  <% link_to 'New Organization', new_organization_path %>
+  <% link_to 'Edit Organization', @organization %>
+</footer>
