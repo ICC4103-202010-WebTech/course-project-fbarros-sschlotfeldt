@@ -1,28 +1,17 @@
+<%=stylesheet_link_tag 'custom'%>
 <p id="notice"><%= notice %></p>
 
+<body>
 <h1>Organizations</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <p class = "p-2 border">
     <% @organizations.each do |v| %>
-      <ul>
+        <a><strong><%=v.name%></strong></a> <a><button><%=link_to 'Go to Homepage', org_homepage_path(v.org_homepage.id)%></button></a><br><br>
 
-        <il><p>Name: <%=v.name%></p></il>
-        <il><p>Adm: <%=v.user.userName%></p></il>
-
-        <il><%=link_to 'link to Homepage', org_homepage_path(v.org_homepage.id)%></il>
-
-      </ul>
     <% end %>
-  </tbody>
-</table>
-
+  </p>
+</body>
 <br>
-
+<footer>
 <%= link_to 'New Organization', new_organization_path %>
+</footer>

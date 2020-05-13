@@ -4,11 +4,15 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      resources :venues
       resources :comments
       resources :events do
         resources :comments, shallow:true
       end
-      resources :users
+      resources :profile_pages
+      resources :users do
+        resources :profile_pages
+      end
       resources :votes
       resources :profile_pages do
         resources :users
@@ -18,6 +22,7 @@ Rails.application.routes.draw do
         resources :org_homepages
       end
       resources :inboxs
+
 
     end
   end
@@ -30,4 +35,5 @@ Rails.application.routes.draw do
   resources :comments, defaults: { format: :html }
   resources :inboxs, defaults: { format: :html }
   resources :votes, defaults: { format: :html }
+  resources :venues, defaults: { format: :html }
 end

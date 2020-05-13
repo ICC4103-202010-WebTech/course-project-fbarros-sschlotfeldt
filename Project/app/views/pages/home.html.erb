@@ -1,40 +1,57 @@
+<%=stylesheet_link_tag 'custom'%>
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to Lab Assignment 6!</title>
+    <title>Welcome to Proyect 2!</title>
+    <link rel="stylesheet" type = "text/css" href="custom.css">
 </head>
+
 <body>
-
 <% @p_events.each do|v| %>
-  <div>
-    <li><h3><%=link_to v.title, event_path(v.id)%></h3></li>
-
-    <%if (v.user.userName == "Null") %>
-      <%@p_organizations.each do |w| %>
-        <% if (v.organization_id == w.id )  %>
-          <li><p>Host : <%=[w.name]%></p></li>
+  <div class = "wrapper">
+    <div class="ad_wrapper">
+      <div class = ad_box_1>
+        <p>Ads</p>
+      </div>
+    </div>
+    <div class ="box">
+      <h3 class = "eventshome"><%=link_to v.title, event_path(v.id)%></h3>
+      <%if v.user.userName == "Null" %>
+        <%@p_organizations.each do |w| %>
+          <% if v.organization_id == w.id   %>
+            <p>Host : <%=[w.name]%></p>
+          <%end %>
         <%end %>
+      <%else %>
+        <p>Host : <%=[v.user.userName]%></p>
       <%end %>
-    <%else %>
-      <li><p>Host : <%=[v.user.userName]%></p></li>
-    <%end %>
 
-    <li><p>Description : <%=[v.description]%></p></li>
+      <p>Description : <%=[v.description]%></p>
 
-    <h4>Comments:</h4>
-
-    <% @p_comments.each do |x|  %>
-    <% if (v.id == x.event_id )  %>
-      <tr>
-        <td> <%= x.user.userName %>: <%= x.text %></td><br>
-          </tr>
+      <br><br>
+      <h4 class="com_home">Comments:</h4>
+      <% @p_comments.each do |x|  %>
+      <% if v.id == x.event_id   %>
+        <tr>
+          <td><p class="comment"><%= x.user.userName %>: <%= x.text %></p></td>
+            </tr>
+        <% end %>
       <% end %>
-    <% end %>
 
+    </div>
+    <div class="ad_wrapper">
+      <div class = ad_box_1>
+
+        <p>Ads</p>
+      </div>
+    </div>
   </div>
-
 <% end %>
+
+
 
 </body>
 </html>

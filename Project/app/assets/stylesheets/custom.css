@@ -1,0 +1,88 @@
+
+.navigation{
+    display: flex;
+    flex-flow: row ;
+    justify-content: space-around;
+    background-color: slateblue;
+
+}
+
+p {
+    color: black;
+    text-align: center;
+}
+
+#head1{
+    color: black;
+    text-align: left;
+}
+footer{
+    text-align: right;
+}
+.foto{
+    text-align: left;
+    justify-content: flex-start;
+}
+.comment{
+    color:black;
+    text-align: center;
+}
+.com_home{
+    color:black;
+    text-align: left;
+}
+.eventshome{
+    color:black;
+    text-align: left;
+}
+.wrapper{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3,1fr);
+    grid-auto-rows: minmax(100px,auto);
+}
+.box{
+    grid-column: 2;
+    alignment: center;
+    border: 3px solid black;
+    height: 400px;
+    width: 500px;
+}
+.ad_wrapper {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+}
+.ad_box_1 {
+    grid-column: 2;
+    alignment: left;
+    border: 3px solid black;
+    height: 400px;
+    width: 300px;
+}
+.user_container{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3,1fr);
+    grid-auto-rows: minmax(100px,auto);
+}
+.user_box{
+    grid-column: 2;
+    grid-row: 1;
+    alignment: left;
+    height: 700px;
+    width: 300px;
+
+}
+.user_photo{
+    grid-column: 1;
+    grid-row: 1;
+    border: 3px solid black;
+    height: 400px;
+    width: 400px;
+}
+.p_user{
+    text-align: left;
+
+}

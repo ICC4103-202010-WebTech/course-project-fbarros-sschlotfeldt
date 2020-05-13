@@ -1,9 +1,22 @@
+<%=stylesheet_link_tag 'custom'%>
 <p id="notice"><%= notice %></p>
 
-Name: <%=@event.title%><br>
-Host: <%=@event.user.userName%><br>
-Description: <%=@event.description%><br>
+<head>
+  <title>Events</title>
+</head>
+<body>
+
+  <p>Name: <%=@event.title%><br></p>
+  <p>Host: <%=@event.user.userName%><br></p>
+  <p>Description: <%=@event.description%><br></p>
+
+</body>
 
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<footer>
+
+<div>
+  <%= link_to 'Edit', edit_event_path(@event) %> |
+  <%= link_to 'Back', events_path %>
+</div>
+</footer>
