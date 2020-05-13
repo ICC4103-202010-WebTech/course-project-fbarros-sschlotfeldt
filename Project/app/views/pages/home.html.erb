@@ -22,11 +22,12 @@
       <%if v.user.userName == "Null" %>
         <%@p_organizations.each do |w| %>
           <% if v.organization_id == w.id   %>
-            <p>Host : <%=[w.name]%></p>
+            <%@real_org_id = w.id - 1%>
+            <p>Host : <%=link_to w.name, org_homepage_path(@real_org_id)%></p>
           <%end %>
         <%end %>
       <%else %>
-        <p>Host : <%=[v.user.userName]%></p>
+        <p>Host : <%=link_to v.user.userName, profile_page_path(v.id)%></p>
       <%end %>
 
       <p>Description : <%=[v.description]%></p>
@@ -44,7 +45,6 @@
     </div>
     <div class="ad_wrapper">
       <div class = ad_box_1>
-
         <p>Ads</p>
       </div>
     </div>

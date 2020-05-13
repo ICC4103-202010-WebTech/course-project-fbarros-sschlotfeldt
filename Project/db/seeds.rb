@@ -37,6 +37,8 @@ om3= OrganizationM.create!(user_id: u1.id, organization_id: o2.id)
 om4= OrganizationM.create!(user_id: u3.id, organization_id: o2.id)
 
 pp1= ProfilePage.create!(user_id: u1.id, name: "Francisco", lastName: "Barros", bio: "bio1", address: "Address1")
+pp2= ProfilePage.create!(user_id: u2.id, name: "Sebastian", lastName: "Schlotfeldt", bio: "bio2", address: "Address2")
+pp1= ProfilePage.create!(user_id: u3.id, name: "Pepe", lastName: "Lagos", bio: "bio3", address: "Address3")
 
 ohp= OrgHomepage.create!(name: "Organization1", banner:"Logo1", description: "Description1", organization_id: o1.id)
 ohp= OrgHomepage.create!(name: "Organization2", banner:"Logo2", description: "Description2", organization_id: o2.id)

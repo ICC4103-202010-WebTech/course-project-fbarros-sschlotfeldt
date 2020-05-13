@@ -2,17 +2,17 @@
 <p id="notice"><%= notice %></p>
 <head><title>Profile</title></head>
 <body>
-  <div class = user_container>
-    <p class="user_photo"><strong>Photo: </strong>  <%=@user.profilePage.picture%><br></p>
-    <div class = user_box>
-      <br><br><br><br>
-      <p class ="p_user"><strong>Username:  </strong> <%=@user.userName%><br></p>
+<div class = user_container>
+  <p class="user_photo"><strong>Photo: </strong>  <%=@user.profilePage.picture%><br></p>
+  <div class = user_box>
+    <br><br><br><br>
+    <p class ="p_user"><strong>Username:  </strong> <%=@user.userName%><br></p>
 
-      <p class ="p_user"><strong>Mail: </strong>  <%=@user.email%><br></p>
+    <p class ="p_user"><strong>Mail: </strong>  <%=@user.email%><br></p>
 
-      <p class ="p_user"><strong>Administrator: </strong> <%=@user.adm%></p>
+    <p class ="p_user"><strong>Administrator: </strong> <%=@user.adm%></p>
 
-      <p class ="p_user"><strong>Organization: </strong> <%=@user.organization.name%> </p>
-    </div>
+    <p class ="p_user"><strong>Organization: </strong> <%=@user.organization.name%> </p>
   </div>
+</div>
 </body>

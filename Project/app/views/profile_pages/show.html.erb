@@ -1,4 +1,18 @@
+<%=stylesheet_link_tag 'custom'%>
 <p id="notice"><%= notice %></p>
+<head><title>Profile</title></head>
+<body>
+<div class = user_container>
+  <p class="user_photo"><strong>Photo: </strong>  <%=@profile_page.picture%><br></p>
+  <div class = user_box>
+    <br><br><br><br>
+    <p class ="p_user"><strong>Username:  </strong> <%=@profile_page.user.userName%><br></p>
 
-<%= link_to 'Edit', edit_profile_page_path(@profile_page) %> |
-<%= link_to 'Back', profile_pages_path %>
+    <p class ="p_user"><strong>Mail: </strong>  <%=@profile_page.user.email%><br></p>
+
+    <p class ="p_user"><strong>Administrator: </strong> <%=@profile_page.user.adm%></p>
+
+    <p class ="p_user"><strong>Organization: </strong> <%=@profile_page.user.organization.name%> </p>
+  </div>
+</div>
+</body>

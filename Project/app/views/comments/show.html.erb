@@ -1,22 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Comments</h2>
 
-<h3><%=@comment.event.title %></h3>
-
-<br><%for v in @comments do %>
-<tr>
-  <td> <%=v.user.userName%>: <%=v.text%><br></td>
-  <%for x in @comment_a do %>
-    <%if (x.comment_id==v.id) %>
-      <%if (x.attachment != nil ) %>
-        <td> Attachment: <%=x.attachment %><br></td>
-      <%end %>
-    <%end %>
-  <%end %>
-</tr>
-<%end %>
-
-<br><%= link_to 'Edit', edit_comment_path(@comment) %> /
-<%= link_to 'Destroy', comment_path, method: :delete, data: { confirm: 'Are you sure?' } %>  /
-<%= link_to 'Back', events_path %>
+<body>
+  <h2>Comments</h2>
+  <div class = "wrapper">
+    <div class ="box">
+      <h3 class="text-left"><%=@comment.event.title %></h3>
+      <p><%for v in @comments do %>
+          <p class ="text-left"> <%=v.user.userName%>: <%=v.text%>
+            <%for x in @comment_a do %>
+              <%if x.comment_id==v.id %>
+                <%if x.attachment != nil  %>
+                  <p class = "text-left"><%=v.user.userName%>: <%=x.attachment %><br></p>
+                <%end %>
+              <%end %>
+            <%end %>
+          </p>
+        <%end %>
+      </p>
+    </div>
+  </div>
+</body>
+<footer>
+  <br><%link_to 'Edit', edit_comment_path(@comment) %>
+  <% link_to 'Destroy', comment_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Back', events_path %>
+</footer>
