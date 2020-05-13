@@ -4,15 +4,19 @@
 
 <h3><%=@comment.event.title %></h3>
 
-<%for v in @comments do %>
-  <%if (v.event.id = @x.ids) %>
-    <tr>
-      <td> <%=v.user.userName%>: <%=v.text%><br></td>
-      <td>Attachment: <%=v.attachments.name %><br></td>
-    </tr>
+<br><%for v in @comments do %>
+<tr>
+  <td> <%=v.user.userName%>: <%=v.text%><br></td>
+  <%for x in @comment_a do %>
+    <%if (x.comment_id==v.id) %>
+      <%if (x.attachment != nil ) %>
+        <td> Attachment: <%=x.attachment %><br></td>
+      <%end %>
     <%end %>
+  <%end %>
+</tr>
 <%end %>
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> /
+<br><%= link_to 'Edit', edit_comment_path(@comment) %> /
 <%= link_to 'Destroy', comment_path, method: :delete, data: { confirm: 'Are you sure?' } %>  /
 <%= link_to 'Back', events_path %>

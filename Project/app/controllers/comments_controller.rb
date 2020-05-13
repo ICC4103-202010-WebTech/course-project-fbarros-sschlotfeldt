@@ -10,8 +10,8 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
-    @comments = Comment.includes(:attachments, :event, :user)
-    @x = Event.joins(:comments).distinct
+    @comments = Comment.where(event_id:params[:id])
+    @comment_a = Attachment.all
   end
 
   # GET /comments/new

@@ -5,12 +5,21 @@
   <title>Events</title>
 </head>
 <body>
-
-  <p>Name: <%=@event.title%><br></p>
-  <p>Host: <%=@event.user.userName%><br></p>
-  <p>Description: <%=@event.description%><br></p>
-
-</body>
+<%@event.each do |v| %>
+  <p>Name: <%=v.title%><br></p>
+  <%if(v.user.userName == "Null") %>
+    <%@event_o.each do |x|%>
+      <%if(x.id == v.organization_id) %>
+        <p>Host: <%=x.name%><br></p>
+      <%end %>
+    <%end %>
+  <%else %>
+    <p>Host: <%=v.user.userName%><br></p>
+  <%end %>
+  <p>Description: <%=v.description%><br></p>
+  <p><%=link_to 'Comments', comment_path(v.id)%><br></p>
+<%end %>
+  </body>
 
 
 <footer>

@@ -3,9 +3,9 @@
 one:
   user: one
   text: MyString
-  inbox: one
+  chat: one
 
 two:
   user: two
   text: MyString
-  inbox: two
+  chat: two

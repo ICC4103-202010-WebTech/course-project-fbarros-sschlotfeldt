@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :events
   has_one :organization
-  has_one :inbox
+  has_one :chat
   has_many :messages
   has_many :organizationMs
   has_many :eventMs

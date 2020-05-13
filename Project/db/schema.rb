@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_11_043556) do
+ActiveRecord::Schema.define(version: 2020_05_13_004919) do
 
   create_table "attachments", force: :cascade do |t|
     t.string "attachment"
@@ -18,6 +18,13 @@ ActiveRecord::Schema.define(version: 2020_05_11_043556) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["comment_id"], name: "index_attachments_on_comment_id"
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_chats_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -53,20 +60,13 @@ ActiveRecord::Schema.define(version: 2020_05_11_043556) do
     t.index ["venue_id"], name: "index_events_on_venue_id"
   end
 
-  create_table "inboxes", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_inboxes_on_user_id"
-  end
-
   create_table "messages", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "text"
-    t.integer "inbox_id", null: false
+    t.integer "chat_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["inbox_id"], name: "index_messages_on_inbox_id"
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 2020_05_11_043556) do
   end
 
   add_foreign_key "attachments", "comments"
+  add_foreign_key "chats", "users"
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users"
   add_foreign_key "event_ms", "events"
@@ -144,8 +145,7 @@ ActiveRecord::Schema.define(version: 2020_05_11_043556) do
   add_foreign_key "events", "organizations"
   add_foreign_key "events", "users"
   add_foreign_key "events", "venues"
-  add_foreign_key "inboxes", "users"
-  add_foreign_key "messages", "inboxes"
+  add_foreign_key "messages", "chats"
   add_foreign_key "messages", "users"
   add_foreign_key "org_homepages", "organizations"
   add_foreign_key "organization_ms", "organizations"

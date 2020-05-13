@@ -1,6 +1,6 @@
-class CreateInboxes < ActiveRecord::Migration[6.0]
+class CreateChats < ActiveRecord::Migration[6.0]
   def change
-    create_table :inboxes do |t|
+    create_table :chats do |t|
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

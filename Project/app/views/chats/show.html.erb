@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Chats</h1>
+
+<% @chats.each do |chat| %>
+  <li>
+    <%=chat.user.userName %>
+    : <%=chat.text %>
+  </li>
+<% end %>
+
+<br><%= link_to 'Edit', edit_chat_path(@chat) %> |
+<%= link_to 'Back', chats_path %>

@@ -49,14 +49,12 @@ comment4= Comment.create!(user_id: u3.id, text: "txt4", event_id:e3.id)
 att1= Attachment.create!(attachment: "Img1", comment_id: comment1.id)
 att1= Attachment.create!(attachment: "Img2", comment_id: comment2.id)
 att1= Attachment.create!(attachment: "Img3", comment_id: comment3.id)
-att1= Attachment.create!(attachment: " ", comment_id: comment4.id)
 
+chat1= Chat.create!(user_id: u1.id)
+chat2= Chat.create!(user_id: u2.id)
+chat3= Chat.create!(user_id: u3.id)
 
-inbox1= Inbox.create!(user_id: u1.id)
-inbox2= Inbox.create!(user_id: u2.id)
-inbox3= Inbox.create!(user_id: u3.id)
-
-msg1= Message.create!(user_id: u1.id, text:"Hola, como estay?", inbox_id:inbox2.id)
-msg2= Message.create!(user_id: u2.id, text:"Hola. Bien gracias, y tu?", inbox_id:inbox1.id)
+msg1= Message.create!(user_id: u1.id, text:"Hola, como estay?", chat_id:chat1.id)
+msg2= Message.create!(user_id: u2.id, text:"Hola. Bien gracias, y tu?", chat_id:chat1.id)
 
 
