@@ -1,74 +1,55 @@
-class API::V1::OrgHomepagesController < APIController
-  before_action :set_org_homepage, only: [:show, :edit, :update, :destroy]
+module Api
+  module V1
+    class OrgHomepagesController < ApplicationController
+      before_action :set_org_homepage, only: [:show, :update, :destroy]
 
-  # GET /org_homepages
-  # GET /org_homepages.json
-  def index
-    @org_homepages = OrgHomepage.all
-  end
+      # GET /org_homepages
+      def index
+        @org_homepages = OrgHomepage.all
 
-  # GET /org_homepages/1
-  # GET /org_homepages/1.json
-  def show
-  end
-
-  # GET /org_homepages/new
-  def new
-    @org_homepage = OrgHomepage.new
-  end
-
-  # GET /org_homepages/1/edit
-  def edit
-  end
-
-  # POST /org_homepages
-  # POST /org_homepages.json
-  def create
-    @org_homepage = OrgHomepage.new(org_homepage_params)
-
-    respond_to do |format|
-      if @org_homepage.save
-        format.html { redirect_to @org_homepage, notice: 'Org homepage was successfully created.' }
-        format.json { render :show, status: :created, location: @org_homepage }
-      else
-        format.html { render :new }
-        format.json { render json: @org_homepage.errors, status: :unprocessable_entity }
+        render json: @org_homepages
       end
-    end
-  end
 
-  # PATCH/PUT /org_homepages/1
-  # PATCH/PUT /org_homepages/1.json
-  def update
-    respond_to do |format|
-      if @org_homepage.update(org_homepage_params)
-        format.html { redirect_to @org_homepage, notice: 'Org homepage was successfully updated.' }
-        format.json { render :show, status: :ok, location: @org_homepage }
-      else
-        format.html { render :edit }
-        format.json { render json: @org_homepage.errors, status: :unprocessable_entity }
+      # GET /org_homepages/1
+      def show
+        render json: @org_homepage
       end
+
+      # POST /org_homepages
+      def create
+        @org_homepage = OrgHomepage.new(org_homepage_params)
+
+        if @org_homepage.save
+          render json: @org_homepage, status: :created, location: @org_homepage
+        else
+          render json: @org_homepage.errors, status: :unprocessable_entity
+        end
+      end
+
+      # PATCH/PUT /org_homepages/1
+      def update
+        if @org_homepage.update(org_homepage_params)
+          render json: @org_homepage
+        else
+          render json: @org_homepage.errors, status: :unprocessable_entity
+        end
+      end
+
+      # DELETE /org_homepages/1
+      def destroy
+        @org_homepage.destroy
+      end
+
+      private
+        # Use callbacks to share common setup or constraints between actions.
+        def set_org_homepage
+          @org_homepage = OrgHomepage.find(params[:id])
+        end
+
+        # Only allow a trusted parameter "white list" through.
+        def org_homepage_params
+          params.fetch(:org_homepage, {})
+        end
     end
   end
-
-  # DELETE /org_homepages/1
-  # DELETE /org_homepages/1.json
-  def destroy
-    @org_homepage.destroy
-    respond_to do |format|
-      format.html { redirect_to org_homepages_url, notice: 'Org homepage was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_org_homepage
-      @org_homepage = OrgHomepage.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def org_homepage_params
-      params.fetch(:org_homepage, {})
-    end
 end

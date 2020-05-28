@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 u0 = User.create!(userName: "Null", email: nil, password: nil, adm: false)
 u1 = User.create!(userName: "Fcob95", email: "fjbarros1@miuandes.cl", password: "123456", adm: true)
 u2 = User.create!(userName: "SSch20", email: "sscholtfeldt@miuandes.cl", password: "123456", adm: true)
@@ -52,11 +53,11 @@ att1= Attachment.create!(attachment: "Img1", comment_id: comment1.id)
 att1= Attachment.create!(attachment: "Img2", comment_id: comment2.id)
 att1= Attachment.create!(attachment: "Img3", comment_id: comment3.id)
 
-chat1= Chat.create!(user_id: u1.id)
-chat2= Chat.create!(user_id: u2.id)
-chat3= Chat.create!(user_id: u3.id)
+inbox1= Inbox.create!(user_id: u1.id)
+inbox2= Inbox.create!(user_id: u2.id)
+inbox3= Inbox.create!(user_id: u3.id)
+
+chat1= Chat.create!(inbox1_id: inbox1.id, inbox2_id: inbox2.id)
 
 msg1= Message.create!(user_id: u1.id, text:"Hola, como estay?", chat_id:chat1.id)
 msg2= Message.create!(user_id: u2.id, text:"Hola. Bien gracias, y tu?", chat_id:chat1.id)
-
-

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_004919) do
+ActiveRecord::Schema.define(version: 2020_05_28_045532) do
 
   create_table "attachments", force: :cascade do |t|
     t.string "attachment"
@@ -21,10 +21,12 @@ ActiveRecord::Schema.define(version: 2020_05_13_004919) do
   end
 
   create_table "chats", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "inbox1_id"
+    t.integer "inbox2_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_chats_on_user_id"
+    t.index ["inbox1_id"], name: "index_chats_on_inbox1_id"
+    t.index ["inbox2_id"], name: "index_chats_on_inbox2_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -58,6 +60,13 @@ ActiveRecord::Schema.define(version: 2020_05_13_004919) do
     t.index ["organization_id"], name: "index_events_on_organization_id"
     t.index ["user_id"], name: "index_events_on_user_id"
     t.index ["venue_id"], name: "index_events_on_venue_id"
+  end
+
+  create_table "inboxes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_inboxes_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -137,7 +146,6 @@ ActiveRecord::Schema.define(version: 2020_05_13_004919) do
   end
 
   add_foreign_key "attachments", "comments"
-  add_foreign_key "chats", "users"
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users"
   add_foreign_key "event_ms", "events"
@@ -145,6 +153,7 @@ ActiveRecord::Schema.define(version: 2020_05_13_004919) do
   add_foreign_key "events", "organizations"
   add_foreign_key "events", "users"
   add_foreign_key "events", "venues"
+  add_foreign_key "inboxes", "users"
   add_foreign_key "messages", "chats"
   add_foreign_key "messages", "users"
   add_foreign_key "org_homepages", "organizations"
