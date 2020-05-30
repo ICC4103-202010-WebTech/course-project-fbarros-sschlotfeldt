@@ -19,6 +19,7 @@ class OrgHomepagesController < ApplicationController
 
   # GET /org_homepages/1/edit
   def edit
+    @oh=OrgHomepage.where(id:params[:id])
   end
 
   # POST /org_homepages

@@ -34,7 +34,7 @@
   <%end %>
 
   --------------------------------------------------------------------------------
-<%elsif @i_chat2 = @inbox.id %>
+<%elsif @i_chat2 = @inbox.id%>
   <%@i_message.each do |m| %>
     <%if m.chat_id == @i_chat2 %>
       <%if m.user.userName != @inbox.user.userName %>
