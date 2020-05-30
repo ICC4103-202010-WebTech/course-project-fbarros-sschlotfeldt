@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row ml-0 mt-3">
+  <h2>Inbox</h2>
+</div>
+
+<%if @i_chat1 = @inbox.id %>
+  --------------------------------------------------------------------------------
+  <%@i_message.each do |m| %>
+    <%if m.chat_id == @i_chat1 %>
+      <%if m.user.userName = @inbox. %>
+        <div type="button" data-toggle="modal" data-target=".bd-example-modal-lg"><%=m.user.userName%></div>
+
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title"><%=m.user.userName%></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= m.text%>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    <%end %>
+  <%end %>
+  --------------------------------------------------------------------------------
+<%elsif @i_chat2 = @inbox.id %>
+  <h1></h1>
+<%end %>
+
+
+<%= link_to 'Edit', edit_inbox_path(@inbox) %> |
+<%= link_to 'Back', inbox_path %>

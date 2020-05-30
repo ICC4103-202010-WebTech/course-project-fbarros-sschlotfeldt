@@ -1,28 +1,32 @@
-class InboxesController < ApplicationController
+class InboxController < ApplicationController
   before_action :set_inbox, only: [:show, :edit, :update, :destroy]
 
-  # GET /inboxes
-  # GET /inboxes.json
+  # GET /inbox
+  # GET /inbox.json
   def index
     @inboxes = Inbox.all
   end
 
-  # GET /inboxes/1
-  # GET /inboxes/1.json
+  # GET /inbox/1
+  # GET /inbox/1.json
   def show
+    @i_chat1 = Chat.where(inbox1_id:params[:id]).select("id")
+    @i_chat2 = Chat.where(inbox2_id:params[:id]).select("id")
+    @inbox = Inbox.find(params[:id])
+    @i_message = Message.all
   end
 
-  # GET /inboxes/new
+  # GET /inbox/new
   def new
     @inbox = Inbox.new
   end
 
-  # GET /inboxes/1/edit
+  # GET /inbox/1/edit
   def edit
   end
 
-  # POST /inboxes
-  # POST /inboxes.json
+  # POST /inbox
+  # POST /inbox.json
   def create
     @inbox = Inbox.new(inbox_params)
 
@@ -37,8 +41,8 @@ class InboxesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /inboxes/1
-  # PATCH/PUT /inboxes/1.json
+  # PATCH/PUT /inbox/1
+  # PATCH/PUT /inbox/1.json
   def update
     respond_to do |format|
       if @inbox.update(inbox_params)
@@ -51,8 +55,8 @@ class InboxesController < ApplicationController
     end
   end
 
-  # DELETE /inboxes/1
-  # DELETE /inboxes/1.json
+  # DELETE /inbox/1
+  # DELETE /inbox/1.json
   def destroy
     @inbox.destroy
     respond_to do |format|

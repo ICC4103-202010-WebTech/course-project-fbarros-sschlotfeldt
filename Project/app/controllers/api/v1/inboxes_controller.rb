@@ -3,19 +3,19 @@ module Api
     class InboxesController < ApplicationController
       before_action :set_inbox, only: [:show, :update, :destroy]
 
-      # GET /inboxes
+      # GET /inbox
       def index
         @inboxes = Inbox.all
 
         render json: @inboxes
       end
 
-      # GET /inboxes/1
+      # GET /inbox/1
       def show
         render json: @inbox
       end
 
-      # POST /inboxes
+      # POST /inbox
       def create
         @inbox = Inbox.new(inbox_params)
 
@@ -26,7 +26,7 @@ module Api
         end
       end
 
-      # PATCH/PUT /inboxes/1
+      # PATCH/PUT /inbox/1
       def update
         if @inbox.update(inbox_params)
           render json: @inbox
@@ -35,7 +35,7 @@ module Api
         end
       end
 
-      # DELETE /inboxes/1
+      # DELETE /inbox/1
       def destroy
         @inbox.destroy
       end

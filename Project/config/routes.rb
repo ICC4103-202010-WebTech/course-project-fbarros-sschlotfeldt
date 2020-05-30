@@ -21,8 +21,9 @@ Rails.application.routes.draw do
       resources :organizations do
         resources :org_homepages
       end
-      resources :chats do
-        resources :messages
+      resources :inbox do
+        resources :chats
+        resources :messages, shallow:true
       end
 
 
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
   resources :users, defaults: { format: :html }
   resources :organizations, defaults: { format: :html }
   resources :comments, defaults: { format: :html }
+  resources :inbox, defaults: { format: :html }
   resources :chats, defaults: { format: :html }
   resources :votes, defaults: { format: :html }
   resources :venues, defaults: { format: :html }
