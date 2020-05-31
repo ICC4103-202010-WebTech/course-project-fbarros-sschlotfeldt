@@ -15,4 +15,7 @@
     <p class ="p_user"><strong>Organization: </strong> <%=@user.organization.name%> </p>
   </div>
 </div>
+
+<div type="button" data-toggle="modal" data-target=".bd-example-modal-lg"><%= link_to 'Edit', edit_profile_page_path(params[:id])  %></div>
+
 </body>

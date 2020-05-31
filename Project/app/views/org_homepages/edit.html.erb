@@ -6,7 +6,11 @@
   <p class="user_photo"><strong>Photo: </strong>  <%=oh.banner %><br></p>
 <%end %>
 
-<%= render 'form', org_homepage: @org_homepage %>
+<%= render "form",
+           locals: {
+               org_homepage: @org_homepage,
+               submit_btn_text: "Update",
+           } %>
 
-<%= link_to 'Show', @org_homepage %> |
-<%= link_to 'Back', org_homepages_path %>
+
+<%= link_to 'Back', org_homepage_path(params[:id]) %>
