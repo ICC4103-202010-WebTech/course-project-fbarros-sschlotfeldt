@@ -10,7 +10,7 @@
 <%end %>
 
   <p class = "p-2 border">
-    <%if @organization === NULL %>
+    <%if @organization == 0 %>
       <p> No se encuentras resultados de búsqueda </p>
     <%else %>
       <% for v in @organizations %>

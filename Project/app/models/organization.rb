@@ -8,7 +8,7 @@ class Organization < ApplicationRecord
 
   def self.search(search)
     if search
-      @organizations = Organization.find_by("LOWER(name) = ?", search.downcase)
+      @organizations = Organization.where("name LIKE ?", "%#{search}%")
       if @organizations
         self.where(id: @organizations)
       else
