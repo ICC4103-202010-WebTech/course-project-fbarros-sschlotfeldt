@@ -10,15 +10,11 @@
 <%end %>
 
   <p class = "p-2 border">
-    <%if @organization == 0 %>
-      <p> No se encuentras resultados de búsqueda </p>
-    <%else %>
-      <% for v in @organizations %>
-        <li>
-          <a><strong><%=v.name%></strong></a> <a><button><%=link_to 'Go to Homepage', org_homepage_path(v.org_homepage.id)%></button></a><br><br>
-        </li>
-      <% end %>
-    <% end %>
+<% for v in @organizations %>
+
+    <a><strong><%=v.name%></strong></a> <a><button><%=link_to 'Go to Homepage', org_homepage_path(v.org_homepage.id)%></button></a><br><br>
+
+<% end %>
 
 </p>
 
