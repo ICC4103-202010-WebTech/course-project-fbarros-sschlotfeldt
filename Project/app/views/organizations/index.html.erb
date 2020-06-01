@@ -4,12 +4,24 @@
 <body>
 <h1>Organizations</h1>
 
-  <p class = "p-2 border">
-    <% @organizations.each do |v| %>
-        <a><strong><%=v.name%></strong></a> <a><button><%=link_to 'Go to Homepage', org_homepage_path(v.org_homepage.id)%></button></a><br><br>
+<%=form_tag organizations_path, :method => "get" do %>
+      <%=text_field_tag :search, params[:search] %>
+      <%= submit_tag("Search", :name => nil ) %>
+<%end %>
 
+  <p class = "p-2 border">
+    <%if @organization === NULL %>
+      <p> No se encuentras resultados de búsqueda </p>
+    <%else %>
+      <% for v in @organizations %>
+        <li>
+          <a><strong><%=v.name%></strong></a> <a><button><%=link_to 'Go to Homepage', org_homepage_path(v.org_homepage.id)%></button></a><br><br>
+        </li>
+      <% end %>
     <% end %>
-  </p>
+
+</p>
+
 </body>
 <br>
 <footer>

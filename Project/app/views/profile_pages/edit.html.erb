@@ -2,7 +2,7 @@
 
 <div id="fakebox-test"></div>
 <div>Name: <input id="fakebox-input" autocomplete="off" tabindex="-1" value placeholder="<%=@profile_page.name %>" type="typebox" aria-hidden="true"></div><br><br>
-<div>Description: <input id="fakebox-input" autocomplete="off" tabindex="-1" value placeholder="<%=@profile_page.user.email %>" type="typebox" aria-hidden="true"></div><br><br>
+<div>Email: <input id="fakebox-input" autocomplete="off" tabindex="-1" value placeholder="<%=@profile_page.user.email %>" type="typebox" aria-hidden="true"></div><br><br>
 <p class="user_photo"><strong>Photo: </strong>  <%=@profile_page.picture %><br></p>
 
 <%= render 'form', profile_page: @profile_page %>

@@ -1,19 +1,33 @@
-<div>
-  <%= form_with(model: profile_page, local: true) do |form| %>
+<div class="row ml-0">
+  <%= form_with model: profile_page, local: true do |form| %>
     <% if profile_page.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(profile_page.errors.count, "error") %> prohibited this profile_page from being saved:</h2>
-
-        <ul>
-          <% profile_page.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control" %>
       </div>
+      <div class="form-group">
+        <%= form.label :email %>
+        <%= form.text_area :email, class: "form-control" %>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= profile_page_section_title %></h5>
+          <p><%= profile_page_instruction_text %></p>
+          <%=form.fields_for :ticket_types do |profile_page_form| %>
+            <div class="form-group">
+              <%= profile_page_form.label :name %>
+              <%= profile_page_form.text_field :name, class: "form-control" %>
+              <%= profile_page_form.label :ticket_price %>
+              <%= profile_page_form.text_field :ticket_price, class: "form-control" %>
+              <hr>
+            </div>
+          <% end %>
+        </div>
     <% end %>
-
-    <div class="actions">
-      <%= form.submit %>
+    </div>
+    <div class="form-group mt-2">
+      <%= form.submit :Update, class: ["btn", "btn-primary"] %>
+      <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
     </div>
   <% end %>
 </div>

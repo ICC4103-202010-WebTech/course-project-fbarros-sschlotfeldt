@@ -4,7 +4,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = Organization.joins(:org_homepage)
+    @organizations = Organization.search(params[:search])
   end
 
   # GET /organizations/1
@@ -70,6 +70,6 @@ class OrganizationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def organization_params
-      params.fetch(:organization, {})
+      params.require(:organization).permit(:name, :id, :search)
     end
 end
