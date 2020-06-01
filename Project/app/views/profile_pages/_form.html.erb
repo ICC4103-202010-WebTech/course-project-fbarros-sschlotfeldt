@@ -1,19 +1,19 @@
 <div class="row ml-0">
-  <%= form_with model: profile_page, local: true do |form| %>
-    <% if profile_page.errors.any? %>
+  <%= form_for @profile_page do |f| %>
+    <% if @profile_page.errors.any? %>
       <div class="form-group">
-        <%= form.label :name %>
-        <%= form.text_field :name, class: "form-control" %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
       </div>
       <div class="form-group">
-        <%= form.label :email %>
-        <%= form.text_area :email, class: "form-control" %>
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control" %>
       </div>
       <div class="card">
         <div class="card-body">
           <h5 class="card-title"><%= profile_page_section_title %></h5>
           <p><%= profile_page_instruction_text %></p>
-          <%=form.fields_for :ticket_types do |profile_page_form| %>
+          <%=f.fields_for :profile_page do |profile_page_form| %>
             <div class="form-group">
               <%= profile_page_form.label :name %>
               <%= profile_page_form.text_field :name, class: "form-control" %>
@@ -26,7 +26,7 @@
     <% end %>
     </div>
     <div class="form-group mt-2">
-      <%= form.submit :Update, class: ["btn", "btn-primary"] %>
+      <%= f.submit :Update, class: ["btn", "btn-primary"] %>
       <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
     </div>
   <% end %>

@@ -4,13 +4,13 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.find(2)
+    @users = User.all
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(2)
+    @user = User.all
   end
 
   # GET /users/new
