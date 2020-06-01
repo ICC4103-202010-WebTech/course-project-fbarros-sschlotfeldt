@@ -1,0 +1,27 @@
+<%=stylesheet_link_tag 'custom'%>
+<p id="notice"><%= notice %></p>
+
+<head>
+  <title>Profile</title>
+</head>
+
+<body>
+<div class = user_container>
+  <p class="user_photo"><strong>Photo: </strong>  <%=@pp.picture%><br></p>
+  <div class = user_box>
+    <br><br><br><br>
+    <p class ="p_user"><strong>Name:  </strong> <%=@pp.name%><br></p>
+
+    <p class ="p_user"><strong>Last Name:  </strong> <%=@pp.lastName%><br></p>
+
+    <p class ="p_user"><strong>Mail: </strong>  <%=@pp.user.email%><br></p>
+
+    <p class ="p_user"><strong>Administrator: </strong> <%=@pp.user.adm%></p>
+    <% if @user.organization.nil? %>
+      <p class ="p_user"><strong>Organization: </strong> No Organization </p>
+    <%else %>
+      <p class ="p_user"><strong>Organization: </strong> <%=@user.organization.name%> </p>
+    <%end %>
+  </div>
+</div>
+</body>

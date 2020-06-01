@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :profile_pages
       resources :users do
         resources :profile_pages
+        resources :organizations
       end
       resources :votes
       resources :profile_pages do
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
       resources :organizations
       resources :organizations do
         resources :org_homepages
+        resources :organization_ms
       end
       resources :inbox do
         resources :chats

@@ -1,24 +1,66 @@
 <%=stylesheet_link_tag 'custom'%>
 <p id="notice"><%= notice %></p>
-<body>
+<head>
   <h1 id="head1">Events</h1>
+</head>
 
-<%=form_tag events_path, :method => "get" do %>
-  <%=text_field_tag :search, params[:search] %>
-  <%= submit_tag("Search", :name => nil ) %>
-<%end %>
 
-<div class = "p-2 border">
-  <p><% @events.each do |event| %>
-    <tr >
-      <td ><%=event.title %>
-      <td ><button><%=link_to 'Go to Event', event_path(event.id)%></button></td><br><br><br>
-    </tr>
-  <% end %>
-  </p>
-</div>
+<body>
+  <div class="nav justify-content-lg-center">
+    <%=form_tag events_path, :method => "get" do %>
+      <%=text_field_tag :search, params[:search] %>
+      <%= submit_tag("Search", :name => nil ) %>
+    <%end %>
+  </div>
+  <div class ="row m-lg-5 col-lg-11 border">
+    <table class = "table">
+      <% @events.each do |event| %>
+        <%if event.user.userName == "Null" %>
+          <%Organization.all.each do |w| %>
+            <% if event.organization_id == w.id   %>
+              <%@real_org_id = w.id - 1%>
+              <thead>
+              <tr>
+                <th>Event Name</th>
+                <th>Event Description</th>
+                <th>Event Host</th>
+                <th>Link</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td><%=event.title %>
+                <td><%=event.description %></td>
+                <td><%=w.name%></td>
+                <td><button><%=link_to 'Go to Event', event_path(event.id)%></button></td>
+              </tr>
+              </tbody>
+            <%end %>
+          <%end %>
+        <%else %>
+          <thead>
+          <tr>
+            <th>Event Name</th>
+            <th>Event Description</th>
+            <th>Event Host</th>
+            <th>Link</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><%=event.title %>
+            <td><%=event.description %></td>
+            <td><%=event.user.userName%></td>
+            <td><button><%=link_to 'Go to Event', event_path(event.id)%></button></td>
+          </tr>
+        <%end %>
+      <% end %>
+      <tfoot>
+      </tfoot>
+    </table>
+  </div>
 </body>
-<br>
+
 <footer>
-<% link_to 'New Event', new_event_path %>
+  <button class="btn"><%= link_to 'Back', root_path %></button>
 </footer>

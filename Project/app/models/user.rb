@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   def self.search(search)
     if search
-      @users = User.where("userName LIKE ?", "%#{search}%")
+      @users = User.joins(:profilePage).where("userName LIKE ?", "%#{search}%")
       if @users
         self.where(id: @users)
       else

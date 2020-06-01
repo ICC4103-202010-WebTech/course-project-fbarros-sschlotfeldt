@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2020_05_28_045532) do
     t.index ["venue_id"], name: "index_events_on_venue_id"
   end
 
-  create_table "inbox", force: :cascade do |t|
+  create_table "inboxes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -153,7 +153,7 @@ ActiveRecord::Schema.define(version: 2020_05_28_045532) do
   add_foreign_key "events", "organizations"
   add_foreign_key "events", "users"
   add_foreign_key "events", "venues"
-  add_foreign_key "inbox", "users"
+  add_foreign_key "inboxes", "users"
   add_foreign_key "messages", "chats"
   add_foreign_key "messages", "users"
   add_foreign_key "org_homepages", "organizations"

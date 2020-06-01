@@ -9,7 +9,7 @@
   <%@i_message.each do |m| %>
     <%if m.chat_id == @i_chat1 %>
       <%if m.user.userName != @inbox.user.userName %>
-          <div type="button" data-toggle="modal" data-target=".bd-example-modal-lg"><%=m.user.userName%></div>
+          <div type="button" data-toggle="modal" data-target="modal fade bd-example-modal-lg"><%=m.user.userName%></div>
 
           <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -62,7 +62,7 @@
     <%end %>
   <%end %>
 <%else%>
-  <% You have no Chats just yet %>
+  <% "You have no Chats just yet" %>
 <%end %>
 
 

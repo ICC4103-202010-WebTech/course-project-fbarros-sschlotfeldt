@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.all
+    @pp=ProfilePage.find((params[:id].to_i-1))
   end
 
   # GET /users/new
