@@ -8,4 +8,18 @@ class User < ApplicationRecord
   has_many :votes
   has_many :comments
   has_one :profilePage
+
+  def self.search(search)
+    if search
+      @users = User.where("userName LIKE ?", "%#{search}%")
+      if @users
+        self.where(id: @users)
+      else
+        @users = User.joins(:profilePage)
+      end
+    else
+      @users = User.joins(:profilePage)
+    end
+  end
+
 end

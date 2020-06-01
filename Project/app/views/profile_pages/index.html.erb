@@ -1,25 +1,20 @@
+<%=stylesheet_link_tag 'custom'%>
 <p id="notice"><%= notice %></p>
+<head><title>Profile</title></head>
+<body>
+<div class = user_container>
+  <p class="user_photo"><strong>Photo: </strong>  <%=@profile_pages.picture%><br></p>
+  <div class = user_box>
+    <br><br><br><br>
+    <p class ="p_user"><strong>Name:  </strong> <%=@profile_pages.name%><br></p>
 
-<h1>Profile </h1>
+    <p class ="p_user"><strong>Last Name:  </strong> <%=@profile_pages.lastName%><br></p>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <p class ="p_user"><strong>Mail: </strong>  <%=@profile_pages.user.email%><br></p>
 
-  <tbody>
-    <% @profile_pages.each do |profile_page| %>
-      <tr>
-        <td><%= link_to 'Show', profile_page %></td>
-        <td><%= link_to 'Edit', edit_profile_page_path(profile_page) %></td>
-        <td><%= link_to 'Destroy', profile_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <p class ="p_user"><strong>Administrator: </strong> <%=@profile_pages.user.adm%></p>
 
-<br>
-
-<%= link_to 'New Profile Page', new_profile_page_path %>
+    <p class ="p_user"><strong>Organization: </strong> <%=@profile_pages.user.organization.name%> </p>
+  </div>
+</div>
+</body>

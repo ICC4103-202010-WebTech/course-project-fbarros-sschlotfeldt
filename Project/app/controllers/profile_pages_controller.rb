@@ -4,16 +4,15 @@ class ProfilePagesController < ApplicationController
   # GET /profile_pages
   # GET /profile_pages.json
   def index
-    @profile_pages = ProfilePage.all
+    @profile_pages = ProfilePage.where("id = ?", params[:id])
 
   end
 
   # GET /profile_pages/1
   # GET /profile_pages/1.json
   def show
-    if params[:search]
-      @search_term = params[:search]
-    end
+    @profile_page = ProfilePage.find(params[:id])
+
   end
 
   # GET /profile_pages/new

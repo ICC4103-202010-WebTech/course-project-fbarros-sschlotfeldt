@@ -17,9 +17,10 @@
 
   <p class = "p-2 border">
     <% for v in @users %>
-
-      <a><strong><%=v.userName%></strong></a> <a><button><%=link_to 'Go to Profile Page', profile_page_path(v.profile_page.id)%></button></a><br><br>
-
+      <%if v.userName != "Null" %>
+        <a><strong><%=v.userName%></strong></a> <a><button><%=link_to 'Go to Profile Page', profile_pages_path(v.profilePage)%></button></a><br><br>
+      <%else %>
+      <% end %>
     <% end %>
 
     <% @users.each do |user| %>
