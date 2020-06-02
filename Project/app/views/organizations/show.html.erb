@@ -3,7 +3,13 @@
 
 <body>
   <div class = user_container>
-    <p class="user_photo"><strong><%=@organization.org_homepage.banner%></strong><br></p>
+    <p class="user_photo">
+      <%if @organization.org_homepage.flyer.attached? %>
+        <%= link_to image_tag(@organization.org_homepage.flyer, width: "100%"), url_for(@organization)%>
+      <%else %>
+        <%=link_to image_tag("thumbnail.svg", width: "400px", background: "#55595c", color: "#eceeef"), url_for(@organization) %>
+      <%end %>
+    </p>
     <div class = "user_box">
       <br><br><br><br>
       <p class = "p_user"><strong><%=@organization.org_homepage.name%></strong><br></p>

@@ -3,6 +3,11 @@
   <%= form_for @org_homepage do |f| %>
 
     <div class="form-group">
+      <%= f.label :flyer %>
+      <%= f.file_field :flyer %>
+    </div>
+
+    <div class="form-group">
       <%= f.label :Description %>
       <%= f.text_field :description %>
     </div>

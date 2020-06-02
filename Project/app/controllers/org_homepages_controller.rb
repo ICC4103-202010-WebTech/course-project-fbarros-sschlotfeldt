@@ -70,6 +70,6 @@ class OrgHomepagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def org_homepage_params
-      params.fetch(:org_homepage, {}).permit(:name, :banner, :description, organizations_attributes: [:name,:user_id])
+      params.fetch(:org_homepage, {}).permit(:name, :banner, :description, :flyer, organizations_attributes: [:name,:user_id])
     end
 end
