@@ -14,19 +14,19 @@
   </div>
   <div class ="row m-lg-5 col-lg-11 border">
     <table class = "table">
+      <thead>
+      <tr>
+        <th>Event Name</th>
+        <th>Event Description</th>
+        <th>Event Host</th>
+        <th>Link</th>
+      </tr>
+      </thead>
       <% @events.each do |event| %>
         <%if event.user.userName == "Null" %>
           <%Organization.all.each do |w| %>
             <% if event.organization_id == w.id   %>
               <%@real_org_id = w.id - 1%>
-              <thead>
-              <tr>
-                <th>Event Name</th>
-                <th>Event Description</th>
-                <th>Event Host</th>
-                <th>Link</th>
-              </tr>
-              </thead>
               <tbody>
               <tr>
                 <td><%=event.title %>
@@ -38,14 +38,6 @@
             <%end %>
           <%end %>
         <%else %>
-          <thead>
-          <tr>
-            <th>Event Name</th>
-            <th>Event Description</th>
-            <th>Event Host</th>
-            <th>Link</th>
-          </tr>
-          </thead>
           <tbody>
           <tr>
             <td><%=event.title %>
