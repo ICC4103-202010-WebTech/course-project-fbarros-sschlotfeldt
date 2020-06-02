@@ -1,33 +1,27 @@
 <div class="row ml-0">
+
   <%= form_for @profile_page do |f| %>
-    <% if @profile_page.errors.any? %>
       <div class="form-group">
         <%= f.label :name %>
         <%= f.text_field :name %>
       </div>
+
       <div class="form-group">
-        <%= f.label :email %>
-        <%= f.text_field :email, class: "form-control" %>
+        <%= f.label :lastname %>
+        <%= f.text_field :lastName %>
       </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><%= profile_page_section_title %></h5>
-          <p><%= profile_page_instruction_text %></p>
-          <%=f.fields_for :profile_page do |profile_page_form| %>
-            <div class="form-group">
-              <%= profile_page_form.label :name %>
-              <%= profile_page_form.text_field :name, class: "form-control" %>
-              <%= profile_page_form.label :ticket_price %>
-              <%= profile_page_form.text_field :ticket_price, class: "form-control" %>
-              <hr>
-            </div>
-          <% end %>
+
+      <%= f.fields_for :user do |v|%>
+        <div class="form-group">
+          <%= v.label :email %>
+          <%= v.text_field :email, class: "form-control" %>
         </div>
-    <% end %>
-    </div>
+      <%end %>
+
     <div class="form-group mt-2">
       <%= f.submit :Update, class: ["btn", "btn-primary"] %>
       <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
     </div>
-  <% end %>
+  <%end %>
+
 </div>

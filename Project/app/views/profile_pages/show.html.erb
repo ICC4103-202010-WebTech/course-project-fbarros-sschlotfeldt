@@ -1,23 +1,27 @@
 <%=stylesheet_link_tag 'custom'%>
 <p id="notice"><%= notice %></p>
-<head><title>Profile</title></head>
+<head>
+  <title>Profile</title>
+</head>
+
 <body>
-<div class = user_container>
-  <p class="user_photo"><strong>Photo: </strong>  <%=@profile_page.picture%><br></p>
-  <div class = user_box>
-    <br><br><br><br>
-    <p class ="p_user"><strong>Name:  </strong> <%=@profile_page.name%><br></p>
+  <div class = user_container>
+    <p class="user_photo"><strong>Photo: </strong>  <%=@profile_page.picture%><br></p>
+    <div class = user_box >
+      <br><br><br><br>
+      <p class ="p_user"><strong>Name:  </strong> <%=@profile_page.name%><br></p>
 
-    <p class ="p_user"><strong>Last Name:  </strong> <%=@profile_page.lastName%><br></p>
+      <p class ="p_user"><strong>Last Name:  </strong> <%=@profile_page.lastName%><br></p>
 
-    <p class ="p_user"><strong>Mail: </strong>  <%=@profile_page.user.email%><br></p>
+      <p class ="p_user"><strong>Mail: </strong>  <%=@profile_page.user.email%><br></p>
 
-    <p class ="p_user"><strong>Administrator: </strong> <%=@profile_page.user.adm%></p>
+      <p class ="p_user"><strong>Administrator: </strong> <%=@profile_page.user.adm%></p>
 
-    <p class ="p_user"><strong>My Organization: </strong> <%=@profile_page.user.organization.name%> </p>
+      <p class ="p_user"><strong>My Organization: </strong> <%=@profile_page.user.organization.name%> </p>
+    </div>
   </div>
-</div>
-
-<div type="button" data-toggle="modal" data-target=".bd-example-modal-lg"><%= link_to 'Edit', edit_profile_page_path(params[:id])  %></div>
-
 </body>
+
+<footer>
+  <button class="btn btn-outline-primary"><%= link_to 'Edit', edit_profile_page_path(params[:id])  %></button>
+</footer>
