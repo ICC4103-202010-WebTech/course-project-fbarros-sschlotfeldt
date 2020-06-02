@@ -26,10 +26,14 @@
       <p class ="p_user"><strong>Administrator: </strong> <%=@profile_page.user.adm%></p>
 
       <p class ="p_user"><strong>My Organization: </strong> <%=link_to @profile_page.user.organization.org_homepage.name, org_homepage_path((@profile_page.user.organization.id).to_i-1)%> </p>
+
+      <button class="btn btn-outline-primary"><%= link_to 'Edit', edit_profile_page_path(params[:id])  %></button>
+
     </div>
   </div>
+
+
 </body>
 
 <footer>
-  <button class="btn btn-outline-primary"><%= link_to 'Edit', edit_profile_page_path(params[:id])  %></button>
 </footer>

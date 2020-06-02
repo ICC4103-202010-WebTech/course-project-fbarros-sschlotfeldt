@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   def self.search(search)
     if search
-      @users = User.joins(:profilePage).where("userName LIKE ? OR name LIKE ?", "%#{search}%", "%#{search}%" )
+      @users = User.joins(:profilePage).where("userName LIKE ? OR name LIKE ? OR lastName LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%" )
       if @users
         self.where(id: @users)
       else

@@ -7,9 +7,9 @@
 <body>
 <%@event.each do |v| %>
   <p>Name: <%=v.title%><br></p>
-  <%if(v.user.userName == "Null") %>
+  <%if v.user.userName == "Null" %>
     <%@event_o.each do |x|%>
-      <%if(x.id == v.organization_id) %>
+      <%if x.id == v.organization_id %>
         <p>Host: <%=x.org_homepage.name%><br></p>
       <%end %>
     <%end %>
@@ -17,15 +17,21 @@
     <p>Host: <%=v.user.userName%><br></p>
   <%end %>
   <p>Description: <%=v.description%><br></p>
-  <p><%=link_to 'Comments', comment_path(v.id)%><br></p>
+  <p><button class="btn"><%=link_to 'Comments', comment_path(v.id)%></button><br></p>
+
+
+
 <%end %>
+
+<div>
+  <button class="btn"><%= link_to 'Edit', edit_event_path(@event.ids) %></button>
+  <button class="btn"><%= link_to 'Back', events_path %></button>
+</div>
+
   </body>
 
 
 <footer>
 
-<div>
-  <% link_to 'Edit', edit_event_path(@event) %>
-  <%= link_to 'Back', events_path %>
-</div>
+
 </footer>

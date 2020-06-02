@@ -45,7 +45,7 @@ footer{
     grid-column: 2;
     alignment: center;
     border: 3px solid black;
-    height: 700px;
+    height: 500px;
     width: 500px;
 }
 .ad_wrapper {
