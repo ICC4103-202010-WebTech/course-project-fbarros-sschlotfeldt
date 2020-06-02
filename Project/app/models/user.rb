@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :comments
   has_one :profilePage
 
+
   def self.search(search)
     if search
       @users = User.joins(:profilePage).where("userName LIKE ? OR name LIKE ?", "%#{search}%", "%#{search}%" )

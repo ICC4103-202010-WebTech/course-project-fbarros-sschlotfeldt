@@ -7,7 +7,13 @@
 
 <body>
 <div class = user_container>
-  <p class="user_photo"><strong>Photo: </strong>  <%=@pp.picture%><br></p>
+  <div class="user_photo">
+    <%if @user.profilePage.user_pic.attached? %>
+      <%= link_to image_tag(@user.profilePage.user_pic, width: "100%", height: "100%"), url_for(@user)%>
+    <%else %>
+      <%=link_to image_tag("thumbnail.svg", width: "100%", height: "100%", background: "#55595c", color: "#eceeef"), url_for(@user) %>
+    <%end %>
+  </div>
   <div class = user_box>
     <br><br><br><br>
     <p class ="p_user"><strong>Name:  </strong> <%=@pp.name%><br></p>
