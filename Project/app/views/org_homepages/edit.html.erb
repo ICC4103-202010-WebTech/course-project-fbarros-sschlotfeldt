@@ -1,16 +1,12 @@
+<head>
 <h1>Editing Org Homepage</h1>
-<div id="fakebox-test"></div>
-  <% @oh.each do |oh| %><br><br>
-  <div>Name: <input id="fakebox-input" autocomplete="off" tabindex="-1" value placeholder="<%=oh.name %>" type="typebox" aria-hidden="true"></div><br><br>
-  <div>Description: <input id="fakebox-input" autocomplete="off" tabindex="-1" value placeholder="<%=oh.description %>" type="typebox" aria-hidden="true"></div><br><br>
-  <p class="user_photo"><strong>Photo: </strong>  <%=oh.banner %><br></p>
-<%end %>
+</head>
 
-<%= render "form",
-           locals: {
-               org_homepage: @org_homepage,
-               submit_btn_text: "Update",
-           } %>
-
-
+<body>
+  <%= render "form",
+             locals: {
+                 org_homepage: @org_homepage,
+                 submit_btn_text: "Update",
+             } %>
+</body>
 <%= link_to 'Back', org_homepage_path(params[:id]) %>

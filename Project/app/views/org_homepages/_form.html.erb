@@ -1,19 +1,20 @@
-<div>
-  <%= form_with(model: @org_homepage, local: true) do |form| %>
-    <% if @org_homepage.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@org_homepage.errors.count, "error") %> prohibited this profile_page from being saved:</h2>
+<div class="row ml-0">
 
-        <ul>
-          <% @org_homepage.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="actions">
-      <%= form.submit %>
+  <%= form_for @org_homepage do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
     </div>
-  <% end %>
+
+    <div class="form-group">
+      <%= f.label :Description %>
+      <%= f.text_field :description %>
+    </div>
+
+    <div class="form-group mt-2">
+      <%= f.submit :Update, class: ["btn", "btn-primary"] %>
+      <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+    </div>
+  <%end %>
+
 </div>

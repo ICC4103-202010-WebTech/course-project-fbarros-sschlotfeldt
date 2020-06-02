@@ -1,3 +1,22 @@
+<%=stylesheet_link_tag 'custom'%>
 <p id="notice"><%= notice %></p>
+
+<body>
+  <div class = user_container>
+    <p class="user_photo"><strong><%=@organization.org_homepage.banner%></strong><br></p>
+    <div class = "user_box">
+      <br><br><br><br>
+      <p class = "p_user"><strong><%=@organization.org_homepage.name%></strong><br></p>
+
+      <p class = "p_user"><strong>Description: </strong><%=@organization.org_homepage.description%><br></p>
+
+      <p class = "p_user"><strong>Host:</strong> <%=@organization.user.userName%><br></p>
+    </div>
+  </div>
+</body>
+
+<footer>
+  <button class="btn btn-light"><%= link_to 'Back', organizations_path  %></button>
+</footer>
 
 

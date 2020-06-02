@@ -16,6 +16,6 @@
 </body>
 
 <footer>
-  <div type="button" data-toggle="modal" data-target=".bd-example-modal-lg"><%= link_to 'Back', organizations_path  %></div>
-  <div type="button" data-toggle="modal" data-target=".bd-example-modal-lg"><%= link_to 'Edit', edit_org_homepage_path(params[:id])  %></div>
+  <button class="btn btn-outline-light"><%= link_to 'Edit', edit_org_homepage_path(params[:id])  %></button>
+  <button class="btn btn-outline-light"><%= link_to 'Back', root_path  %></button>
 </footer>

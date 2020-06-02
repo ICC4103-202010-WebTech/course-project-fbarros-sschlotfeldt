@@ -1,23 +1,37 @@
 <%=stylesheet_link_tag 'custom'%>
 <p id="notice"><%= notice %></p>
+<head>
+  <title>Organizations</title>
+  <h1>Organizations</h1>
+</head>
 
 <body>
-<h1>Organizations</h1>
-
-<%=form_tag organizations_path, :method => "get" do %>
+  <div class="nav justify-content-lg-center">
+    <%=form_tag organizations_path, :method => "get" do %>
       <%=text_field_tag :search, params[:search] %>
       <%= submit_tag("Search", :name => nil ) %>
-<%end %>
-
-  <p class = "p-2 border">
-<% for v in @organizations %>
-
-    <a><strong><%=v.name%></strong></a> <a><button><%=link_to 'Go to Homepage', org_homepage_path(v.org_homepage.id)%></button></a><br><br>
-
-<% end %>
-
-</p>
-
+    <%end %>
+  </div>
+  <div class ="row m-lg-5 col-lg-11 border">
+    <table class = "table">
+      <% @organizations.each do |v| %>
+      <thead>
+          <tr>
+            <th>Organization</th>
+            <th>Organization Admin</th>
+            <th>Link</th>
+          </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= v.name %></td>
+        <td><%= @user.find(v.user.id).userName%></td>
+        <td><button><%=link_to 'Go to Organization', organization_path(v.id)%></button></td>
+      </tr>
+      </tbody>
+        <%end%>
+    </table>
+  </div>
 </body>
 <br>
 <footer>

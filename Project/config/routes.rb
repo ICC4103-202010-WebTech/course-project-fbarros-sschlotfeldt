@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resources :organizations do
         resources :org_homepages
         resources :organization_ms
+        resources :users
       end
       resources :inbox do
         resources :chats
