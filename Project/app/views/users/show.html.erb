@@ -20,7 +20,7 @@
     <% if @user.organization.nil? %>
       <p class ="p_user"><strong>Organization: </strong> No Organization </p>
     <%else %>
-      <p class ="p_user"><strong>Organization: </strong> <%=@user.organization.name%> </p>
+      <p class ="p_user"><strong>Organization: </strong> <%=@user.organization.org_homepage.name%> </p>
     <%end %>
   </div>
 </div>

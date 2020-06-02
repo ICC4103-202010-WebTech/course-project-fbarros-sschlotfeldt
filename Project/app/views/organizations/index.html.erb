@@ -24,7 +24,7 @@
       <% @organizations.each do |v| %>
       <tbody>
       <tr>
-        <td><%= v.name %></td>
+        <td><%= v.org_homepage.name %></td>
         <td><%= @user.find(v.user.id).userName%></td>
         <td><button><%=link_to 'Go to Organization', organization_path(v.id)%></button></td>
       </tr>

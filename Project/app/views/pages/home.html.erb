@@ -23,7 +23,7 @@
         <%@p_organizations.each do |w| %>
           <% if v.organization_id == w.id   %>
             <%@real_org_id = w.id - 1%>
-            <p>Host : <%=link_to w.name, org_homepage_path(@real_org_id)%></p>
+            <p>Host : <%=link_to w.org_homepage.name, org_homepage_path(@real_org_id)%></p>
           <%end %>
         <%end %>
       <%else %>

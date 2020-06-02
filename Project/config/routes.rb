@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       resources :votes
       resources :profile_pages do
         resources :users
-      end
+        end
       resources :organizations
       resources :organizations do
         resources :org_homepages

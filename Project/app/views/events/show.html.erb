@@ -10,7 +10,7 @@
   <%if(v.user.userName == "Null") %>
     <%@event_o.each do |x|%>
       <%if(x.id == v.organization_id) %>
-        <p>Host: <%=x.name%><br></p>
+        <p>Host: <%=x.org_homepage.name%><br></p>
       <%end %>
     <%end %>
   <%else %>
