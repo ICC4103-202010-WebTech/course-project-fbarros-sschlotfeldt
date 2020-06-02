@@ -12,7 +12,7 @@ class ProfilePagesController < ApplicationController
   # GET /profile_pages/1.json
   def show
     @profile_page = ProfilePage.find(params[:id])
-
+    @user_events = Event.where("user_id = ?", @profile_page.user_id)
   end
 
   # GET /profile_pages/new

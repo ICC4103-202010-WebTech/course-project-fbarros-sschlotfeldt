@@ -18,20 +18,16 @@
   <%end %>
   <p>Description: <%=v.description%><br></p>
   <p><button class="btn"><%=link_to 'Comments', comment_path(v.id)%></button><br></p>
-
-
-
+  <p><button class="btn"><%=link_to 'Join event', new_event_m_path(v.id)%></button><br></p>
 <%end %>
 
-<div>
-  <button class="btn"><%= link_to 'Edit', edit_event_path(@event.ids) %></button>
-  <button class="btn"><%= link_to 'Back', events_path %></button>
-</div>
 
-  </body>
+</body>
 
 
 <footer>
-
-
+  <div>
+    <button class="btn"><%= link_to 'Edit', edit_event_path(@event.ids) %></button>
+    <button class="btn"><%= link_to 'Back', events_path %></button>
+  </div>
 </footer>

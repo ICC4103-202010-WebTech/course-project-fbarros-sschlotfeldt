@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :comments
       resources :events do
         resources :comments, shallow:true
+        resources :event_ms
       end
       resources :profile_pages
       resources :users do
@@ -43,4 +44,5 @@ Rails.application.routes.draw do
   resources :chats, defaults: { format: :html }
   resources :votes, defaults: { format: :html }
   resources :venues, defaults: { format: :html }
+  resources :event_ms, defaults: { format: :html }
 end

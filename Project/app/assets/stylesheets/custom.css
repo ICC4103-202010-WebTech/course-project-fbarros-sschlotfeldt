@@ -17,7 +17,11 @@ p {
     text-align: left;
 }
 footer{
-    text-align: right;
+    text-align: center;
+}
+head{
+    color: black;
+    text-align: left;
 }
 .foto{
     text-align: left;
