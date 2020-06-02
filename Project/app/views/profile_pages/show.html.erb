@@ -11,13 +11,15 @@
       <br><br><br><br>
       <p class ="p_user"><strong>Name:  </strong> <%=@profile_page.name%><br></p>
 
+      <p class ="p_user"><strong>Biography:  </strong> <%=@profile_page.bio%><br></p>
+
       <p class ="p_user"><strong>Last Name:  </strong> <%=@profile_page.lastName%><br></p>
 
       <p class ="p_user"><strong>Mail: </strong>  <%=@profile_page.user.email%><br></p>
 
       <p class ="p_user"><strong>Administrator: </strong> <%=@profile_page.user.adm%></p>
 
-      <p class ="p_user"><strong>My Organization: </strong> <%=@profile_page.user.organization.name%> </p>
+      <p class ="p_user"><strong>My Organization: </strong> <%=link_to @profile_page.user.organization.name, org_homepage_path(@profile_page.user.organization.id)%> </p>
     </div>
   </div>
 </body>
