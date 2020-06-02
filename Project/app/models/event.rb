@@ -6,6 +6,10 @@ class Event < ApplicationRecord
   has_many :eventMs
   has_many :votes
 
+  has_one_attached :event_photo
+  has_one_attached :ad
+
+
   def self.search(search)
     if search
       @events = Event.joins(user: :organization).where("title LIKE ? OR description LIKE ? OR name LIKE ? OR userName LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")

@@ -13,12 +13,19 @@
 <% @p_events.each do|v| %>
   <div class = "wrapper">
     <div class="ad_wrapper">
-      <div class = ad_box_1>
-        <p>Ads</p>
+      <div class = "ad_box_1 justify-content-center">
+        <%=link_to image_tag("ad.png", width: "300px", height: "600", background: "#55595c", color: "#eceeef"), url_for(root_path) %>
       </div>
     </div>
+
     <div class ="box">
       <h3 class = "eventshome"><%=link_to v.title, event_path(v.id)%></h3>
+
+      <%if v.event_photo.attached? %>
+        <%= link_to image_tag(v.flyer, width: "400px"), url_for(v)%>
+      <%else %>
+        <%=link_to image_tag("thumbnail.svg", width: "400px", background: "#55595c", color: "#eceeef"), url_for(v) %>
+      <%end %>
       <%if v.user.userName == "Null" %>
         <%@p_organizations.each do |w| %>
           <% if v.organization_id == w.id   %>
@@ -32,7 +39,6 @@
 
       <p>Description : <%=[v.description]%></p>
 
-      <br><br>
       <h4 class="com_home">Comments:</h4>
       <% @p_comments.each do |x|  %>
       <% if v.id == x.event_id   %>
@@ -41,11 +47,11 @@
             </tr>
         <% end %>
       <% end %>
-
     </div>
-    <div class="ad_wrapper">
-      <div class = ad_box_1>
-        <p>Ads</p>
+
+    <div class="ad_wrapper_2">
+      <div class = "ad_box_2">
+        <%=link_to image_tag("ad2.jpg", width: "300px", height: "600", background: "#55595c", color: "#eceeef"), url_for(root_path) %>
       </div>
     </div>
   </div>
