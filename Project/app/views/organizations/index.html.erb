@@ -1,8 +1,7 @@
-<%=stylesheet_link_tag 'custom'%>
 <p id="notice"><%= notice %></p>
 <head>
   <title>Organizations</title>
-  <h1>Organizations</h1>
+  <h1 class="text-light">Organizations</h1>
 </head>
 
 <body>
@@ -12,8 +11,8 @@
       <%= submit_tag("Search", :name => nil ) %>
     <%end %>
   </div>
-  <div class ="row m-lg-5 col-lg-11 border">
-    <table class = "table">
+  <div class ="row m-lg-5 col-lg-11">
+    <table class = "table bg-light">
       <thead>
       <tr>
         <th>Organization</th>
@@ -36,5 +35,7 @@
 
 
 <footer>
-  <button class="btn"><%= link_to 'Back', root_path %></button>
+  <div class="float-lg-right">
+    <button class="btn"><%= link_to 'Back', root_path %></button>
+  </div>
 </footer>

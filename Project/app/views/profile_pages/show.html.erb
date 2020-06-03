@@ -1,29 +1,40 @@
-<%=stylesheet_link_tag 'custom'%>
 <p id="notice"><%= notice %></p>
 <head>
   <title>Profile</title>
 </head>
 
 <body>
-  <div class = user_container>
-    <p div="user_photo">
-      <%if @profile_page.user_pic.attached? %>
-        <%= link_to image_tag(@profile_page.user_pic, width: "100%", height: "100%"), url_for(@profile_page)%>
-      <%else %>
-        <%=link_to image_tag("thumbnail.svg", width: "100%", height: "100%", background: "#55595c", color: "#eceeef"), url_for(@profile_page) %>
-      <%end %>
-    </p>
-    <div class = user_box >
-      <br><br><br><br>
-      <p class ="p_user"><strong>Name:  </strong> <%=@profile_page.name%><br></p>
-
-      <p class ="p_user"><strong>Biography:  </strong> <%=@profile_page.bio%><br></p>
-
-      <p class ="p_user"><strong>Last Name:  </strong> <%=@profile_page.lastName%><br></p>
-
-      <p class ="p_user"><strong>Mail: </strong>  <%=@profile_page.user.email%><br></p>
-
-      <p class ="p_user"><strong>Administrator: </strong> <%=@profile_page.user.adm%></p>
+  <div class = "row">
+    <div class ="col-3 bg-dark"></div>
+    <div class ="col-6">
+      <p class="user_photo">
+        <%if @profile_page.user_pic.attached? %>
+          <%= link_to image_tag(@profile_page.user_pic, width: "100%", height: "100%"), url_for(@profile_page)%>
+        <%else %>
+          <%=link_to image_tag("thumbnail.svg", width: "100%", height: "100%", background: "#55595c", color: "#eceeef"), url_for(@profile_page) %>
+        <%end %>
+      </p>
+    </div>
+    <div class ="col-3 bg-dark"></div>
+  </div>
+  <div class="row">
+    <div class ="col-3 bg-dark"></div>
+    <div class="col-3">
+      <p class ="p_user">
+        <strong>Name:  </strong> <%=@profile_page.name%>
+      </p>
+      <p class ="p_user">
+        <strong>Biography:  </strong> <%=@profile_page.bio%>
+      </p>
+      <p class ="p_user">
+        <strong>Last Name:  </strong> <%=@profile_page.lastName%>
+      </p>
+      <p class ="p_user">
+        <strong>Mail: </strong>  <%=@profile_page.user.email%>
+      </p>
+      <p class ="p_user">
+        <strong>Administrator: </strong> <%=@profile_page.user.adm%>
+      </p>
 
       <% if @profile_page.user.adm==true %>
         <p class ="p_user"><strong>My Organization: </strong> <%=link_to @profile_page.user.organization.org_homepage.name, org_homepage_path((@profile_page.user.organization.id).to_i-1)%> </p>
@@ -31,16 +42,17 @@
         <p class ="p_user"><strong>My Organization: </strong> <%=link_to @profile_page.user.organization.org_homepage.name, organization_path((@profile_page.user.organization.id).to_i-1)%> </p>
       <%end %>
     </div>
-
-    <div>
+    <div class="col-3">
       <h3>Your Events</h3>
       <%for e in @user_events %>
-        <li>
-          <%=link_to e.title, event_path(e.id) %><br>
-        </li>
+        <ul>
+          <li>
+            <%=link_to e.title, event_path(e.id) %><br>
+          </li>
+        </ul>
       <%end %>
     </div>
-
+    <div class ="col-3 bg-dark"></div>
   </div>
 </body>
 

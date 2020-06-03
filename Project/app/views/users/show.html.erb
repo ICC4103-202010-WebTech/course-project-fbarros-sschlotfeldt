@@ -1,4 +1,3 @@
-<%=stylesheet_link_tag 'custom'%>
 <p id="notice"><%= notice %></p>
 
 <head>
@@ -6,32 +5,46 @@
 </head>
 
 <body>
-<div class = user_container>
-  <div class="user_photo">
-    <%if @user.profilePage.user_pic.attached? %>
-      <%= link_to image_tag(@user.profilePage.user_pic, width: "100%", height: "100%"), url_for(@user)%>
-    <%else %>
-      <%=link_to image_tag("thumbnail.svg", width: "100%", height: "100%", background: "#55595c", color: "#eceeef"), url_for(@user) %>
-    <%end %>
+  <div class = "row">
+    <div class="col-3 bg-dark"></div>
+    <div class="col-6">
+      <div class="user_photo">
+        <%if @user.profilePage.user_pic.attached? %>
+          <%= link_to image_tag(@user.profilePage.user_pic, width: "100%", height: "100%"), url_for(@user)%>
+        <%else %>
+          <%=link_to image_tag("thumbnail.svg", width: "100%", height: "100%", background: "#55595c", color: "#eceeef"), url_for(@user) %>
+        <%end %>
+      </div>
+      <div class = user_box>
+
+        <p class ="p_user">
+          <strong>Name:  </strong> <%=@pp.name%>
+        </p>
+        <p class ="p_user">
+          <strong>Last Name:  </strong><%=@pp.lastName%>
+        </p>
+        <p class ="p_user">
+          <strong>Mail: </strong>  <%=@pp.user.email%>
+        </p>
+        <p class ="p_user">
+          <strong>Administrator: </strong> <%=@pp.user.adm%>
+        </p>
+
+        <% if @user.organization.nil? %>
+          <p class ="p_user"><strong>Organization: </strong> No Organization </p>
+        <%else %>
+          <p class ="p_user"><strong>Organization: </strong> <%=@user.organization.org_homepage.name%> </p>
+        <%end %>
+      </div>
+    </div>
+    <div class="col-3 bg-dark"></div>
   </div>
-  <div class = user_box>
-    <br><br><br><br>
-    <p class ="p_user"><strong>Name:  </strong> <%=@pp.name%><br></p>
-
-    <p class ="p_user"><strong>Last Name:  </strong> <%=@pp.lastName%><br></p>
-
-    <p class ="p_user"><strong>Mail: </strong>  <%=@pp.user.email%><br></p>
-
-    <p class ="p_user"><strong>Administrator: </strong> <%=@pp.user.adm%></p>
-    <% if @user.organization.nil? %>
-      <p class ="p_user"><strong>Organization: </strong> No Organization </p>
-    <%else %>
-      <p class ="p_user"><strong>Organization: </strong> <%=@user.organization.org_homepage.name%> </p>
-    <%end %>
-  </div>
-</div>
 </body>
 
 <footer>
-  <button class="btn"><%= link_to 'Back', users_path %></button>
+  <div class="row-2">
+    <div class="float-lg-right">
+      <button class="btn"><%= link_to 'Back', users_path %></button>
+    </div>
+  </div>
 </footer>

@@ -1,34 +1,39 @@
-<%=stylesheet_link_tag 'custom'%>
 <!DOCTYPE html>
 <html>
 
 <header>
-<button class="btn btn-light" style="float:right"><%=link_to "Profile", profile_page_path(1)%></button>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </header>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+  <a class="navbar-brand"><h3><%= link_to "Bacile con los K" , root_path %></h3></a>
 
-  <a class="navbar-brand"><h1><%= link_to "Bacile con los K" , root_path %></h1></a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a class="btn" ><%=link_to "Events", :events%></a>
+      </li>
+      <li class="nav-item">
+        <a class="btn"  ><%=link_to "People", :users%></a>
+      </li>
 
+      <li class="nav-item">
+        <a class="btn" ><%=link_to "Organizations", organizations_path%></a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <a class="btn mr-sm-2"><%=link_to "Profile", profile_page_path($current_user[0].id)%></a>
+    </form>
+  </div>
 </nav>
 
 
-<nav class = "navigation" >
-  <button class="btn" style="float:right" ><%=link_to "Events", :events%></button>
-  <button class="btn" style="float:right" ><%=link_to "People", :users%></button>
-  <button class="btn" style="float:right" ><%=link_to "Organizations", organizations_path%></button>
-  <!--<button class="btn" style="float:right" ><%=link_to "Inbox", inbox_path(1)%></button>-->
-
-</nav>
-
-
-  <body>
+  <body class="bg-secondary">
     <%= yield %>
   </body>
 </html>
+
+
