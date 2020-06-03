@@ -1,5 +1,12 @@
-<h1>New Event M</h1>
-
-<%= render 'form', event_m: @event_m %>
-
-<%= link_to 'Back', event_ms_path %>
+<div class="row ml-2">
+  <h1>Are you sure you want to join event?</h1>
+  <%= form_for @event_m do |form| %>
+    <div>
+      <%=form.hidden_field :user_id %>
+      <%= form.hidden_field :event_id %>
+    </div>
+    <div class="form-group mt-2">
+      <%= form.submit :Join, class: ["btn", "btn-primary"] %>
+    </div>
+  <%end %>
+</div>

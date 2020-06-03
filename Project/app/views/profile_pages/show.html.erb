@@ -52,11 +52,14 @@
       <%end %>
       <br>
       <h3>Assisting to</h3>
+      <% @assis=[]%>
       <%for a in @assisting_events %>
         <ul>
-          <li>
-            <%=link_to a.event.title, event_path(a.id) %>
-          </li>
+            <%if @assis.include? a.event.title %>
+            <%else %>
+            <li><%=link_to a.event.title, event_path(a.id) %></li>
+              <%@assis<<a.event.title %>
+            <%end %>
         </ul>
       <%end %>
     </div>

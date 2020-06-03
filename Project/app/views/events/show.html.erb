@@ -31,17 +31,24 @@
         </div>
         <div>
           <h2>Event Members : </h2>
+          <% @mem=[] %>
           <%@event_members.each do |em|%>
             <%if em.event_id == v.id%>
               <ul>
-                <il><%=@event_users.find(em.user_id-1).name %></il>
+                <%if @mem.include? @event_users.find(em.user_id-1).name%>
+                  <%flash[:alert] = 'Ya fue Agregado al Evento'%>
+                <%else %>
+                  <%=@event_users.find(em.user_id-1).name %>
+                  <%@mem<<@event_users.find(em.user_id-1).name %>
+                <%end%>
               </ul>
             <%end%>
           <%end%>
         </div>
         <div align="right">
-          <button class="btn btn-light"><%=link_to 'Comments', comment_path(v.id)%></button>
-          <button class="btn btn-light"><%=link_to 'Join event', new_event_m_path(v.id)%></button>
+          <tr>
+            <td><button class="btn btn-light"><%=link_to 'Join event', new_event_event_m_path(v.id)%></button></td>
+          </tr>
         </div>
       </div>
       <div class="col-3 bg-dark"></div>
