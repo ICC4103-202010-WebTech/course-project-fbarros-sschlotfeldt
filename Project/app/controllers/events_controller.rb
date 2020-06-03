@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.where(id:params[:id])
     @event_o = Organization.all
+    @event_v = Venue.all
   end
 
   # GET /events/new
@@ -70,6 +71,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {}).permit(:title, :user_id, : :organization_id, :description, :visibility, :event_pic, :ad)
+      params.fetch(:event, {}).permit(:title, :user_id, :venue_id, :organization_id, :description, :visibility, :event_pic, :ad)
     end
 end
