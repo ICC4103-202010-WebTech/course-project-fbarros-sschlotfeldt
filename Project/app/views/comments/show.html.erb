@@ -4,25 +4,28 @@
 <body>
   <h2>Comments</h2>
   <div class = "wrapper">
-    <div class ="box">
+    <span class ="box">
       <h3 class="text-left"><%=@comment.event.title %></h3>
-      <p><%for v in @comments do %>
-          <p class ="text-left"> <%=v.user.userName%>: <%=v.text%>
-            <%for x in @comment_a do %>
-              <%if x.comment_id==v.id %>
-                <%if x.attachment != nil  %>
-                  <p class = "text-left"><%=v.user.userName%>: <%=x.attachment %><br></p>
-                <%end %>
-              <%end %>
-            <%end %>
-          </p>
-        <%end %>
-      </p>
-    </div>
+        <%for v in @comments do %>
+          <%if $current_user[0].id == v.user_id%>
+            <span class ="text-left"> <%=v.user.userName%>: <%=v.text%></span> <span><%=link_to 'Edit', edit_comment_path(v) %></span>
+            <%if v.atta.attached? %>
+            <div><%= link_to image_tag(v.atta, width: "100%", height: "100%"), url_for(v)%></div>
+            <%else%>
+            <%end%>
+          <%else%>
+            <span class ="text-left"> <%=v.user.userName%>: <%=v.text%></span>
+            <%if v.atta.attached? %>
+              <%= link_to image_tag(v.atta, width: "100%", height: "100%"), url_for(v)%>
+              <div><%=v.user.userName%>: <%=v.text%></div>
+            <%else%>
+            <%end%>
+        <%end%>
+      <%end %>
+    </span>
   </div>
 </body>
 <footer>
-  <br><%link_to 'Edit', edit_comment_path(@comment) %>
-  <% link_to 'Destroy', comment_path, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <%= link_to 'Back', events_path %>
+  <%= link_to 'Back', events_path %><br><%=link_to 'New Comment', new_comment_path %>
 </footer>
+
