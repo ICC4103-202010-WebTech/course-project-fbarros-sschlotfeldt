@@ -1,6 +1,18 @@
-<h1>Editing Event M</h1>
+<div class="row ml-0">
+  <header>
+    <h1>Are you sure to Exit?</h1>
+  </header>
+  <body>
+    <%= form_for @event_m do |form| %>
+      <div class="form-group">
+        <%=form.label :Delete %>
+        <%= form.hidden_field :_destroy %>
+      </div>
 
-<%= render 'form', event_m: @event_m %>
-
-<%= link_to 'Show', @event_m %> |
-<%= link_to 'Back', event_ms_path %>
+      <div class="form-group mt-2">
+        <%= form.submit 'Exit', class: ["btn", "btn-primary"] %>
+        <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+      </div>
+    <%end%>
+  </body>
+</div>

@@ -45,7 +45,7 @@ class EventMsController < ApplicationController
   def update
     respond_to do |format|
       if @event_m.update(event_m_params)
-        format.html { redirect_to @event_m, notice: 'Event m was successfully updated.' }
+        format.html { redirect_to events_path, notice: 'Event m was successfully updated.' }
         format.json { render :show, status: :ok, location: @event_m }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class EventMsController < ApplicationController
   def destroy
     @event_m.destroy
     respond_to do |format|
-      format.html { redirect_to event_ms_url, notice: 'Event m was successfully destroyed.' }
+      format.html { redirect_to @event, notice: 'Event m was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

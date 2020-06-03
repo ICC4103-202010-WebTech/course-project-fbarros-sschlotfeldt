@@ -36,7 +36,7 @@
             <%if em.event_id == v.id%>
               <ul>
                 <%if @mem.include? @event_users.find(em.user_id-1).name%>
-                  <%flash[:alert] = 'Ya fue Agregado al Evento'%>
+                  <%flash[:alert]= 'Ya fue Agregado al Evento'%>
                 <%else %>
                   <%=@event_users.find(em.user_id-1).name %>
                   <%@mem<<@event_users.find(em.user_id-1).name %>
@@ -44,12 +44,21 @@
               </ul>
             <%end%>
           <%end%>
-        </div>
-        <div align="right">
-          <tr>
-            <td><button class="btn btn-light"><%=link_to 'Join event', new_event_event_m_path(v.id)%></button></td>
-          </tr>
-        </div>
+        </div >
+          <%if @mem.include? @event_users.find($current_user[0].id-1).name%>
+            <div align="right">
+              <tr>
+                <td><button class="btn btn-light"><%=link_to 'Exit event', edit_event_event_m_path(v.id)%></button></td>
+                <td><%@mem.delete(@event_users.find($current_user[0].id-1).name) %></td>
+              </tr>
+            </div>
+          <%else%>
+          <div align="right">
+            <tr>
+              <td><button class="btn btn-light"><%=link_to 'Join event', new_event_event_m_path(v.id)%></button></td>
+            </tr>
+          </div>
+          <%end%>
       </div>
       <div class="col-3 bg-dark"></div>
     </div>
@@ -60,7 +69,7 @@
 
 <footer>
   <div class="row-2">
-    <div align="center">
+    <div align="right">
       <% if $current_user[0].id == @event[0].user_id %>
         <button class="btn"><%= link_to 'Edit', edit_event_path(@event.ids) %></button>
         <button class="btn"><%= link_to 'Back', events_path %></button>
