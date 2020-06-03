@@ -18,12 +18,8 @@ class CommentsController < ApplicationController
   def new
     @comment = Comment.new
     @comment.user_id = $current_user[0].id
-<<<<<<< HEAD
     @event = Event.find(params[:event_id])
     @comment.event_id = @event.id
-=======
-    @comment.event_id = Event.params[:id]
->>>>>>> 75e582639984f6a8aed35e0bd80159ec21f32d96
   end
 
   # GET /comments/1/edit
@@ -78,10 +74,7 @@ class CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-<<<<<<< HEAD
-      params.fetch(:comment, {}).permit( :text, 1, :atta )
-=======
+
       params.fetch(:comment, {}).permit(:user_id, :text, :event_id, :atta)
->>>>>>> 75e582639984f6a8aed35e0bd80159ec21f32d96
     end
 end

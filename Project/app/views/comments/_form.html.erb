@@ -20,17 +20,13 @@
     </div>
 
     <div>
-<<<<<<< HEAD
       <%=form.hidden_field :user_id %>
       <%= form.hidden_field :event_id %>
-=======
-      <%= form.hidden_field :user_id%>
     </div>
 
     <div class="form-group">
       <%= form.label :event %>
       <%= form.collection_select(:event_id, Event.all.order(title: :asc), :id, :title, {}, { class: "form-control" }) %>
->>>>>>> 75e582639984f6a8aed35e0bd80159ec21f32d96
     </div>
 
     <div class="form-group mt-2">
