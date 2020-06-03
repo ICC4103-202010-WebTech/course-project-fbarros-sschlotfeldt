@@ -4,13 +4,13 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.includes(:attachments, :event, :user)
+    @comments = Comment.where(event_id:params[:id])
   end
 
   # GET /comments/1
   # GET /comments/1.json
   def show
-    @comments = Comment.where(event_id:params[:id])
+    @comments = Comment.where(event_id:@comment.event_id)
     @comment_a = Attachment.all
   end
 
