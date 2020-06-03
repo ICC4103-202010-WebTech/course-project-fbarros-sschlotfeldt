@@ -28,8 +28,8 @@
 </body>
 
 <footer>
-  <div class="float-lg-right">
-    <button class="btn btn-light"><%= link_to 'Edit', edit_org_homepage_path(params[:id])  %></button>
-    <button class="btn btn-light"><%= link_to 'Back', root_path  %></button>
-  </div>
+    <div align="center">
+      <button class="btn btn-light"><%= link_to 'Edit', edit_org_homepage_path(params[:id])  %></button>
+      <button class="btn btn-light"><%= link_to 'Back', profile_page_path($current_user[0].id-1)  %></button>
+    </div>
 </footer>

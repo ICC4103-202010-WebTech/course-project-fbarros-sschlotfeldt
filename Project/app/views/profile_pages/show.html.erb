@@ -39,7 +39,6 @@
       <% if @profile_page.user.adm==true %>
         <p class ="p_user"><strong>My Organization: </strong> <%=link_to @profile_page.user.organization.org_homepage.name, org_homepage_path((@profile_page.user.organization.id).to_i-1)%> </p>
       <%else %>
-        <p class ="p_user"><strong>My Organization: </strong> <%=link_to @profile_page.user.organization.org_homepage.name, organization_path((@profile_page.user.organization.id).to_i-1)%> </p>
       <%end %>
     </div>
     <div class="col-3">
@@ -51,11 +50,22 @@
           </li>
         </ul>
       <%end %>
+      <br>
+      <h3>Assisting to</h3>
+      <%for a in @assisting_events %>
+        <ul>
+          <li>
+            <%=link_to a.event.title, event_path(a.id) %>
+          </li>
+        </ul>
+      <%end %>
     </div>
     <div class ="col-3 bg-dark"></div>
   </div>
 </body>
 
 <footer>
-  <button class="btn btn-outline-primary"><%= link_to 'Edit', edit_profile_page_path(params[:id])  %></button>
+  <div align="center">
+    <button class="btn btn-light"><%= link_to 'Edit', edit_profile_page_path(params[:id])  %></button>
+  </div>
 </footer>

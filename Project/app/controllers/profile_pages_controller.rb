@@ -13,6 +13,7 @@ class ProfilePagesController < ApplicationController
   def show
     @profile_page = ProfilePage.find(params[:id])
     @user_events = Event.where("user_id = ?", @profile_page.user_id)
+    @assisting_events = EventM.joins(:event).where(user_id: $current_user[0].id)
   end
 
   # GET /profile_pages/new
