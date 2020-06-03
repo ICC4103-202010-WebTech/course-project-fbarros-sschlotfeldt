@@ -5,45 +5,54 @@
   <title>Events</title>
 </head>
 <body>
-<div>
-  <div class = user_container>
-    <p div="user_photo">
-      <%@event.each do |v| %>
+  <div>
+    <div class = user_container>
+      <div class="user_photo">
+        <%@event.each do |v| %>
 
-        <%if v.event_pic.attached? %>
-          <%= link_to image_tag(v.event_pic, width: "100%", height: "100%"), url_for(v)%>
-        <%else %>
-          <%=link_to image_tag("thumbnail.svg", width: "100%", height: "100%", background: "#55595c", color: "#eceeef"), url_for(v) %>
-        <%end %>
-      </p>
-
-    <div class = user_box >
-      <br><br><br><br>
-      <p class ="p_user"><strong>Name:  </strong> <%=v.title%><br></p>
-      <%if v.user.userName == "Null" %>
-        <%@event_o.each do |x|%>
-          <%if x.id == v.organization_id %>
-              <p class ="p_user"><strong>Host:  </strong> <%=x.org_homepage.name%><br></p>
+          <%if v.event_pic.attached? %>
+            <%= link_to image_tag(v.event_pic, width: "100%", height: "100%"), url_for(v)%>
+          <%else %>
+            <%=link_to image_tag("thumbnail.svg", width: "100%", height: "100%", background: "#55595c", color: "#eceeef"), url_for(v) %>
           <%end %>
-        <%end %>
-      <%else %>
-          <p class ="p_user"><strong>Host:  </strong> <%=v.user.userName%><br></p>
-      <%end %>
-        <p class ="p_user"><strong>Venue:  </strong> <%=@event_v.find(v.venue_id).name%></p>
-        <p class ="p_user"><strong>Description:  </strong>  <%=v.description%><br></p>
-        <p class ="p_user"><strong>Public:  </strong> <%=v.visibility%></p>
-        <div align="center">
-      <button class="btn btn-outline-primary"><%=link_to 'Comments', comment_path(v.id)%></button>
-      <button class="btn btn-outline-primary"><%=link_to 'Join event', new_event_m_path(v.id)%></button>
         </div>
-      <%end %>
-      <% if $current_user[0].id == @event[0].user_id %>
-        <label></label>
-        <check_box></check_box>
-       <%end%>
+      <div>
+        <h2>Event Members : </h2>
+        <%@event_members.each do |em|%>
+          <%if em.event_id == v.id%>
+            <ul>
+              <il><%=@event_users.find(em.user_id-1).name %></il>
+            </ul>
+            <%end%>
+        <%end%>
+      </div>
+      <div class = user_box >
+        <br><br><br><br>
+        <p class ="p_user"><strong>Name:  </strong> <%=v.title%><br></p>
+        <%if v.user.userName == "Null" %>
+          <%@event_o.each do |x|%>
+            <%if x.id == v.organization_id %>
+                <p class ="p_user"><strong>Host:  </strong> <%=x.org_homepage.name%><br></p>
+            <%end %>
+          <%end %>
+        <%else %>
+            <p class ="p_user"><strong>Host:  </strong> <%=v.user.userName%><br></p>
+        <%end %>
+          <p class ="p_user"><strong>Venue:  </strong> <%=@event_v.find(v.venue_id).name%></p>
+          <p class ="p_user"><strong>Description:  </strong>  <%=v.description%><br></p>
+          <p class ="p_user"><strong>Public:  </strong> <%=v.visibility%></p>
+          <div align="center">
+        <button class="btn btn-outline-primary"><%=link_to 'Comments', comment_path(v.id)%></button>
+        <button class="btn btn-outline-primary"><%=link_to 'Join event', new_event_m_path(v.id)%></button>
+          </div>
+        <%end %>
+        <% if $current_user[0].id == @event[0].user_id %>
+          <label></label>
+          <check_box></check_box>
+         <%end%>
+      </div>
     </div>
-</div>
-
+  </div>
 </body>
 
 

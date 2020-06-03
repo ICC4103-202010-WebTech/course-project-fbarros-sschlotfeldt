@@ -10,6 +10,16 @@
         <%=link_to image_tag("thumbnail.svg", width: "400px", background: "#55595c", color: "#eceeef"), url_for(@organization) %>
       <%end %>
     </p>
+    <div>
+      <h2>Organization Members : </h2>
+      <%@org_members.each do |om|%>
+        <%if om.organization_id == @organization.id%>
+          <ul>
+            <il><%=@organization_users.find(om.user_id-1).name %></il>
+          </ul>
+        <%end%>
+      <%end%>
+    </div>
     <div class = "user_box">
       <br><br><br><br>
       <p class = "p_user"><strong><%=@organization.org_homepage.name%></strong><br></p>
