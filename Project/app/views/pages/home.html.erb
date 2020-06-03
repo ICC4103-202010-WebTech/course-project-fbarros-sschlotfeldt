@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to Proyect 2!</title>
+    <title>Welcome to Project 3!</title>
     <link rel="stylesheet" type = "text/css" href="custom.css">
 </head>
 
@@ -40,7 +40,7 @@
       <p>Description : <%=[v.description]%></p>
 
       <h4 class="com_home">Comments:</h4>
-      <% @p_comments.each do |x|  %>
+      <% @p_comments.limit(5).each do |x|  %>
       <% if v.id == x.event_id   %>
         <tr>
           <td><p class="comment"><%= x.user.userName %>: <%= x.text %></p></td>
