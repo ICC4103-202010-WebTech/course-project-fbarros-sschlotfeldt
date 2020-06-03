@@ -10,7 +10,7 @@
           <%if $current_user[0].id == v.user_id%>
             <span class ="text-left"> <%=v.user.userName%>: <%=v.text%></span> <span><%=link_to 'Edit', edit_comment_path(v) %></span>
             <%if v.atta.attached? %>
-            <div><%= link_to image_tag(v.atta, width: "100%", height: "100%"), url_for(v)%></div>
+            <div><%= link_to image_tag(v.atta, width: "40%", height: "30%"), url_for(v)%></div>
             <%else%>
             <%end%>
           <%else%>
@@ -26,6 +26,7 @@
   </div>
 </body>
 <footer>
-  <%= link_to 'Back', events_path %><br><%=link_to 'New Comment', new_comment_path %>
+  <%= link_to 'Back', events_path %><br>
+  <%=link_to 'New Comment', new_comment_path%>
 </footer>
 
