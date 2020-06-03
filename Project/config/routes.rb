@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :events do
         resources :comments, shallow:true
         resources :event_ms
+        resources :venues
       end
       resources :profile_pages
       resources :users do
