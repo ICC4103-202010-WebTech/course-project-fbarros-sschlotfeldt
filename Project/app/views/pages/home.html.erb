@@ -21,8 +21,8 @@
     <div class ="box">
       <h3 class = "eventshome"><%=link_to v.title, event_path(v.id)%></h3>
 
-      <%if v.event_photo.attached? %>
-        <%= link_to image_tag(v.flyer, width: "400px"), url_for(v)%>
+      <%if v.event_pic.attached? %>
+        <%= link_to image_tag(v.event_pic, width: "400px"), url_for(v)%>
       <%else %>
         <%=link_to image_tag("thumbnail.svg", width: "400px", background: "#55595c", color: "#eceeef"), url_for(v) %>
       <%end %>
