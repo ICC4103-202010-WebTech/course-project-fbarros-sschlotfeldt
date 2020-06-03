@@ -2,11 +2,6 @@
 <!DOCTYPE html>
 <html>
 
-<head>  <div>
-  <button class="btn btn-light" style="float:right">
-    <%=link_to "Profile", profile_page_path(1)%>
-  </button>
-</div></head>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -20,11 +15,12 @@
 
 </nav>
 
-<nav class = "navigation" >
 
+<nav class = "navigation" >
   <button class="btn" style="float:right" ><%=link_to "Event", :events%></button>
   <button class="btn" style="float:right" ><%=link_to "People", :users%></button>
   <button class="btn" style="float:right" ><%=link_to "Organization", organizations_path%></button>
+  <button class="btn btn-light" style="float:right"><%=link_to "Profile", profile_page_path(1)%></button>
   <button class="btn" style="float:right" ><%=link_to "Inbox", inbox_path(1)%></button>
 
 </nav>

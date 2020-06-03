@@ -25,17 +25,10 @@
 
       <p class ="p_user"><strong>Administrator: </strong> <%=@profile_page.user.adm%></p>
 
-      <p class ="p_user"><strong>My Organization: </strong> <%=link_to @profile_page.user.organization.org_homepage.name, org_homepage_path((@profile_page.user.organization.id).to_i-1)%> </p>
-
-
-    </div>
-    <div>
-      <h3>Your Events</h3>
-      <%for e in @user_events %>
-        <li>
-          <%=link_to e.title, event_path(e.id) %><br>
-          <%=e.description %>
-        </li>
+      <% if @profile_page.user.adm==true %>
+        <p class ="p_user"><strong>My Organization: </strong> <%=link_to @profile_page.user.organization.org_homepage.name, org_homepage_path((@profile_page.user.organization.id).to_i-1)%> </p>
+      <%else %>
+        <p class ="p_user"><strong>My Organization: </strong> <%=link_to @profile_page.user.organization.org_homepage.name, organization_path((@profile_page.user.organization.id).to_i-1)%> </p>
       <%end %>
     </div>
 
@@ -44,14 +37,11 @@
       <%for e in @user_events %>
         <li>
           <%=link_to e.title, event_path(e.id) %><br>
-          <%=e.description %>
         </li>
       <%end %>
     </div>
 
   </div>
-
-
 </body>
 
 <footer>
