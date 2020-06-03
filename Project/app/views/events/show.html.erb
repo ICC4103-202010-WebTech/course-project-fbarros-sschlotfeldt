@@ -5,6 +5,7 @@
   <title>Events</title>
 </head>
 <body>
+<div>
 <%@event.each do |v| %>
 
   <div class= "user_photo">
@@ -30,6 +31,12 @@
   <button class="btn"><%=link_to 'Comments', comment_path(v.id)%></button>
   <button class="btn"><%=link_to 'Join event', new_event_m_path(v.id)%></button>
 <%end %>
+  <% if $current_user[0].id == @event[0].user_id %>
+    <label></label>
+    <check_box>esta</check_box>
+  <%end%>
+
+</div>
 
 </body>
 
