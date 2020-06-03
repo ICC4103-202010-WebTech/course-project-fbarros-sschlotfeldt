@@ -9,9 +9,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :venues
-      resources :comments
       resources :events do
-        resources :comments, shallow:true
+        resources :comments
         resources :event_ms
         resources :venues
       end
