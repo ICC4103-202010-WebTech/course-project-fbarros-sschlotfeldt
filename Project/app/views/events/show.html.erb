@@ -26,6 +26,7 @@
   <%end %>
   <p>Venue: <%=@event_v.find(v.venue_id).name%></p>
   <p>Description: <%=v.description%><br></p>
+  <p>Public: <%=v.visibility%></p>
   <button class="btn"><%=link_to 'Comments', comment_path(v.id)%></button>
   <button class="btn"><%=link_to 'Join event', new_event_m_path(v.id)%></button>
 <%end %>

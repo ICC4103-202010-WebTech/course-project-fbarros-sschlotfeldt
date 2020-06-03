@@ -9,6 +9,8 @@ class Event < ApplicationRecord
   has_one_attached :event_pic
   has_one_attached :ad
 
+  accepts_nested_attributes_for :venue
+
 
   def self.search(search)
     if search
