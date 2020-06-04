@@ -5,6 +5,7 @@ class Event < ApplicationRecord
   has_many :comments
   has_many :eventMs
   has_many :votes
+  has_many :invites
 
   has_one_attached :event_pic
   has_one_attached :ad

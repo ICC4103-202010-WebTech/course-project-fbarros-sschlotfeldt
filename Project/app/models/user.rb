@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :votes
   has_many :comments
   has_one :profilePage
+  has_many :invites
 
 
   def self.search(search)
