@@ -5,6 +5,8 @@ class InvitesController < ApplicationController
   # GET /invites.json
   def index
     @invites = Invite.all
+    @user_for_invite = User.all
+    @event_members = EventM.where(event_id: params[:event_id])
   end
 
   # GET /invites/1

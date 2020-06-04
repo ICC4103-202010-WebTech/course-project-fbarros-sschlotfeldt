@@ -1,25 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-3 bg-dark"></div>
+  <div class="col-lg-6">
+    <table class="col-lg-12 bg-light">
 
-<h1>Invites</h1>
+        <thead>
+          <tr>
+            <th>UserName</th>
+            <th>Invite</th>
+          </tr>
+        </thead>
+        <%@user_for_invite.each do |y|%>
+        <%@event_members.each do |x|%>
+        <tbody class="border">
+          <tr>
+            <%if y.id == x.user_id %>
+            <%else%>
+              <td><%=@user_for_invite.find(y.id).userName %></td>
+            <%end%>
+          </tr>
+        </tbody>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <tfoot>
+        </tfoot>
+        <%end %>
+        <%end %>
+    </table>
+  </div>
+  <div class="col-3 bg-dark"></div>
+</div>
 
-  <tbody>
-    <% @invites.each do |invite| %>
-      <tr>
-        <td><%= link_to 'Show', invite %></td>
-        <td><%= link_to 'Edit', edit_invite_path(invite) %></td>
-        <td><%= link_to 'Destroy', invite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Invite', new_invite_path %>

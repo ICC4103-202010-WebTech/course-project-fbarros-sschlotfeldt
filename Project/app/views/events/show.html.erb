@@ -29,23 +29,9 @@
           <p class ="p_user"><strong>Description:  </strong>  <%=v.description%><br></p>
           <p class ="p_user"><strong>Public:  </strong> <%=v.visibility%></p>
         </div>
-          <p class ="p_user"><strong>Name:  </strong> <%=v.title%><br></p>
-          <%if v.user.userName == "Null" %>
-            <%@event_o.each do |x|%>
-              <%if x.id == v.organization_id %>
-                <p class ="p_user"><strong>Host:  </strong> <%=x.org_homepage.name%><br></p>
-              <%end %>
-            <%end %>
-          <%else %>
-            <p class ="p_user"><strong>Host:  </strong> <%=v.user.userName%><br></p>
-          <%end %>
-          <p class ="p_user"><strong>Venue:  </strong> <%=@event_v.find(v.venue_id).name%></p>
-          <p class ="p_user"><strong>Description:  </strong>  <%=v.description%><br></p>
-          <p class ="p_user"><strong>Public:  </strong> <%=v.visibility%></p>
-        </div>
+
         <div>
           <h2>Event Members : </h2>
-          <% @mem=[] %>
           <%@event_members.each do |em|%>
             <%if em.event_id == v.id%>
               <ul>
@@ -67,23 +53,28 @@
               </tr>
             </div>
           <%else%>
-          <div align="right">
-            <tr>
-              <td><button class="btn btn-light"><%=link_to 'Join event', new_event_event_m_path(v.id)%></button></td>
-            </tr>
-          </div>
+            <div align="right">
+                <button class="btn btn-light"><%=link_to 'Join event', new_event_event_m_path(v.id)%></button></td>
+            </div>
           <%end%>
       </div>
       <div class="col-3 bg-dark"></div>
     </div>
     <%end%>
-  </div>
+    <%@event.each do |v| %>
+    <%if v.user_id == $current_user[0].id %>
     <div class="row-2">
-      <div align="right">
-        <<div align="right" >
-        <button class="btn btn-light"><%=link_to 'Invite Users', invite%></button>
-      </div>
+      <div class="col-3 bg-dark"></div>
+      <div class="col-6">
+          <div align="right" >
+            <button class="btn btn-light"><%=link_to 'Invite Users', event_invites_path(v.id)%></button>
+          </div>
+        </div>
+      <div class="col-3 bg-dark"></div>
     </div>
+    <%end%>
+    <%end%>
+  </div>
 </body>
 
 
