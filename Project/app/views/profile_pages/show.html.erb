@@ -65,10 +65,21 @@
     </div>
     <div class ="col-3 bg-dark"></div>
   </div>
+  <div class= row>
+    <div class ="col-3 bg-dark"></div>
+    <div class ="col-6">
+      <div align="left">
+        <h3>Pending Invites</h3>
+        <%@pi %>
+      </div>
+    <div class ="col-3 bg-dark"></div>
+  </div>
+  </div>
 </body>
 
 <footer>
-  <div align="center">
+  <div align="right">
     <button class="btn btn-light"><%= link_to 'Edit', edit_profile_page_path(params[:id])  %></button>
   </div>
 </footer>
+

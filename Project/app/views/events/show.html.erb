@@ -29,6 +29,20 @@
           <p class ="p_user"><strong>Description:  </strong>  <%=v.description%><br></p>
           <p class ="p_user"><strong>Public:  </strong> <%=v.visibility%></p>
         </div>
+          <p class ="p_user"><strong>Name:  </strong> <%=v.title%><br></p>
+          <%if v.user.userName == "Null" %>
+            <%@event_o.each do |x|%>
+              <%if x.id == v.organization_id %>
+                <p class ="p_user"><strong>Host:  </strong> <%=x.org_homepage.name%><br></p>
+              <%end %>
+            <%end %>
+          <%else %>
+            <p class ="p_user"><strong>Host:  </strong> <%=v.user.userName%><br></p>
+          <%end %>
+          <p class ="p_user"><strong>Venue:  </strong> <%=@event_v.find(v.venue_id).name%></p>
+          <p class ="p_user"><strong>Description:  </strong>  <%=v.description%><br></p>
+          <p class ="p_user"><strong>Public:  </strong> <%=v.visibility%></p>
+        </div>
         <div>
           <h2>Event Members : </h2>
           <% @mem=[] %>
@@ -64,11 +78,17 @@
     </div>
     <%end%>
   </div>
+    <div class="row-2">
+      <div align="right">
+        <<div align="right" >
+        <button class="btn btn-light"><%=link_to 'Invite Users', invite%></button>
+      </div>
+    </div>
 </body>
 
 
 <footer>
-  <div class="row-2">
+  <div class="row-3">
     <div align="right">
       <% if $current_user[0].id == @event[0].user_id %>
         <button class="btn"><%= link_to 'Edit', edit_event_path(@event.ids) %></button>

@@ -5,7 +5,6 @@ class ProfilePagesController < ApplicationController
   # GET /profile_pages.json
   def index
     @profile_pages = ProfilePage.where("id = ?", params[:id])
-
   end
 
   # GET /profile_pages/1
@@ -14,6 +13,7 @@ class ProfilePagesController < ApplicationController
     @profile_page = ProfilePage.find(params[:id])
     @user_events = Event.where("user_id = ?", @profile_page.user_id)
     @assisting_events = EventM.joins(:event).where(user_id: $current_user[0].id)
+    @pi= Invite.where(user_id: $current_user[0].id)
   end
 
   # GET /profile_pages/new
