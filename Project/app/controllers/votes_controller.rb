@@ -15,6 +15,9 @@ class VotesController < ApplicationController
   # GET /votes/new
   def new
     @vote = Vote.new
+    @vote.user_id = $current_user[0].id
+    @event = Event.find(1)
+    @vote.event_id = @event.id
   end
 
   # GET /votes/1/edit
@@ -69,6 +72,6 @@ class VotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vote_params
-      params.fetch(:vote, {})
+      params.fetch(:vote, {}).permit(:user_id, :event_id)
     end
 end

@@ -39,10 +39,13 @@ e4 = Event.create!(title: "Event4", user_id: u4.id, organization_id: o2.id, desc
 e5 = Event.create!(title: "Event5", user_id: u5.id,organization_id: o4.id, description: "Description5", venue_id: v6.id, visibility: false)
 e6 = Event.create!(title: "Event6", user_id: u6.id, organization_id: o3.id, description: "Description6", venue_id: v5.id, visibility: false)
 
-vote1 = Vote.create!(user_id: u2.id, event_id: e1.id, date: nil)
-vote2 = Vote.create!(user_id: u1.id, event_id: e2.id, date: nil)
-vote3 = Vote.create!(user_id: u3.id, event_id: e3.id, date: nil)
-vote4 = Vote.create!(user_id: u4.id, event_id: e4.id, date: nil)
+vote1 = Vote.create!(user_id: u2.id, event_id: e1.id, date: "01/01/2021")
+vote2 = Vote.create!(user_id: u1.id, event_id: e2.id, date: "01/01/2021")
+vote3 = Vote.create!(user_id: u3.id, event_id: e3.id, date: "01/01/2021")
+vote4 = Vote.create!(user_id: u4.id, event_id: e4.id, date: "01/01/2021")
+vote5 = Vote.create!(user_id: u1.id, event_id:e1.id, date: "01/01/2021")
+vote6 = Vote.create!(user_id: u1.id, event_id:e1.id, date: "02/01/2021")
+vote7 = Vote.create!(user_id: u1.id, event_id:e1.id, date: "03/01/2021")
 
 em1 = EventM.create!(user_id: u1.id, event_id: e1.id)
 em2 = EventM.create!(user_id: u2.id, event_id: e1.id)
@@ -98,3 +101,4 @@ chat1= Chat.create!(inbox1_id: inbox1.id, inbox2_id: inbox2.id)
 
 msg1= Message.create!(user_id: u1.id, text:"Hola, como estay?", chat_id:chat1.id)
 msg2= Message.create!(user_id: u2.id, text:"Hola. Bien gracias, y tu?", chat_id:chat1.id)
+

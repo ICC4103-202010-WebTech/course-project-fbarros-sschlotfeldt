@@ -2,10 +2,10 @@
 
 
 <body>
-  <h2>Comments</h2>
-  <div class = "wrapper">
+<h1 class="text-light">Comments</h1>
+  <div align="center" class = "wrapper">
     <span class ="box">
-      <h3 class="text-left"><%=@comment.event.title %></h3>
+      <h3 align="center" ><%=@comment.event.title %></h3>
           <%for v in @comments do %>
             <%if $current_user[0].id == v.user_id%>
               <span class ="text-left"> <%=v.user.userName%>: <%=v.text%></span> <span><%=link_to 'Edit', edit_comment_path(v) %></span>
@@ -27,7 +27,7 @@
   </div>
 </body>
 <footer>
-  <%= link_to 'Back', events_path %><br>
-  <%=link_to 'New Comment', new_event_comment_path(@comment.event_id) %>
+  <button class="btn"><%= link_to 'Back', events_path %><br></button>
+  <button class="btn"><%=link_to 'New Comment', new_event_comment_path(@comment.event_id) %></button>
 </footer>
 

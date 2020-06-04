@@ -15,6 +15,7 @@ class EventsController < ApplicationController
     @event = Event.where(id:params[:id])
     @event_o = Organization.all
     @event_v = Venue.all
+    @votes = Vote.where(event_id:params[:id]).select("date").distinct
   end
 
   # GET /events/new
@@ -74,6 +75,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {}).permit(:title, :user_id, :venue_id, :organization_id, :description, :visibility, :event_pic, :ad, venues_attributes: [:id])
+      params.fetch(:event, {}).permit(:title, :user_id, :venue_id, :organization_id, :description, :visibility, :event_pic, :ad, venues_attributes: [:id], votes_attributes: [:id, :date])
     end
 end

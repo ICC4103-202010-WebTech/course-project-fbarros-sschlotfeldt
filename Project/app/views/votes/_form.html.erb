@@ -1,5 +1,13 @@
-<%= form_with(model: vote, local: true) do |form| %>
+
+<%= form_for @vote do |form| %>
+
+  <div>
+    <%=form.hidden_field :user_id %>
+    <%=form.hidden_field :event_id %>
+  </div>
+
   <% if vote.errors.any? %>
+
     <div id="error_explanation">
       <h2><%= pluralize(vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
 
@@ -12,6 +20,6 @@
   <% end %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :Submit, class: ["btn", "btn-primary"] %>
   </div>
 <% end %>

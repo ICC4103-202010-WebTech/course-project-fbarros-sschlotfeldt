@@ -15,6 +15,7 @@
           <%=link_to image_tag("thumbnail.svg", width: "100%", height: "450px", background: "#55595c", color: "#eceeef"), url_for(v) %>
         <%end %>
         <div class = user_box >
+
           <p class ="p_user"><strong>Name:  </strong> <%=v.title%><br></p>
           <%if v.user.userName == "Null" %>
             <%@event_o.each do |x|%>
@@ -30,6 +31,22 @@
           <p class ="p_user"><strong>Public:  </strong> <%=v.visibility%></p>
         </div>
 
+            <%=form_tag new_vote_path %>
+        <table><h2>Choose your available dates!:</h2>
+          <%for vo in @votes %>
+                  <tr>
+                    <div>
+                      <%=hidden_field_tag :user_id, $current_user[0].id%>
+                      <%=hidden_field_tag :event_id, params[:id] %>
+                    </div>
+
+                    <td><%= check_box("date_selected", "dates_selected[]", {multiple:true}, vo.date) %></td>
+                    <td><%=vo.date%></td>
+                  </tr>
+                <%end %>
+            </table><br>
+        <%=submit_tag "Im on!" %>
+        <br>
         <div>
           <h2>Event Members : </h2>
           <%@event_members.each do |em|%>
@@ -44,23 +61,28 @@
               </ul>
             <%end%>
           <%end%>
+
         </div >
           <%if @mem.include? @event_users.find($current_user[0].id-1).name%>
             <div align="right">
               <tr>
+                <td> <button class="btn btn-light"><%=link_to 'View Comments', comment_path(v.id)%></button></td>
                 <td><button class="btn btn-light"><%=link_to 'Exit event', edit_event_event_m_path(v.id)%></button></td>
                 <td><%@mem.delete(@event_users.find($current_user[0].id-1).name) %></td>
               </tr>
             </div>
           <%else%>
             <div align="right">
-                <button class="btn btn-light"><%=link_to 'Join event', new_event_event_m_path(v.id)%></button></td>
+              <button align="left" class="btn btn-light"><%=link_to 'Comments', comment_path(v.id)%></button>
+              <button class="btn btn-light"><%=link_to 'Join event', new_event_event_m_path(v.id)%></button></td>
             </div>
           <%end%>
+
       </div>
       <div class="col-3 bg-dark"></div>
     </div>
     <%end%>
+
     <%@event.each do |v| %>
     <%if v.user_id == $current_user[0].id %>
     <div class="row-2">
@@ -75,6 +97,7 @@
     <%end%>
     <%end%>
   </div>
+
 </body>
 
 
