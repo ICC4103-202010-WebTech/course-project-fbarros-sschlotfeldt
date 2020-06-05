@@ -28,19 +28,15 @@
           <%end %>
           <p class ="p_user"><strong>Venue:  </strong> <%=@event_v.find(v.venue_id).name%></p>
           <p class ="p_user"><strong>Description:  </strong>  <%=v.description%><br></p>
+          <p class ="p_user"><strong>Creation Date:  </strong> <%=v.created_at%></p>
           <p class ="p_user"><strong>Public:  </strong> <%=v.visibility%></p>
         </div>
 
-            <%=form_tag new_vote_path %>
+            <%=form_tag votes_path %>
         <table><h2>Choose your available dates!:</h2>
           <%for vo in @votes %>
                   <tr>
-                    <div>
-                      <%=hidden_field_tag :user_id, $current_user[0].id%>
-                      <%=hidden_field_tag :event_id, params[:id] %>
-                    </div>
-
-                    <td><%= check_box("date_selected", "dates_selected[]", {multiple:true}, vo.date) %></td>
+                    <td><%= check_box("date_selected", "$dates_selected[]", {multiple:true}, vo.date) %></td>
                     <td><%=vo.date%></td>
                   </tr>
                 <%end %>
@@ -66,7 +62,7 @@
           <%if @mem.include? @event_users.find($current_user[0].id-1).name%>
             <div align="right">
               <tr>
-                <td> <button class="btn btn-light"><%=link_to 'View Comments', comment_path(v.id)%></button></td>
+                <td> <button class="btn btn-light"><%=link_to 'Comments', comment_path(v.id)%></button></td>
                 <td><button class="btn btn-light"><%=link_to 'Exit event', edit_event_event_m_path(v.id)%></button></td>
                 <td><%@mem.delete(@event_users.find($current_user[0].id-1).name) %></td>
               </tr>

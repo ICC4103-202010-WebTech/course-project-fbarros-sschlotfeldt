@@ -10,6 +10,9 @@ class OrgHomepagesController < ApplicationController
   # GET /org_homepages/1
   # GET /org_homepages/1.json
   def show
+    @current_oh= OrgHomepage.where(id:params[:id])
+  @org_members=User.joins(:organizationMs).where("organization_id = ?", @current_oh[0].organization_id)
+    @o_events = Event.where("organization_id = ? ", @current_oh[0].organization_id)
   end
 
   # GET /org_homepages/new

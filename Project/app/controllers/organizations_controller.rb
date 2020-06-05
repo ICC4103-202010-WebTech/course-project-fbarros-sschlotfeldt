@@ -13,6 +13,7 @@ class OrganizationsController < ApplicationController
   def show
     @organization_users= ProfilePage.all
     @org_members=OrganizationM.all
+    @o_events = Event.where("organization_id = ?", params[:id])
   end
 
   # GET /organizations/new

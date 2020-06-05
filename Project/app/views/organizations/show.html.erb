@@ -35,10 +35,18 @@
         <%@org_members.each do |om|%>
           <%if om.organization_id == @organization.id%>
             <ul>
-              <il><%=@organization_users.find(om.user_id-1).name %></il>
+              <li><%=@organization_users.find(om.user_id-1).name %></li>
             </ul>
           <%end%>
         <%end%>
+        <h2>Public Events: </h2>
+        <%for oe in @o_events %>
+          <%if oe.visibility == true %>
+            <ul>
+              <li><%=oe.title %></li>
+            </ul>
+          <%end %>
+        <%end %>
       </div>
     </div>
     <div class="col-3 bg-dark"></div>

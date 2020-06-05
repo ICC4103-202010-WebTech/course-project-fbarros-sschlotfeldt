@@ -22,6 +22,22 @@
             <strong>Host:</strong> <%=@org_homepage.organization.user.userName%>
           </p>
         </div>
+        <div>
+          <h2>Organization Members : </h2>
+          <%@org_members.each do |om|%>
+              <ul>
+                <li><%=om.userName%></li>
+              </ul>
+          <%end%>
+          <h2>Public Events: </h2>
+          <%for oe in @o_events %>
+            <%if oe.visibility == true %>
+              <ul>
+                <li><%=link_to oe.title, edit_event_path(oe.id) %></li>
+              </ul>
+            <%end %>
+          <%end %>
+        </div>
       </div>
     <div class="col-3 bg-dark"></div>
   </div>

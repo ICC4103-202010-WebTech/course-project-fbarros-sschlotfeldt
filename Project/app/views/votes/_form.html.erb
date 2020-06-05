@@ -2,8 +2,8 @@
 <%= form_for @vote do |form| %>
 
   <div>
-    <%=form.hidden_field :user_id %>
-    <%=form.hidden_field :event_id %>
+    <%=hidden_field_tag :user_id, $current_user[0].id%>
+    <%=hidden_field_tag :event_id, params[:id] %>
   </div>
 
   <% if vote.errors.any? %>
