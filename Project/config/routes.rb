@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   resources :invites do
     resources :users
+    resources :event
   end
 
   namespace :api, defaults: { format: :json } do

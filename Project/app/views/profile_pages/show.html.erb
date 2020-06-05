@@ -33,6 +33,9 @@
         <strong>Mail: </strong>  <%=@profile_page.user.email%>
       </p>
       <p class ="p_user">
+        <strong>Address: </strong>  <%=@profile_page.address%>
+      </p>
+      <p class ="p_user">
         <strong>Administrator: </strong> <%=@profile_page.user.adm%>
       </p>
 
@@ -70,7 +73,14 @@
     <div class ="col-6">
       <div align="left">
         <h3>Pending Invites</h3>
-        <%@pi %>
+
+          <%for pi in @pi %>
+            <ul>
+              <li ><%=Event.find(pi.event_id).title %>&nbsp
+              <button class="btn btn-sm"><%= link_to 'Accept', new_event_event_m_path(pi.event_id)  %></button></li>
+            </ul>
+          <%end %>
+
       </div>
     <div class ="col-3 bg-dark"></div>
   </div>
