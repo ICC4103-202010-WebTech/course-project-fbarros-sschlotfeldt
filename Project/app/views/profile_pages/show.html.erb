@@ -74,12 +74,12 @@
       <div align="left">
         <h3>Pending Invites</h3>
 
-          <%for pi in @pi %>
+            <%for pi in @pi %>
             <ul>
               <li ><%=Event.find(pi.event_id).title %>&nbsp
               <button class="btn btn-sm"><%= link_to 'Accept', new_event_event_m_path(pi.event_id)  %></button></li>
+            <%end %>
             </ul>
-          <%end %>
 
       </div>
     <div class ="col-3 bg-dark"></div>

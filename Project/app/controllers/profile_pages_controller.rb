@@ -14,6 +14,7 @@ class ProfilePagesController < ApplicationController
     @user_events = Event.where("user_id = ?", @profile_page.user_id)
     @assisting_events = EventM.joins(:event).where(user_id: $current_user[0].id)
     @pi= Invite.where(user_id: $current_user[0].id)
+    @event_members= EventM.all
   end
 
   # GET /profile_pages/new
