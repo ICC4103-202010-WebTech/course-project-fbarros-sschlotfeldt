@@ -36,7 +36,7 @@ e1 = Event.create!(title: "Event1", user_id: u1.id, organization_id: o0.id, desc
 e2 = Event.create!(title: "Event2", user_id: u2.id, organization_id: o0.id, description: "Description2", venue_id: v2.id, visibility: true)
 e3 = Event.create!(title: "Event3", user_id: u0.id, organization_id: o1.id, description: "Description3", venue_id: v3.id, visibility: true)
 e4 = Event.create!(title: "Event4", user_id: u0.id, organization_id: o2.id, description: "Description4", venue_id: v4.id, visibility: false)
-e5 = Event.create!(title: "Event5", user_id: u0.id,organization_id: o1.id, description: "Description5", venue_id: v6.id, visibility: false)
+e5 = Event.create!(title: "Event5", user_id: u0.id,organization_id: o4.id, description: "Description5", venue_id: v6.id, visibility: false)
 e6 = Event.create!(title: "Event6", user_id: u6.id, organization_id: o3.id, description: "Description6", venue_id: v5.id, visibility: false)
 
 vote1 = Vote.create!(user_id: u2.id, event_id: e1.id, date: "01/01/2021")

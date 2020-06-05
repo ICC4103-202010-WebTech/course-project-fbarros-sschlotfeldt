@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @comment, notice: 'Comment was successfully created.'}
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -45,6 +45,7 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
+    begin
     respond_to do |format|
       if @comment.update(comment_params)
         format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
@@ -53,6 +54,10 @@ class CommentsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
+    end
+    rescue
+      flash[:alert] = "This operation could not be executed"
+      redirect_back(fallback_location: root_path)
     end
   end
 

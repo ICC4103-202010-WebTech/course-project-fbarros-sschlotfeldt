@@ -26,16 +26,21 @@ class InvitesController < ApplicationController
   # POST /invites
   # POST /invites.json
   def create
-    @invite = Invite.new(invite_params)
+    begin
+      @invite = Invite.new(invite_params)
 
-    respond_to do |format|
-      if @invite.save
-        format.html { redirect_to @invite, notice: 'Invite was successfully created.' }
-        format.json { render :show, status: :created, location: @invite }
-      else
-        format.html { render :new }
-        format.json { render json: @invite.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @invite.save
+          format.html { redirect_to @invite, notice: 'Invite was successfully created.' }
+          format.json { render :show, status: :created, location: @invite }
+        else
+          format.html { render :new }
+          format.json { render json: @invite.errors, status: :unprocessable_entity }
+        end
       end
+    rescue
+      flash[:alert] = "This operation could not be executed"
+      redirect_back(fallback_location: root_path)
     end
   end
 

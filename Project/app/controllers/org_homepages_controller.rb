@@ -11,7 +11,7 @@ class OrgHomepagesController < ApplicationController
   # GET /org_homepages/1.json
   def show
     @current_oh= OrgHomepage.where(id:params[:id])
-  @org_members=User.joins(:organizationMs).where("organization_id = ?", @current_oh[0].organization_id)
+    @org_members=User.joins(:organizationMs).where("organization_id = ?", @current_oh[0].organization_id)
     @o_events = Event.where("organization_id = ? ", @current_oh[0].organization_id)
   end
 
@@ -58,10 +58,15 @@ class OrgHomepagesController < ApplicationController
   # DELETE /org_homepages/1
   # DELETE /org_homepages/1.json
   def destroy
-    @org_homepage.destroy
-    respond_to do |format|
-      format.html { redirect_to org_homepages_url, notice: 'Org homepage was successfully destroyed.' }
-      format.json { head :no_content }
+    begin
+      @org_homepage.destroy
+      respond_to do |format|
+        format.html { redirect_to org_homepages_url, notice: 'Org homepage was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    rescue
+      flash[:alert] = "This operation could not be executed"
+      redirect_back(fallback_location: root_path)
     end
   end
 

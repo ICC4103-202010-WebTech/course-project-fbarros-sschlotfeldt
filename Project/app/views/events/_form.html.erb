@@ -15,58 +15,26 @@
   </div>
   <%=form.fields_for :venues do |v| %>
   <div class="form-group">
-    <%= v.label :event_venue %>
-    <%= v.collection_select(:post, Venue.all.order(name: :asc), :id, :name, {}, { class: "form-control" }) %>
+    <%= v.label :venue_id %>
+    <%= $possible_venue = v.collection_select(:post, Venue.all.order(name: :asc), :id, :name, {}, { class: "form-control" }) %>
   </div>
   <%end %>
   <div class="form-group">
     <%= form.label :Public %>
     <%= form.check_box :visibility %>
   </div>
-
-    <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
-    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
-
-    <!--Font Awesome (added because you use icons in your prepend/append)-->
-    <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
-
-    <!-- Inline CSS based on choices in "Settings" tab -->
-    <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
-
-    <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
-    <div align="left">
-      <div class="bootstrap-iso">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <form method="post">
-                <div class="form-group ">
-                  <label class="control-label " for="date">
-                    Pdd Possible Date
-                  </label>
-                  <div class="input-group">
-                    <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-                    <div class="input-group-addon">
-                      <i class="fa fa-calendar-plus-o">
-                      </i>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div>
-                    <button class="btn btn-primary " name="submit" type="submit">
-                      Submit
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div>
+      <%=form.hidden_field :user_id %>
+      <%=form.hidden_field :organization_id%>
+      <%=form.hidden_field :venue_id%>
     </div>
-  <div class="form-group mt-2">
-    <%= form.submit :Update, class: ["btn", "btn-primary"] %>
+
+    <div class="form-group mt-2">
+    <% if action_name=="edit" %>
+      <%= form.submit :Update, class: ["btn", "btn-primary"] %>
+    <%elsif action_name=="new" %>
+      <%= form.submit :Create, class: ["btn", "btn-primary"] %>
+    <%end %>
     <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
   </div>
   <div>
