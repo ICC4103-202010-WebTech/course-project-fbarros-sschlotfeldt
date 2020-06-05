@@ -4,7 +4,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = Organization.joins(:org_homepage).search(params[:search])
+    @organizations = Organization.search(params[:search])
     @user=User.all
   end
 

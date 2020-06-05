@@ -1,7 +1,30 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :photos, :videos, :files]
   # GET /events
   # GET /events.json
+  #
+
+  def photos
+    if params[:photos] != nil
+      @event.photos.attach(params[:photos])
+      @event.save
+    end
+  end
+
+  def videos
+    if params[:videos] != nil
+      @event.videos.attach(params[:videos])
+      @event.save
+    end
+  end
+
+  def files
+    if params[:files] != nil
+      @event.files.attach(params[:files])
+      @event.save
+    end
+  end
+
   def index
     @events = Event.search(params[:search])
   end
@@ -83,6 +106,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {}).permit(:title, :user_id, :venue_id, :organization_id, :description, :visibility, :event_pic, :ad, venues_attributes: [:id])
+      params.fetch(:event, {}).permit(:title, :user_id, :venue_id, :organization_id, :description, :visibility, :event_pic, :ad, videos:[], photos:[], files:[], venues_attributes: [:id])
     end
 end

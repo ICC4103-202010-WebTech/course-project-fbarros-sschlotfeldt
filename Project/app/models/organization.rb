@@ -12,10 +12,10 @@ class Organization < ApplicationRecord
       if @organizations
         self.where(id: @organizations)
       else
-        @organizations = Organization.joins(:org_homepage)
+        @organizations = Organization.all
       end
     else
-      @organizations = Organization.joins(:org_homepage)
+      @organizations = Organization.all
     end
   end
 end

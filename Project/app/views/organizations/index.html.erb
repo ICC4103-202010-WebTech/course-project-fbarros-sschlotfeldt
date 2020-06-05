@@ -23,12 +23,14 @@
       <% @organizations.each do |v| %>
       <tbody>
       <tr>
-        <td><%= v.org_homepage.name %></td>
+        <% if v.name != "Null" %>
+        <td><%= v.name %></td>
         <td><%= @user.find(v.user.id).userName%></td>
         <td><button><%=link_to 'Go to Organization', organization_path(v.id)%></button></td>
       </tr>
       </tbody>
         <%end%>
+    <%end%>
     </table>
   </div>
 </body>

@@ -58,6 +58,35 @@
             <%end%>
           <%end%>
 
+          <h2>Event photos uploaded:</h2>
+          <div align="left">
+            <% if v.photos.attached?  %>
+              <% v.photos.each do |photos| %>
+                <%= image_tag(photos, width: "200px")%>
+              <% end %>
+            <%else %>
+            <%end %>
+          </div>
+
+          <h2>Event files uploaded:</h2>
+          <div align="left">
+            <% if v.files.attached?  %>
+              <% v.files.each do |file| %>
+                <%= link_to file.filename, url_for(file) %><br>
+              <% end %>
+            <%else %>
+            <%end %>
+          </div>
+
+          <h2>Event videos uploaded:</h2>
+          <div align="left">
+            <% if v.videos.attached?  %>
+              <% v.videos.each do |video| %>
+                <%= video_tag(rails_blob_path(video),:size => "320x240", :controls => true) %>
+            <%end %>
+          <%end %>
+          </div>
+
         </div >
           <%if @mem.include? @event_users.find($current_user[0].id-1).name%>
             <div align="right">

@@ -11,6 +11,9 @@ class Event < ApplicationRecord
 
   has_one_attached :event_pic
   has_one_attached :ad
+  has_many_attached :photos
+  has_many_attached :files
+  has_many_attached :videos
 
   accepts_nested_attributes_for :venue
 
