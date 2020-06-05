@@ -3,29 +3,32 @@
   <div class="col-lg-6">
     <table class="col-lg-12 bg-light">
 
-        <thead>
-          <tr>
-            <th>UserName</th>
-            <th>Invite</th>
-          </tr>
-        </thead>
-        <%@user_for_invite.each do |y|%>
-        <%@event_members.each do |x|%>
-        <tbody class="border">
-          <tr>
-            <%if y.id == x.user_id %>
-            <%else%>
-              <td><%=@user_for_invite.find(y.id).userName %></td>
-            <%end%>
-          </tr>
+      <thead>
+      <tr>
+        <th>UserName</th>
+        <th>Invite</th>
+      </tr>
+      </thead>
+      <%@mem=[1] %>
+      <%@event_members.each do |y|  %>
+        <%@mem << y.user_id %>
+      <% end %>
+      <%@user_for_invite.each do |x|%>
+        <tbody>
+        <tr>
+          <%if @mem.include? x.id %>
+          <%else%>
+            <td><%=@user_for_invite.find(x.id).userName %></td>
+            <%@mem<< x.id %>
+            <td><button class="btn btn-outline-primary"><%=link_to( "Invite", { controller: "invites", action: "new" }) %></button></td>
+          <%end%>
+        </tr>
         </tbody>
 
         <tfoot>
         </tfoot>
-        <%end %>
-        <%end %>
+      <%end %>
     </table>
   </div>
   <div class="col-3 bg-dark"></div>
 </div>
-
