@@ -24,7 +24,6 @@ class EventsController < ApplicationController
     @event = Event.new
     @event.user_id = $current_user[0].id
     @event.organization_id = Organization.find(1)
-    @event.venue_id = $possible_venue[0]
   end
 
   # GET /events/1/edit

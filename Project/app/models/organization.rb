@@ -4,6 +4,8 @@ class Organization < ApplicationRecord
   has_many :organizationMs
   has_many :events
 
+  validates_uniqueness_of :name
+
   def self.search(search)
     if search
       @organizations = Organization.where("name LIKE ?", "%#{search}%")

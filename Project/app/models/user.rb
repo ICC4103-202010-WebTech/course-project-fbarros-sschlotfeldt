@@ -1,14 +1,16 @@
 class User < ApplicationRecord
-  has_many :events
+  has_many :events, dependent: :destroy
   has_one :organization
-  has_one :inbox
-  has_many :messages
-  has_many :organizationMs
-  has_many :eventMs
-  has_many :votes
-  has_many :comments
-  has_one :profilePage
-  has_many :invites
+  has_one :inbox, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :organizationMs, dependent: :destroy
+  has_many :eventMs, dependent: :destroy
+  has_many :votes, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_one :profilePage, dependent: :destroy
+  has_many :invites, dependent: :destroy
+
+  validates_uniqueness_of :userName
 
 
   def self.search(search)
