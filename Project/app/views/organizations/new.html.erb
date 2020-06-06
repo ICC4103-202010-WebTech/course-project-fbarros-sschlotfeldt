@@ -2,7 +2,7 @@
 
   <%= form_with model: @organization, local: true do |form| %>
     <div class="form-group">
-      <%= form.label :name %>
+      <%= form.label "Organization Name:" %>
       <%= form.text_field :name, class: "form-control" %>
     </div>
 
@@ -10,9 +10,9 @@
       <%=form.hidden_field :user_id %>
     </div>
 
-    <%=form.fields_for :orgHomepage do |oh_form| %>
+    <%=form.fields_for @org_home do |oh_form| %>
       <div class="form-group">
-        <%= oh_form.label :name %>
+        <%= oh_form.label "Page Name" %>
         <%= oh_form.text_field :name, class: "form-control" %>
         <%= oh_form.label :description %>
         <%= oh_form.text_field :description, class: "form-control" %>

@@ -34,14 +34,14 @@
 
             <%=form_tag votes_path %>
         <table><h2>Choose your available dates!:</h2>
-          <%for vo in @votes %>
+                <%for vo in @votes %>
                   <tr>
                     <td><%= check_box("date_selected", "$dates_selected[]", {multiple:true}, vo.date) %></td>
                     <td><%=vo.date%></td>
                   </tr>
                 <%end %>
             </table><br>
-        <%=submit_tag "Im on!" %>
+             <%=submit_tag "Im on!" %>
         <br>
         <div>
           <h2>Event Members : </h2>

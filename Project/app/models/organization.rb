@@ -1,8 +1,12 @@
 class Organization < ApplicationRecord
   belongs_to :user
-  has_one :org_homepage
-  has_many :organizationMs
+  has_one :org_homepage, dependent: :destroy
+  has_many :organizationMs, dependent: :destroy
   has_many :events
+
+  before_create :build_org_homepage
+
+
 
   accepts_nested_attributes_for :org_homepage
 
