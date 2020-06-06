@@ -4,6 +4,8 @@ class Organization < ApplicationRecord
   has_many :organizationMs
   has_many :events
 
+  accepts_nested_attributes_for :org_homepage
+
   validates_uniqueness_of :name
 
   def self.search(search)

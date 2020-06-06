@@ -46,7 +46,8 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @event.user_id = $current_user[0].id
-    @event.organization_id = Organization.find(1)
+    @event.organization_id = Organization.find(1).id
+    @venues = Venue.all
   end
 
   # GET /events/1/edit
@@ -56,7 +57,6 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    begin
       @event = Event.new(event_params)
 
       respond_to do |format|
@@ -68,10 +68,6 @@ class EventsController < ApplicationController
           format.json { render json: @event.errors, status: :unprocessable_entity }
         end
       end
-    rescue
-      flash[:alert] = "This operation could not be executed"
-      redirect_back(fallback_location: root_path)
-    end
   end
 
   # PATCH/PUT /events/1

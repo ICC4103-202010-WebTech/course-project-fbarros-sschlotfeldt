@@ -19,6 +19,10 @@ class OrganizationsController < ApplicationController
   # GET /organizations/new
   def new
     @organization = Organization.new
+    @organization.user_id = $current_user[0].id
+
+    @org_home = OrgHomepage.new
+    @org_home.organization_id = Organization.order(id: :desc).first
   end
 
   # GET /organizations/1/edit
@@ -31,7 +35,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new(organization_params)
 
     respond_to do |format|
-      if @organization.save
+      if @organization.save!
         format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
         format.json { render :show, status: :created, location: @organization }
       else
@@ -73,6 +77,6 @@ class OrganizationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def organization_params
-      params.require(:organization).permit(:name, :id, :search)
+      params.require(:organization).permit(:name, :user_id, :search, org_homepage_attributes: [:name, :banner, :description, :organization_id])
     end
 end
