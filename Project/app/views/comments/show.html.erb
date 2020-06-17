@@ -15,7 +15,7 @@
               <%else%>
               <%end%>
             <%else%>
-              <span class ="text-left"> <%=v.user.userName%>: <%=v.text%></span>
+              <p class ="text-left"> <%=v.user.userName%>: <%=v.text%></p>
               <%if v.atta.attached? %>
                 <%= link_to image_tag(v.atta, width: "100%", height: "100%"), url_for(v)%>
                 <div><%=v.user.userName%>: <%=v.text%></div>
