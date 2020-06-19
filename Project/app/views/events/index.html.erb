@@ -23,28 +23,31 @@
       </tr>
       </thead>
       <% @events.each do |event| %>
-        <%if event.user.userName == "Null" %>
+        <%if event.user_id == nil %>
           <%Organization.all.each do |w| %>
             <% if event.organization_id == w.id   %>
-              <%@real_org_id = w.id - 1%>
               <tbody>
               <tr>
-                <td><%=event.title %>
-                <td><%=event.description %></td>
-                <td><%=w.name%></td>
+                <td><%=event.e_name %>
+                <td><%=event.e_description %></td>
+                <td><%=w.o_name%></td>
                 <td><button><%=link_to 'Go to Event', event_path(event.id)%></button></td>
               </tr>
               </tbody>
             <%end %>
           <%end %>
         <%else %>
-          <tbody>
-          <tr>
-            <td><%=event.title %>
-            <td><%=event.description %></td>
-            <td><%=event.user.userName%></td>
-            <td><button><%=link_to 'Go to Event', event_path(event.id)%></button></td>
-          </tr>
+          <%User.all.each do |w| %>
+            <% if event.user_id == w.id   %>
+                <tbody>
+                <tr>
+                  <td><%=event.e_name %>
+                  <td><%=event.e_description %></td>
+                  <td><%=w.userName%></td>
+                  <td><button><%=link_to 'Go to Event', event_path(event.id)%></button></td>
+                </tr>
+            <%end %>
+          <% end %>
         <%end %>
       <% end %>
       <tfoot>
