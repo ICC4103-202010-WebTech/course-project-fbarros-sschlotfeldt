@@ -4,50 +4,151 @@
   <title>Profile</title>
 </head>
 
-<body>
+<%if @user.id == $current_user[0].id%>
+  <body>
   <div class = "row">
-    <div class="col-3 bg-dark"></div>
-    <div class="col-6">
-      <div class="user_photo">
-        <%if @user.profilePage.user_pic.attached? %>
-          <%= link_to image_tag(@user.profilePage.user_pic, width: "100%", height: "100%"), url_for(@user)%>
+    <div class ="col-3 bg-dark"></div>
+    <div class ="col-6">
+      <p class="user_photo">
+        <%if @user.user_pic.attached? %>
+          <%= link_to image_tag(@user.user_pic, width: "100%", height: "100%"), url_for(@user)%>
         <%else %>
           <%=link_to image_tag("thumbnail.svg", width: "100%", height: "100%", background: "#55595c", color: "#eceeef"), url_for(@user) %>
         <%end %>
-      </div>
-      <div class = user_box>
-
-        <p class ="p_user">
-          <strong>Name:  </strong> <%=@pp.name%>
-        </p>
-        <p class ="p_user">
-          <strong>Last Name:  </strong><%=@pp.lastName%>
-        </p>
-        <p class ="p_user">
-          <strong>Mail: </strong>  <%=@pp.user.email%>
-        </p>
-        <p class ="p_user">
-          <strong>Address: </strong>  <%=@pp.address%>
-        </p>
-        <p class ="p_user">
-          <strong>Administrator: </strong> <%=@pp.user.adm%>
-        </p>
-
-        <% if @user.organization.nil? %>
-          <p class ="p_user"><strong>Organization: </strong> No Organization </p>
+      </p>
+    </div>
+    <div class ="col-3 bg-dark"></div>
+  </div>
+  <div class="row">
+    <div class ="col-3 bg-dark"></div>
+    <div class="col-3">
+      <p class ="p_user">
+        <strong>Name:  </strong> <%=@user.name%>
+      </p>
+      <p class ="p_user">
+        <strong>Biography:  </strong> <%=@user.bio%>
+      </p>
+      <p class ="p_user">
+        <strong>Last Name:  </strong> <%=@user.lastName%>
+      </p>
+      <p class ="p_user">
+        <strong>Mail: </strong>  <%=@user.email%>
+      </p>
+      <p class ="p_user">
+        <strong>Address: </strong>  <%=@user.address%>
+      </p>
+      <p class ="p_user">
+        <strong>Administrator: </strong> <%=@user.admin%>
+      </p>
+      <%for uo in @user_o %>
+        <% if uo.user_id == $current_user[0].id %>
+          <p class ="p_user"><strong>My Organization: </strong> <%=link_to uo.o_name, organization_path(uo.id)%> </p>
         <%else %>
-          <p class ="p_user"><strong>Organization: </strong> <%=@user.organization.org_homepage.name%> </p>
         <%end %>
+      <%end %>
+    </div>
+    <div class="col-3">
+      <h3>Your Events</h3>
+      <%for e in @user_events %>
+        <ul>
+          <li>
+            <%=link_to e.e_name, event_path(e.id) %><br>
+          </li>
+        </ul>
+      <%end %>
+      <br>
+      <h3>Assisting to</h3>
+      <% @assis=[]%>
+      <%for a in @assisting_events %>
+        <ul>
+          <%if @assis.include? a.event.e_name %>
+          <%else %>
+            <li><%=link_to a.event.e_name, event_path(a.id) %></li>
+            <%@assis<<a.event.e_name %>
+          <%end %>
+        </ul>
+      <%end %>
+    </div>
+    <div class ="col-3 bg-dark"></div>
+  </div>
+  <div class= row>
+    <div class ="col-3 bg-dark"></div>
+    <div class ="col-6">
+      <div align="left">
+        <h3>Pending Invites</h3>
+
+        <%@como_querai = [] %>
+        <% for id in EventM.where("user_id = ?", $current_user[0].id) %>
+          <%@como_querai<<id.event_id %>
+        <%end %>
+
+        <%for pi in @pi %>
+          <%if @como_querai.include? pi.event_id %>
+          <%else %>
+            <ul>
+              <li ><%=Event.find(pi.event_id).e_name %>&nbsp
+                <button class="btn btn-sm"><%= link_to 'Accept', new_event_event_m_path(pi.event_id)  %></button></li>
+            </ul>
+          <%end %>
+        <%end %>
+
       </div>
     </div>
-    <div class="col-3 bg-dark"></div>
   </div>
-</body>
+  </body>
 
-<footer>
-  <div class="row-2">
-    <div class="float-lg-right">
-      <button class="btn"><%= link_to 'Back', users_path %></button>
+  <footer>
+    <div align="right">
+      <button class="btn btn-light"><%= link_to 'Edit', edit_user_path(params[:id])  %></button>
     </div>
-  </div>
-</footer>
+  </footer>
+<%else%>
+    <body>
+
+    <div class = "row">
+      <div class="col-3 bg-dark"></div>
+      <div class="col-6">
+        <div class="user_photo">
+          <%if @user.user_pic.attached? %>
+            <%= link_to image_tag(@user.profilePage.user_pic, width: "100%", height: "100%"), url_for(@user)%>
+          <%else %>
+            <%=link_to image_tag("thumbnail.svg", width: "100%", height: "100%", background: "#55595c", color: "#eceeef"), url_for(@user) %>
+          <%end %>
+        </div>
+        <div class = user_box>
+
+          <p class ="p_user">
+            <strong>Name:  </strong> <%=@user.name%>
+          </p>
+          <p class ="p_user">
+            <strong>Last Name:  </strong><%=@user.lastName%>
+          </p>
+          <p class ="p_user">
+            <strong>Mail: </strong>  <%=@user.email%>
+          </p>
+          <p class ="p_user">
+            <strong>Address: </strong>  <%=@user.address%>
+          </p>
+          <p class ="p_user">
+            <strong>Administrator: </strong> <%=@user.admin%>
+          </p>
+
+          <% if @user.organization.nil? %>
+            <p class ="p_user"><strong>Organization: </strong> No Organization </p>
+          <%else %>
+            <p class ="p_user"><strong>Organization: </strong> <%=@user.organization.o_name%> </p>
+          <%end %>
+        </div>
+      </div>
+      <div class="col-3 bg-dark"></div>
+    </div>
+  </body>
+
+  <footer>
+    <div class="row-2">
+      <div class="float-lg-right">
+        <button class="btn"><%= link_to 'Back', users_path %></button>
+      </div>
+    </div>
+  </footer>
+<%end %>

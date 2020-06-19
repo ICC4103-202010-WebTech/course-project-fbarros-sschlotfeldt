@@ -10,7 +10,13 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @pp=ProfilePage.find((params[:id].to_i-1))
+    @user = User.find((params[:id]))
+    @user_o = Organization.all
+
+    @user_events = Event.where("user_id = ?", @user.id)
+    @assisting_events = EventM.joins(:event).where(user_id: $current_user[0].id)
+    @pi= Invite.where(user_id: $current_user[0].id)
+    @event_members= EventM.all
   end
 
   # GET /users/new

@@ -33,7 +33,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @mem=[]
-    @event_users= ProfilePage.all
+    @event_users= User.all
     @event_members= EventM.all
     @event = Event.where(id:params[:id])
     @event_o = Organization.all

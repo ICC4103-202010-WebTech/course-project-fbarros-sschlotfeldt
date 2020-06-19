@@ -24,7 +24,7 @@
         <tr>
           <%if v.userName != "Null" %>
             <%if v.userName!=$current_user[0].userName%>
-              <td><strong><%=v.profilePage.name%>&nbsp<%=v.profilePage.lastName%></strong></td>
+              <td><strong><%=v.name%>&nbsp<%=v.lastName%></strong></td>
               <td><strong><%=v.userName%></strong></td>
             <td><button><%= link_to 'Show', user_path((v.id))%></button></td>
             <%end%>

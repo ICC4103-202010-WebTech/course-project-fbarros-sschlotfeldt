@@ -3,5 +3,6 @@ class PagesController < ApplicationController
     @p_events = Event.joins(:comments).distinct
     @p_comments = Comment.all
     @p_organizations = Organization.all
+    @p_users = User.all
   end
 end

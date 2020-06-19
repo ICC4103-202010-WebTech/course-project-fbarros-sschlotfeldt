@@ -154,6 +154,8 @@ ActiveRecord::Schema.define(version: 2020_06_18_233741) do
   add_foreign_key "comments", "users"
   add_foreign_key "event_ms", "events"
   add_foreign_key "event_ms", "users"
+  add_foreign_key "events", "organizations"
+  add_foreign_key "events", "users"
   add_foreign_key "events", "venues"
   add_foreign_key "inboxes", "users"
   add_foreign_key "invites", "events"

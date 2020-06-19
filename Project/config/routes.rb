@@ -21,18 +21,12 @@ Rails.application.routes.draw do
         resources :event_ms
         resources :venues
       end
-      resources :profile_pages
       resources :users do
-        resources :profile_pages
         resources :organizations
       end
       resources :votes
-      resources :profile_pages do
-        resources :users
-        end
       resources :organizations
       resources :organizations do
-        resources :org_homepages
         resources :organization_ms
         resources :users
       end
@@ -49,8 +43,6 @@ Rails.application.routes.draw do
   end
 
   resources :events, defaults: { format: :html }
-  resources :profile_pages, defaults: { format: :html }
-  resources :org_homepages, defaults: { format: :html }
   resources :users, defaults: { format: :html }
   resources :organizations, defaults: { format: :html }
   resources :comments, defaults: { format: :html }

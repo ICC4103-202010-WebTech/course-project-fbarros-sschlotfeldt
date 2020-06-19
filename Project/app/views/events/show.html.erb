@@ -16,8 +16,8 @@
         <%end %>
         <div class = user_box >
 
-          <p class ="p_user"><strong>Name:  </strong> <%=v.title%><br></p>
-          <%if v.user.userName == "Null" %>
+          <p class ="p_user"><strong>Name:  </strong> <%=v.e_name%><br></p>
+          <%if v.user.userName == nil %>
             <%@event_o.each do |x|%>
               <%if x.id == v.organization_id %>
                   <p class ="p_user"><strong>Host:  </strong> <%=x.org_homepage.name%><br></p>

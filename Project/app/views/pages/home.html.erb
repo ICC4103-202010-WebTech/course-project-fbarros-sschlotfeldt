@@ -16,15 +16,19 @@
         <div class="col-1"></div>
         <div class="col-lg-7">
           <div>
-            <h3><%=link_to v.title, event_path(v.id), style: "text-light"%></h3>
-            <%if v.user.userName == "Null" %>
+            <h3><%=link_to v.e_name, event_path(v.id), style: "text-light"%></h3>
+            <%if v.user_id == nil %>
               <%@p_organizations.each do |w| %>
                 <% if v.organization_id == w.id   %>
-                  <p>Host : <%=link_to w.name, organization_path(w.id)%></p>
+                  <p>Host : <%=link_to w.o_name, organization_path(w.id)%></p>
                 <%end %>
               <%end %>
             <%else %>
-              <p>Host : <%=link_to v.user.userName, profile_page_path(v.id)%></p>
+              <%@p_users.each do |w| %>
+                <% if v.user_id == w.id   %>
+                  <p>Host : <%=link_to w.name, user_path(v.id)%></p>
+                <%end %>
+              <%end %>
             <%end %>
             <div>
               <%if v.event_pic.attached? %>
@@ -33,7 +37,7 @@
                 <%=link_to image_tag("thumbnail.svg", width: "800px", height: "400px", background: "#55595c", color: "#eceeef"), url_for(v) %>
               <%end %>
             </div>
-            <p>Description : <%=v.description%></p>
+            <p>Description : <%=v.e_description%></p>
 
             <h4><%=link_to 'Comments :', comment_path(v.id)%></h4>
             <% @p_comments.each do |x|  %>
