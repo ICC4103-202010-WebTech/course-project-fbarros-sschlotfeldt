@@ -2,12 +2,20 @@
 
 one:
   userName: MyString
+  name: MyString
+  lastName: MyString
+  bio: MyString
+  address: MyString
   email: MyString
   password: MyString
-  adm: false
+  admin: false
 
 two:
   userName: MyString
+  name: MyString
+  lastName: MyString
+  bio: MyString
+  address: MyString
   email: MyString
   password: MyString
-  adm: false
+  admin: false

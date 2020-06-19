@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_235858) do
+ActiveRecord::Schema.define(version: 2020_06_18_233741) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -31,14 +31,6 @@ ActiveRecord::Schema.define(version: 2020_06_03_235858) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-  end
-
-  create_table "attachments", force: :cascade do |t|
-    t.string "attachment"
-    t.integer "comment_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["comment_id"], name: "index_attachments_on_comment_id"
   end
 
   create_table "chats", force: :cascade do |t|
@@ -70,10 +62,10 @@ ActiveRecord::Schema.define(version: 2020_06_03_235858) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string "title"
-    t.integer "user_id", null: false
-    t.integer "organization_id", null: false
-    t.string "description"
+    t.string "e_name"
+    t.integer "user_id"
+    t.integer "organization_id"
+    t.string "e_description"
     t.integer "venue_id", null: false
     t.boolean "visibility"
     t.datetime "created_at", precision: 6, null: false
@@ -109,19 +101,9 @@ ActiveRecord::Schema.define(version: 2020_06_03_235858) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "org_homepages", force: :cascade do |t|
-    t.string "name"
-    t.string "banner"
-    t.string "description"
-    t.integer "organization_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["organization_id"], name: "index_org_homepages_on_organization_id"
-  end
-
   create_table "organization_ms", force: :cascade do |t|
-    t.integer "user_id", null: false
     t.integer "organization_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["organization_id"], name: "index_organization_ms_on_organization_id"
@@ -129,71 +111,57 @@ ActiveRecord::Schema.define(version: 2020_06_03_235858) do
   end
 
   create_table "organizations", force: :cascade do |t|
-    t.string "name"
+    t.string "o_name"
     t.integer "user_id", null: false
+    t.string "o_description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_organizations_on_user_id"
   end
 
-  create_table "profile_pages", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "name"
-    t.string "lastName"
-    t.string "picture"
-    t.string "bio"
-    t.string "address"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_profile_pages_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "userName"
+    t.string "name"
+    t.string "lastName"
+    t.string "bio"
+    t.string "address"
     t.string "email"
     t.string "password"
-    t.boolean "adm"
+    t.boolean "admin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "venues", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.string "address"
+    t.string "v_name"
+    t.string "v_description"
+    t.string "v_address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer "user_id", null: false
     t.integer "event_id", null: false
     t.date "date"
+    t.integer "n_votes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_id"], name: "index_votes_on_event_id"
-    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "attachments", "comments"
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users"
   add_foreign_key "event_ms", "events"
   add_foreign_key "event_ms", "users"
-  add_foreign_key "events", "organizations"
-  add_foreign_key "events", "users"
   add_foreign_key "events", "venues"
   add_foreign_key "inboxes", "users"
   add_foreign_key "invites", "events"
   add_foreign_key "invites", "users"
   add_foreign_key "messages", "chats"
   add_foreign_key "messages", "users"
-  add_foreign_key "org_homepages", "organizations"
   add_foreign_key "organization_ms", "organizations"
   add_foreign_key "organization_ms", "users"
   add_foreign_key "organizations", "users"
-  add_foreign_key "profile_pages", "users"
   add_foreign_key "votes", "events"
-  add_foreign_key "votes", "users"
 end

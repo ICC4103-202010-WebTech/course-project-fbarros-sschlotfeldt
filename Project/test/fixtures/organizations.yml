@@ -1,9 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  o_name: MyString
   user: one
+  o_description: MyString
 
 two:
-  name: MyString
+  o_name: MyString
   user: two
+  o_description: MyString
