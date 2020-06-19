@@ -5,8 +5,8 @@
     <div class="col-3 bg-dark"></div>
     <div class="col-6">
     <div class="user_photo">
-      <%if @organization.org_homepage.flyer.attached? %>
-        <%= link_to image_tag(@organization.org_homepage.flyer, width: "100%", height: "450px"), url_for(@organization)%>
+      <%if @organization.flyer.attached? %>
+        <%= link_to image_tag(@organization.flyer, width: "100%", height: "450px"), url_for(@organization)%>
       <%else %>
         <%=link_to image_tag("thumbnail.svg",  width: "100%", height: "450px", background: "#55595c", color: "#eceeef"), url_for(@organization) %>
       <%end %>
@@ -19,10 +19,10 @@
     <div class="col-3">
       <div class = "user_box">
         <p class = "p_user">
-          <strong><%=@organization.org_homepage.name%></strong>
+          <strong><%=@organization.o_name%></strong>
         </p>
         <p class = "p_user">
-          <strong>Description: </strong><%=@organization.org_homepage.description%>
+          <strong>Description: </strong><%=@organization.o_description%>
         </p>
         <p class = "p_user">
           <strong>Host:</strong> <%=@organization.user.userName%>
@@ -35,7 +35,7 @@
         <%@org_members.each do |om|%>
           <%if om.organization_id == @organization.id%>
             <ul>
-              <li><%=@organization_users.find(om.user_id-1).name %></li>
+              <li><%=@organization_users.find(om.user_id).name %></li>
             </ul>
           <%end%>
         <%end%>
@@ -43,7 +43,7 @@
         <%for oe in @o_events %>
           <%if oe.visibility == true %>
             <ul>
-              <li><%=oe.title %></li>
+              <li><%=oe.e_name %></li>
             </ul>
           <%end %>
         <%end %>

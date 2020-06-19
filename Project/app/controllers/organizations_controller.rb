@@ -11,7 +11,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1
   # GET /organizations/1.json
   def show
-    @organization_users= ProfilePage.all
+    @organization_users= User.all
     @org_members=OrganizationM.all
     @o_events = Event.where("organization_id = ?", params[:id])
   end
@@ -21,8 +21,6 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new
     @organization.user_id = $current_user[0].id
 
-    @org_home = OrgHomepage.new
-    @org_home.organization_id = Organization.order(id: :desc).first
   end
 
   # GET /organizations/1/edit
@@ -77,6 +75,6 @@ class OrganizationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def organization_params
-      params.require(:organization).permit(:name, :user_id, :search, org_homepage_attributes: [:name, :banner, :description, :organization_id])
+      params.require(:organization).permit(:o_name, :user_id, :search, :o_description, :flyer )
     end
 end
