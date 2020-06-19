@@ -8,14 +8,15 @@
 
 
 
-u1 = User.create!(userName: "Fcob95", name: "Francisco", lastName: "Barros", bio: "bio1", address: "Address1", email: "fjbarros1@miuandes.cl", password: "123456", admin: true, )
-u2 = User.create!(userName: "SSch20", name: "Sebastian", lastName: "Schlotfeldt", bio: "bio2", address: "Address2", email: "sscholtfeldt@miuandes.cl", password: "123456", admin: true)
-u3 = User.create!(userName: "Pepito", name: "Pepe", lastName: "Lagos", bio: "bio3", address: "Address3", email: "pepito@gmail.com", password: "123456", admin: true)
-u4 = User.create!(userName: "Marco56", name: "Marcos", lastName: "Mayer", bio: "bio4", address: "Address4", email: "marco@gmail.com", password: "123456", admin: true)
+u1 = User.create!(userName: "Fcob95", name: "Francisco", lastName: "Barros", bio: "bio1", address: "Address1", email: "fjbarros1@miuandes.cl", password: "123456", admin: false, )
+u2 = User.create!(userName: "SSch20", name: "Sebastian", lastName: "Schlotfeldt", bio: "bio2", address: "Address2", email: "sscholtfeldt@miuandes.cl", password: "123456", admin: false)
+u3 = User.create!(userName: "Pepito", name: "Pepe", lastName: "Lagos", bio: "bio3", address: "Address3", email: "pepito@gmail.com", password: "123456", admin: false)
+u4 = User.create!(userName: "Marco56", name: "Marcos", lastName: "Mayer", bio: "bio4", address: "Address4", email: "marco@gmail.com", password: "123456", admin: false)
 u5 = User.create!(userName: "Esteb44", name: "Esteban", lastName: "Soto", bio: "bio5", address: "Address5",  email: "esteban@gmail.com", password: "123456", admin: false)
 u6 = User.create!(userName: "Rosa12",  name: "Rosa", lastName: "Vargas", bio: "bio6", address: "Address6", email: "rosa@gmail.com", password: "123456", admin: false)
 u7 = User.create!(userName: "Maria2222", name: "Maria", lastName: "Vera", bio: "bio7", address: "Address7", email: "maria@gmail.com", password: "123456", admin: false)
 u8 = User.create!(userName: "Trini54", name: "Trini", lastName: "Laso", bio: "bio8", address: "Address8",  email: "trini@gmail.com", password: "123456", admin: false)
+u9 = User.create!(userName: "Admin1", name: "Administrator", lastName: "Master", bio: "Im the administrator boss", address: "Address9",  email: "administrator@gmail.com", password: "123456", admin: true)
 
 
 v1 = Venue.create!(v_name: "Venue1", v_description: "Description1", v_address: "Address1")

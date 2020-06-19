@@ -2,13 +2,6 @@
 
   <%= form_for @comment do |form| %>
 
-    <%if action_name == 'edit' %>
-      <div class="form-group">
-        <%= form.label :Delete %>
-        <%= form.check_box :_destroy, class: "form-control" %>
-      </div>
-    <%end%>
-
     <div class="form-group">
       <%= form.label :atta %>
       <%= form.file_field :atta, class: "form-control" %>
@@ -26,6 +19,7 @@
 
     <div class="form-group mt-2">
       <%= form.submit :Submit, class: ["btn", "btn-primary"] %>
+      <%= link_to "Back", :back, class: ["btn", "btn-primary"] %>
     </div>
   <%end %>
 </div>

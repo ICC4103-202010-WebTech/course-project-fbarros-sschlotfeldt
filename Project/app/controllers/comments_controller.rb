@@ -11,7 +11,6 @@ class CommentsController < ApplicationController
   # GET /comments/1.json
   def show
     @comments = Comment.where(event_id:@comment.event_id)
-    @comment_a = Attachment.all
   end
 
   # GET /comments/new

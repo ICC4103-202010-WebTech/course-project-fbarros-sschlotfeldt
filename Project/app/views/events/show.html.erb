@@ -20,13 +20,13 @@
           <%if v.user_id == nil %>
             <%@event_o.each do |x|%>
               <%if x.id == v.organization_id %>
-                  <p class ="p_user"><strong>Host:  </strong> <%=x.org_homepage.name%><br></p>
+                  <p class ="p_user"><strong>Host:  </strong> <%=x.o_name%><br></p>
               <%end %>
             <%end %>
           <%else %>
-            <%@event_users.each do |x|%>
-              <%if x.id == v.user_id %>
-                <p class ="p_user"><strong>Host:  </strong> <%=x.userName%><br></p>
+            <%@event_users.each do |y|%>
+              <%if y.id == v.user_id %>
+                <p class ="p_user"><strong>Host:  </strong> <%=y.userName%><br></p>
               <%end %>
             <%end %>
           <%end %>
@@ -96,8 +96,12 @@
             <div align="right">
               <tr>
                 <td> <button class="btn btn-light"><%=link_to 'Comments', comment_path(v.id)%></button></td>
+                <%if $current_user[0].id == v.user_id %>
+                <span class="text-dark">You are the Event Host, you cant exit </span>
+                <%else%>
                 <td><button class="btn btn-light"><%=link_to 'Exit event', edit_event_event_m_path(v.id)%></button></td>
                 <td><%@mem.delete(@event_users.find($current_user[0].id).name) %></td>
+                <%end %>
               </tr>
             </div>
           <%else%>
@@ -114,10 +118,10 @@
 
     <%@event.each do |v| %>
     <%if v.user_id == $current_user[0].id %>
-    <div class="row-2">
+    <div class="row">
       <div class="col-3 bg-dark"></div>
       <div class="col-6">
-          <div align="right" >
+          <div align="center" >
             <button class="btn btn-light"><%=link_to 'Invite Users', event_invites_path(v.id)%></button>
           </div>
         </div>
@@ -131,14 +135,16 @@
 
 
 <footer>
-  <div class="row-3">
-    <div align="right">
-      <% if $current_user[0].id == @event[0].user_id %>
-        <button class="btn"><%= link_to 'Edit', edit_event_path(@event.ids) %></button>
+  <div class="row">
+    <div class="col-9"></div>
+    <div class="col-3">
+      <div align="left">
         <button class="btn"><%= link_to 'Back', events_path %></button>
-      <%else%>
-        <button class="btn"><%= link_to 'Back', events_path %></button>
-      <%end%>
-    </div>
+        <% if $current_user[0].id == @event[0].user_id || $current_user[0].admin==true%>
+          <button class="btn"><%= link_to 'Edit', edit_event_path(@event.ids) %></button>
+          <%= link_to 'Delete', @organization, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %>
+        <%end %>
+      </div>
+  </div>
   </div>
 </footer>

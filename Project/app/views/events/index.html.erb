@@ -4,57 +4,112 @@
   <h1 class="text-light">Events</h1>
 </head>
 
-
-<body>
-  <div class="nav justify-content-lg-center">
-    <%=form_tag events_path, :method => "get" do %>
-      <%=text_field_tag :search, params[:search] %>
-      <%= submit_tag("Search", :name => nil ) %>
-    <%end %>
-  </div>
-  <div class ="row m-lg-5 col-lg-11">
-    <table class = "table bg-light">
-      <thead>
-      <tr>
-        <th>Event Name</th>
-        <th>Event Description</th>
-        <th>Event Host</th>
-        <th>Link</th>
-      </tr>
-      </thead>
-      <% @events.each do |event| %>
-        <%if event.user_id == nil %>
-          <%Organization.all.each do |w| %>
-            <% if event.organization_id == w.id   %>
-              <tbody>
-              <tr>
-                <td><%=event.e_name %>
-                <td><%=event.e_description %></td>
-                <td><%=w.o_name%></td>
-                <td><button><%=link_to 'Go to Event', event_path(event.id)%></button></td>
-              </tr>
-              </tbody>
+<%if $current_user[0].admin == true %>
+  <body>
+    <div class="nav justify-content-lg-center">
+      <%=form_tag events_path, :method => "get" do %>
+        <%=text_field_tag :search, params[:search] %>
+        <%= submit_tag("Search", :name => nil ) %>
+      <%end %>
+    </div>
+    <div class ="row m-lg-5 col-lg-11">
+      <table class = "table bg-light">
+        <thead>
+        <tr>
+          <th>Event Name</th>
+          <th>Event Description</th>
+          <th>Event Host</th>
+          <th>Link</th>
+          <th>Delete</th>
+        </tr>
+        </thead>
+        <% @events.each do |event| %>
+          <%if event.user_id == nil %>
+            <%Organization.all.each do |w| %>
+              <% if event.organization_id == w.id   %>
+                <tbody>
+                <tr>
+                  <td><%=event.e_name %>
+                  <td><%=event.e_description %></td>
+                  <td><%=w.o_name%></td>
+                  <td><button><%=link_to 'Go to Event', event_path(event.id)%></button></td>
+                  <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %></td>
+                </tr>
+                </tbody>
+              <%end %>
             <%end %>
-          <%end %>
-        <%else %>
-          <%User.all.each do |w| %>
-            <% if event.user_id == w.id   %>
+          <%else %>
+            <%User.all.each do |w| %>
+              <% if event.user_id == w.id   %>
                 <tbody>
                 <tr>
                   <td><%=event.e_name %>
                   <td><%=event.e_description %></td>
                   <td><%=w.userName%></td>
                   <td><button><%=link_to 'Go to Event', event_path(event.id)%></button></td>
+                  <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %></td>
                 </tr>
+              <%end %>
+            <% end %>
+          <%end %>
+        <% end %>
+        <tfoot>
+        </tfoot>
+      </table>
+    </div>
+  </body>
+<%else%>
+  <body>
+    <div class="nav justify-content-lg-center">
+      <%=form_tag events_path, :method => "get" do %>
+        <%=text_field_tag :search, params[:search] %>
+        <%= submit_tag("Search", :name => nil ) %>
+      <%end %>
+    </div>
+    <div class ="row m-lg-5 col-lg-11">
+      <table class = "table bg-light">
+        <thead>
+        <tr>
+          <th>Event Name</th>
+          <th>Event Description</th>
+          <th>Event Host</th>
+          <th>Link</th>
+        </tr>
+        </thead>
+        <% @events.each do |event| %>
+          <%if event.user_id == nil %>
+            <%Organization.all.each do |w| %>
+              <% if event.organization_id == w.id   %>
+                <tbody>
+                <tr>
+                  <td><%=event.e_name %>
+                  <td><%=event.e_description %></td>
+                  <td><%=w.o_name%></td>
+                  <td><button><%=link_to 'Go to Event', event_path(event.id)%></button></td>
+                </tr>
+                </tbody>
+              <%end %>
             <%end %>
-          <% end %>
-        <%end %>
-      <% end %>
-      <tfoot>
-      </tfoot>
-    </table>
-  </div>
-</body>
+          <%else %>
+            <%User.all.each do |w| %>
+              <% if event.user_id == w.id   %>
+                  <tbody>
+                  <tr>
+                    <td><%=event.e_name %>
+                    <td><%=event.e_description %></td>
+                    <td><%=w.userName%></td>
+                    <td><button><%=link_to 'Go to Event', event_path(event.id)%></button></td>
+                  </tr>
+              <%end %>
+            <% end %>
+          <%end %>
+        <% end %>
+        <tfoot>
+        </tfoot>
+      </table>
+    </div>
+  </body>
+<%end%>
 
 <footer>
   <div class="float-lg-right">
