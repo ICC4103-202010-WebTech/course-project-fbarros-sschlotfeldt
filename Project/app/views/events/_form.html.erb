@@ -6,16 +6,16 @@
     <%= form.file_field :event_pic, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "form-control" %>
+    <%= form.label :Name %>
+    <%= form.text_field :e_name, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :description %>
-    <%= form.text_area :description, class: "form-control" %>
+    <%= form.label :Description %>
+    <%= form.text_area :e_description, class: "form-control" %>
   </div>
     <div class="form-group">
       <%= form.label :venue_id %>
-      <%= form.collection_select(:venue_id, Venue.all.order(name: :asc), :id, :name, {}, { class: "form-control" }) %>
+      <%= form.collection_select(:venue_id, Venue.all.order(v_name: :asc), :id, :v_name, {}, { class: "form-control" }) %>
   <div class="form-group">
     <%= form.label :Public %>
     <%= form.check_box :visibility %>
