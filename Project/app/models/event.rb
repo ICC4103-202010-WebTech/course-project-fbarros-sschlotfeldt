@@ -20,7 +20,13 @@ class Event < ApplicationRecord
 
   def self.search(search)
     if search
-      @events = Event.joins(user: :organization).where("title LIKE ? OR description LIKE ? OR name LIKE ? OR userName LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+      begin
+        @events = Event.joins("LEFT JOIN users ON events.user_id = users.id").where("e_name LIKE ? OR e_description LIKE ? OR userName LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
+      rescue
+        @events = Event.joins("LEFT JOIN organizations ON events.organization_id = organizations.id").where("e_name LIKE ? OR e_description LIKE ? OR o_name LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
+      rescue
+        @events = Event.all
+      end
       if @events
         self.where(id: @events)
       else
