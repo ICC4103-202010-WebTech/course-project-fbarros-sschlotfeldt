@@ -56,7 +56,9 @@
 <footer>
   <div align="center">
     <button class="btn btn-light"><%= link_to 'Back', organizations_path  %></button>
+    <%if @organization.user_id == $current_user[0].id || $current_user[0].admin==true%>
+      <button class="btn btn-light"><%= link_to 'Edit', edit_organization_path  %></button>
+      <%= link_to 'Delete', @organization, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %>
+    <%end %>
   </div>
 </footer>
-
-

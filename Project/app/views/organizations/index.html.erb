@@ -3,8 +3,8 @@
   <title>Organizations</title>
   <h1 class="text-light">Organizations</h1>
 </head>
-
-<body>
+<%if $current_user[0].admin == true %>
+  <body>
   <div class="nav justify-content-lg-center">
     <%=form_tag organizations_path, :method => "get" do %>
       <%=text_field_tag :search, params[:search] %>
@@ -18,23 +18,56 @@
         <th>Organization</th>
         <th>Organization Admin</th>
         <th>Link</th>
+        <th>Delete</th>
       </tr>
       </thead>
       <% @organizations.each do |v| %>
-      <tbody>
-      <tr>
-        <% if v.o_name != "Null" %>
-        <td><%= v.o_name %></td>
-        <td><%= @user.find(v.user.id).userName%></td>
-        <td><button><%=link_to 'Go to Organization', organization_path(v.id)%></button></td>
-      </tr>
-      </tbody>
-        <%end%>
-    <%end%>
+        <tbody>
+        <tr>
+          <% if v.o_name != "Null" %>
+            <td><%= v.o_name %></td>
+            <td><%= @user.find(v.user.id).userName%></td>
+            <td><button><%=link_to 'Go to Organization', organization_path(v.id)%></button></td>
+            <td><%= link_to 'Delete', v, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %></td>
+            </tr>
+            </tbody>
+          <%end%>
+      <%end%>
     </table>
   </div>
-</body>
-
+  </body>
+<%else%>
+  <body>
+    <div class="nav justify-content-lg-center">
+      <%=form_tag organizations_path, :method => "get" do %>
+        <%=text_field_tag :search, params[:search] %>
+        <%= submit_tag("Search", :name => nil ) %>
+      <%end %>
+    </div>
+    <div class ="row m-lg-5 col-lg-11">
+      <table class = "table bg-light">
+        <thead>
+        <tr>
+          <th>Organization</th>
+          <th>Organization Admin</th>
+          <th>Link</th>
+        </tr>
+        </thead>
+        <% @organizations.each do |v| %>
+        <tbody>
+        <tr>
+          <% if v.o_name != "Null" %>
+          <td><%= v.o_name %></td>
+          <td><%= @user.find(v.user.id).userName%></td>
+          <td><button><%=link_to 'Go to Organization', organization_path(v.id)%></button></td>
+        </tr>
+        </tbody>
+          <%end%>
+      <%end%>
+      </table>
+    </div>
+  </body>
+<%end%>
 
 <footer>
   <div class="float-lg-right">
