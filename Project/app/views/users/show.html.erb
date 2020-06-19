@@ -26,10 +26,10 @@
         <strong>Name:  </strong> <%=@user.name%>
       </p>
       <p class ="p_user">
-        <strong>Biography:  </strong> <%=@user.bio%>
+        <strong>Last Name:  </strong> <%=@user.lastName%>
       </p>
       <p class ="p_user">
-        <strong>Last Name:  </strong> <%=@user.lastName%>
+        <strong>Biography:  </strong> <%=@user.bio%>
       </p>
       <p class ="p_user">
         <strong>Mail: </strong>  <%=@user.email%>
@@ -37,9 +37,7 @@
       <p class ="p_user">
         <strong>Address: </strong>  <%=@user.address%>
       </p>
-      <p class ="p_user">
-        <strong>Administrator: </strong> <%=@user.admin%>
-      </p>
+
       <%for uo in @user_o %>
         <% if uo.user_id == $current_user[0].id %>
           <p class ="p_user"><strong>My Organization: </strong> <%=link_to uo.o_name, organization_path(uo.id)%> </p>
@@ -94,12 +92,18 @@
 
       </div>
     </div>
+    <div class ="col-3 bg-dark"></div>
   </div>
   </body>
 
   <footer>
-    <div align="right">
-      <button class="btn btn-light"><%= link_to 'Edit', edit_user_path(params[:id])  %></button>
+    <div class="row">
+      <div class="col-9"></div>
+      <div class="col-3" >
+        <div align="left" >
+          <button class="btn btn-light"><%= link_to 'Edit', edit_user_path(params[:id])  %></button>
+        </div>
+      </div>
     </div>
   </footer>
 <%else%>
@@ -145,9 +149,12 @@
   </body>
 
   <footer>
-    <div class="row-2">
-      <div class="float-lg-right">
-        <button class="btn"><%= link_to 'Back', users_path %></button>
+    <div class="row">
+      <div class="col-9"></div>
+      <div class="col-3" >
+        <div align="left" >
+          <button class="btn"><%= link_to 'Back', users_path %></button>
+        </div>
       </div>
     </div>
   </footer>
