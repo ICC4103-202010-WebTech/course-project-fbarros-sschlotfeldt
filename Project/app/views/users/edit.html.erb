@@ -1,6 +1,21 @@
-<h1>Editing User</h1>
+<head>
+  <title>Edit</title>
+  <h1>Editing Profile Page</h1>
+</head>
 
-<%= render 'form', user: @user %>
+<body>
+<div class = user_container>
+  <p div="user_photo">
+    <%if @user.user_pic.attached? %>
+      <%=image_tag(@user.user_pic, width: "30%", height: "40%")%>
+    <%else %>
+      <%=image_tag("thumbnail.svg", width: "30%", height: "40%", background: "#55595c", color: "#eceeef")%>
+    <%end %>
+  </p>
+  <%= render 'form' %>
+</div>
+</div>
+</body>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<footer>
+</footer>
