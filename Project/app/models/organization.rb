@@ -20,4 +20,3 @@ class Organization < ApplicationRecord
     end
   end
 end
-

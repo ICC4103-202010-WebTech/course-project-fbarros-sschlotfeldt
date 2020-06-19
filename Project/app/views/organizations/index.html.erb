@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 <head>
   <title>Organizations</title>
@@ -38,34 +39,34 @@
   </body>
 <%else%>
   <body>
-    <div class="nav justify-content-lg-center">
-      <%=form_tag organizations_path, :method => "get" do %>
-        <%=text_field_tag :search, params[:search] %>
-        <%= submit_tag("Search", :name => nil ) %>
-      <%end %>
-    </div>
-    <div class ="row m-lg-5 col-lg-11">
-      <table class = "table bg-light">
-        <thead>
-        <tr>
-          <th>Organization</th>
-          <th>Organization Admin</th>
-          <th>Link</th>
-        </tr>
-        </thead>
-        <% @organizations.each do |v| %>
+  <div class="nav justify-content-lg-center">
+    <%=form_tag organizations_path, :method => "get" do %>
+      <%=text_field_tag :search, params[:search] %>
+      <%= submit_tag("Search", :name => nil ) %>
+    <%end %>
+  </div>
+  <div class ="row m-lg-5 col-lg-11">
+    <table class = "table bg-light">
+      <thead>
+      <tr>
+        <th>Organization</th>
+        <th>Organization Admin</th>
+        <th>Link</th>
+      </tr>
+      </thead>
+      <% @organizations.each do |v| %>
         <tbody>
         <tr>
           <% if v.o_name != "Null" %>
-          <td><%= v.o_name %></td>
-          <td><%= @user.find(v.user.id).userName%></td>
-          <td><button><%=link_to 'Go to Organization', organization_path(v.id)%></button></td>
-        </tr>
-        </tbody>
+            <td><%= v.o_name %></td>
+            <td><%= @user.find(v.user.id).userName%></td>
+            <td><button><%=link_to 'Go to Organization', organization_path(v.id)%></button></td>
+            </tr>
+            </tbody>
           <%end%>
       <%end%>
-      </table>
-    </div>
+    </table>
+  </div>
   </body>
 <%end%>
 

@@ -1,9 +1,10 @@
+
 <p id="notice"><%= notice %></p>
 
 <body>
-  <div class = row>
-    <div class="col-3 bg-dark"></div>
-    <div class="col-6">
+<div class = row>
+  <div class="col-3 bg-dark"></div>
+  <div class="col-6">
     <div class="user_photo">
       <%if @organization.flyer.attached? %>
         <%= link_to image_tag(@organization.flyer, width: "100%", height: "450px"), url_for(@organization)%>
@@ -11,46 +12,46 @@
         <%=link_to image_tag("thumbnail.svg",  width: "100%", height: "450px", background: "#55595c", color: "#eceeef"), url_for(@organization) %>
       <%end %>
     </div>
-    </div>
-    <div class="col-3 bg-dark"></div>
   </div>
-  <div class="row">
-    <div class="col-3 bg-dark"></div>
-    <div class="col-3">
-      <div class = "user_box">
-        <p class = "p_user">
-          <strong><%=@organization.o_name%></strong>
-        </p>
-        <p class = "p_user">
-          <strong>Description: </strong><%=@organization.o_description%>
-        </p>
-        <p class = "p_user">
-          <strong>Host:</strong> <%=@organization.user.userName%>
-        </p>
-      </div>
+  <div class="col-3 bg-dark"></div>
+</div>
+<div class="row">
+  <div class="col-3 bg-dark"></div>
+  <div class="col-3">
+    <div class = "user_box">
+      <p class = "p_user">
+        <strong><%=@organization.o_name%></strong>
+      </p>
+      <p class = "p_user">
+        <strong>Description: </strong><%=@organization.o_description%>
+      </p>
+      <p class = "p_user">
+        <strong>Host:</strong> <%=@organization.user.userName%>
+      </p>
     </div>
-    <div class="col-3">
-      <div>
-        <h2>Organization Members : </h2>
-        <%@org_members.each do |om|%>
-          <%if om.organization_id == @organization.id%>
-            <ul>
-              <li><%=@organization_users.find(om.user_id).name %></li>
-            </ul>
-          <%end%>
+  </div>
+  <div class="col-3">
+    <div>
+      <h2>Organization Members : </h2>
+      <%@org_members.each do |om|%>
+        <%if om.organization_id == @organization.id%>
+          <ul>
+            <li><%=@organization_users.find(om.user_id).name %></li>
+          </ul>
         <%end%>
-        <h2>Public Events: </h2>
-        <%for oe in @o_events %>
-          <%if oe.visibility == true %>
-            <ul>
-              <li><%=oe.e_name %></li>
-            </ul>
-          <%end %>
+      <%end%>
+      <h2>Public Events: </h2>
+      <%for oe in @o_events %>
+        <%if oe.visibility == true %>
+          <ul>
+            <li><%=oe.e_name %></li>
+          </ul>
         <%end %>
-      </div>
+      <%end %>
     </div>
-    <div class="col-3 bg-dark"></div>
   </div>
+  <div class="col-3 bg-dark"></div>
+</div>
 </body>
 
 <footer>
