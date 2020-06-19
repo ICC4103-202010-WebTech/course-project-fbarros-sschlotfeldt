@@ -17,17 +17,21 @@
         <div class = user_box >
 
           <p class ="p_user"><strong>Name:  </strong> <%=v.e_name%><br></p>
-          <%if v.user.userName == nil %>
+          <%if v.user_id == nil %>
             <%@event_o.each do |x|%>
               <%if x.id == v.organization_id %>
                   <p class ="p_user"><strong>Host:  </strong> <%=x.org_homepage.name%><br></p>
               <%end %>
             <%end %>
           <%else %>
-              <p class ="p_user"><strong>Host:  </strong> <%=v.user.userName%><br></p>
+            <%@event_users.each do |x|%>
+              <%if x.id == v.user_id %>
+                <p class ="p_user"><strong>Host:  </strong> <%=x.userName%><br></p>
+              <%end %>
+            <%end %>
           <%end %>
-          <p class ="p_user"><strong>Venue:  </strong> <%=@event_v.find(v.venue_id).name%></p>
-          <p class ="p_user"><strong>Description:  </strong>  <%=v.description%><br></p>
+          <p class ="p_user"><strong>Venue:  </strong> <%=@event_v.find(v.venue_id).v_name%></p>
+          <p class ="p_user"><strong>Description:  </strong>  <%=v.e_description%><br></p>
           <p class ="p_user"><strong>Creation Date:  </strong> <%=v.created_at%></p>
           <p class ="p_user"><strong>Public:  </strong> <%=v.visibility%></p>
         </div>
@@ -48,11 +52,11 @@
           <%@event_members.each do |em|%>
             <%if em.event_id == v.id%>
               <ul>
-                <%if @mem.include? @event_users.find(em.user_id-1).name%>
+                <%if @mem.include? @event_users.find(em.user_id).name%>
                   <%flash[:alert]= 'Ya fue Agregado al Evento'%>
                 <%else %>
-                  <%=@event_users.find(em.user_id-1).name %>
-                  <%@mem<<@event_users.find(em.user_id-1).name %>
+                  <%=@event_users.find(em.user_id).name %>
+                  <%@mem<<@event_users.find(em.user_id).name %>
                 <%end%>
               </ul>
             <%end%>
@@ -88,12 +92,12 @@
           </div>
 
         </div >
-          <%if @mem.include? @event_users.find($current_user[0].id-1).name%>
+          <%if @mem.include? @event_users.find($current_user[0].id).name%>
             <div align="right">
               <tr>
                 <td> <button class="btn btn-light"><%=link_to 'Comments', comment_path(v.id)%></button></td>
                 <td><button class="btn btn-light"><%=link_to 'Exit event', edit_event_event_m_path(v.id)%></button></td>
-                <td><%@mem.delete(@event_users.find($current_user[0].id-1).name) %></td>
+                <td><%@mem.delete(@event_users.find($current_user[0].id).name) %></td>
               </tr>
             </div>
           <%else%>
