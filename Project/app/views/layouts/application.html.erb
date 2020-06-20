@@ -13,9 +13,11 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+
       <li class="nav-item ">
         <a class="btn" ><%=link_to "Events", :events%></a>
       </li>
+
       <li class="nav-item">
         <a class="btn"  ><%=link_to "People", :users%></a>
       </li>
@@ -23,6 +25,11 @@
       <li class="nav-item">
         <a class="btn" ><%=link_to "Organizations", organizations_path%></a>
       </li>
+
+      <li class="nav-item">
+        <a class="btn" ><%=link_to "Inbox", inbox_path($current_user[0].id)%></a>
+      </li>
+
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <a class="btn mr-sm-2"><%=link_to "Profile", user_path($current_user[0].id)%></a>

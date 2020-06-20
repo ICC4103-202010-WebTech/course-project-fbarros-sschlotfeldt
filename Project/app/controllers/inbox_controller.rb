@@ -10,10 +10,10 @@ class InboxController < ApplicationController
   # GET /inbox/1
   # GET /inbox/1.json
   def show
-    @i_chat1 = Chat.where(inbox1_id:params[:id]).select("id")
-    @i_chat2 = Chat.where(inbox2_id:params[:id]).select("id")
-    @inbox = Inbox.find(params[:id])
-    @i_message = Message.all
+    @inbox_c = Chat.where("inbox1_id = ? OR inbox2_id = ?", params[:id], params[:id])
+    @inbox_msg = Message.where(chat_id:@inbox_c.ids)
+    @inbox_u = User.all
+    @inbox = Inbox.find($current_user[0].id)
   end
 
   # GET /inbox/new
