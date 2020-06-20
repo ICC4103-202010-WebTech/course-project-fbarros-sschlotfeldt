@@ -1,20 +1,49 @@
 <p id="notice"><%= notice %></p>
+<head>
+  <title>Inbox</title>
+</head>
 
-<div class="row ml-0 mt-3">
-  <h2>Inbox</h2>
-</div>
-
-<% for c in @inbox_msg%>
-  <%for u in @inbox_u %>
-    <%if c.user_id == u.id %>
-      <%if u.id == current_user.id %>
-      <%else %>
-        <%=link_to u.userName, chat_path(c.chat_id) %>
+<body>
+  <div>
+    <h2>See your Chats with</h2>
+  </div>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <% for c in @inbox_msg%>
+        <%for u in @inbox_u %>
+          <%if c.user_id == u.id %>
+            <%if u.id == current_user.id %>
+            <%else %>
+              <table class = "table bg-light">
+                <thead>
+                  <tr>
+                    <th>Chats</th>
+                    <th>Last Message</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><%=link_to u.userName, chat_path(c.chat_id), class: ["btn", "btn-light"]%></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            <%end %>
+          <%end %>
+        <%end %>
       <%end %>
-    <%end %>
-  <%end %>
-<%end %>
+    </div>
+  </div>
+</body>
 
-
-<%= link_to 'Edit', edit_inbox_path(@inbox) %> |
-<%= link_to 'Back', inbox_path %>
+<footer>
+  <div class="row">
+    <div class="col-9"></div>
+      <div class="col-3">
+        <div align="left">
+          <%= link_to 'Back', root_path, class: ["btn", "btn-primary"] %>
+        </div>
+      </div>
+  </div>
+</footer>

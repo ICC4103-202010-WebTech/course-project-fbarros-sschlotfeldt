@@ -38,34 +38,37 @@
         <strong>Address: </strong>  <%=@user.address%>
       </p>
 
-      <%for uo in @user_o %>
-        <% if uo.user_id == current_user.id %>
-          <p class ="p_user"><strong>My Organization: </strong> <%=link_to uo.o_name, organization_path(uo.id)%> </p>
-        <%else %>
+      <div class ="p_user"><strong>My Organizations: </strong></div><br>
+        <%for uo in @user_o %>
+          <% if uo.user_id == current_user.id %>
+            <p><%=link_to uo.o_name, organization_path(uo.id), class: ["btn", "btn-light"] %></p>
+          <%else %>
+          <%end %>
         <%end %>
-      <%end %>
+
     </div>
     <div class="col-3">
       <h3>Your Events</h3>
       <%for e in @user_events %>
-        <ul>
-          <li>
-            <%=link_to e.e_name, event_path(e.id) %><br>
-          </li>
-        </ul>
+
+          <a>
+            <%=link_to e.e_name, event_path(e.id), class: ["btn", "btn-light"] %><br>
+          </a>
+
       <%end %>
       <br>
       <h3>Assisting to</h3>
       <% @assis=[]%>
       <%for a in @assisting_events %>
-        <ul>
           <%if @assis.include? a.event.e_name %>
           <%else %>
-            <li><%=link_to a.event.e_name, event_path(a.id) %></li>
+            <a><%=link_to a.event.e_name, event_path(a.id), class: ["btn", "btn-light"]  %></a>
             <%@assis<<a.event.e_name %>
           <%end %>
-        </ul>
+
       <%end %>
+      <h4>Change Password</h4>
+      <%= link_to "Change your password", edit_user_registration_path, class: ["btn", "btn-primary"]  %>
     </div>
     <div class ="col-3 bg-dark"></div>
   </div>
