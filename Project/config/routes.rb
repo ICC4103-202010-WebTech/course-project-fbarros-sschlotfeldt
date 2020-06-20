@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     resources :event
   end
 
+  post 'events/start_vote'
+  post 'events/end_vote'
+
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :venues

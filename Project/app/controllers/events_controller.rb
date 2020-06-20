@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :photos, :videos, :files]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :photos, :videos, :files, :start_vote, :end_vote]
   before_action :authenticate_user!
   # GET /events
   # GET /events.json
@@ -85,6 +85,20 @@ class EventsController < ApplicationController
     end
   end
 
+  def start_date
+    $cureent_event.start_date
+  end
+
+  def start_vote
+    $cureent_event.update(start_vote: 1)
+    redirect_to events_url
+  end
+
+  def end_vote
+    $cureent_event.update(start_vote: 0)
+    redirect_to events_url
+  end
+
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
@@ -98,7 +112,6 @@ class EventsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = Event.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
