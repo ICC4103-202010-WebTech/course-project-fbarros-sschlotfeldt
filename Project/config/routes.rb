@@ -20,6 +20,7 @@ Rails.application.routes.draw do
         resources :comments
         resources :event_ms
         resources :venues
+        resources :votes
       end
       resources :users do
         resources :organizations

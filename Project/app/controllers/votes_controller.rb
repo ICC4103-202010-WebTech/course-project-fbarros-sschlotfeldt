@@ -10,6 +10,7 @@ class VotesController < ApplicationController
   # GET /votes/1
   # GET /votes/1.json
   def show
+    @votes = Vote.where(event_id:params[:id])
   end
 
   # GET /votes/new
@@ -27,7 +28,6 @@ class VotesController < ApplicationController
   # POST /votes
   # POST /votes.json
   def create
-    begin
       @vote = Vote.new(vote_params)
 
       respond_to do |format|
@@ -39,18 +39,14 @@ class VotesController < ApplicationController
           format.json { render json: @vote.errors, status: :unprocessable_entity }
         end
       end
-    rescue
-      flash[:alert] = "This operation could not be executed"
-      redirect_back(fallback_location: root_path)
-    end
   end
 
   # PATCH/PUT /votes/1
   # PATCH/PUT /votes/1.json
   def update
     respond_to do |format|
-      if @vote.update(vote_params)
-        format.html { redirect_to @vote, notice: 'Vote was successfully updated.' }
+      if @vote.update(n_votes: @vote.n_votes + 1)
+        format.html { redirect_to event_path($cureent_event.id), notice: 'Vote was successfully submitted' }
         format.json { render :show, status: :ok, location: @vote }
       else
         format.html { render :edit }

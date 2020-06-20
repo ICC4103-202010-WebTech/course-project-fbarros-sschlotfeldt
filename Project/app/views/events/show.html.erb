@@ -36,16 +36,16 @@
           <p class ="p_user"><strong>Public:  </strong> <%=v.visibility%></p>
         </div>
 
-            <%=form_tag votes_path %>
         <table><h2>Choose your available dates!:</h2>
                 <%for vo in @votes %>
                   <tr>
-                    <td><%= check_box("date_selected", "$dates_selected[]", {multiple:true}, vo.date) %></td>
-                    <td><%=vo.date%></td>
+                    <td>
+                      <%=vo.date%>
+                     (<%=vo.n_votes %>)
+                    </td>
                   </tr>
                 <%end %>
-            </table><br>
-             <%=submit_tag "Im on!" %>
+          <%= link_to "Go Vote" , vote_path(params[:id]) %>            </table><br>
         <br>
         <div>
           <h2>Event Members : </h2>
@@ -93,11 +93,13 @@
 
         </div >
           <%if @mem.include? @event_users.find($current_user[0].id).name%>
-            <div align="right">
+            <div align="center">
               <tr>
                 <td> <button class="btn btn-light"><%=link_to 'Comments', comment_path(v.id)%></button></td>
-                <%if $current_user[0].id == v.user_id %>
-                <span class="text-dark">You are the Event Host, you cant exit </span>
+                <%if $current_user[0].id == v.user_id %><br>
+                  <div align="right">
+                <span class="text-dark" >You are the Event Host, you cant exit </span>
+                  </div>
                 <%else%>
                 <td><button class="btn btn-light"><%=link_to 'Exit event', edit_event_event_m_path(v.id)%></button></td>
                 <td><%@mem.delete(@event_users.find($current_user[0].id).name) %></td>

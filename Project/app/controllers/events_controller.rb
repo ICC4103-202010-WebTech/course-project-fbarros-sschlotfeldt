@@ -38,7 +38,7 @@ class EventsController < ApplicationController
     @event = Event.where(id:params[:id])
     @event_o = Organization.all
     @event_v = Venue.all
-    @votes = Vote.where(event_id:params[:id]).select("date").distinct
+    @votes = Vote.where(event_id:params[:id])
     $cureent_event=Event.find(params[:id])
   end
 

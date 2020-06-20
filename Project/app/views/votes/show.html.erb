@@ -1,4 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_vote_path(@vote) %> |
-<%= link_to 'Back', votes_path %>
+<table><h2>Choose your available dates!:</h2>
+  <%for vo in @votes %>
+    <tr>
+      <td>
+        <%=vo.date%>
+        (<%=vo.n_votes %>)
+        <%= link_to 'Vote', edit_vote_path(vo.id) %> |
+      </td>
+    </tr>
+  <%end %>
+<br>
+
+<%= link_to 'Back', event_path($cureent_event.id) %>

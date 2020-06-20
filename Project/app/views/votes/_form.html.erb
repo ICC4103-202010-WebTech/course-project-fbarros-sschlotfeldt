@@ -1,25 +1,6 @@
 
 <%= form_for @vote do |form| %>
 
-  <div>
-    <%=hidden_field_tag :user_id, $current_user[0].id%>
-    <%=hidden_field_tag :event_id, params[:id] %>
-  </div>
-
- <!-- <% #if vote.errors.any? %>
-
-    <div id="error_explanation">
-      <h2><%= #pluralize(vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
-
-      <ul>
-        <% #vote.errors.full_messages.each do |message| %>
-          <li><%=# message %></li>
-        <%# end %>
-      </ul>
-    </div>
-  <% #end %>
-
-  <div class="actions">
     <%= form.submit :Submit, class: ["btn", "btn-primary"] %>
-  </div>
+
 <% end %>
