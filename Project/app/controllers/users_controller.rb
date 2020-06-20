@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /users
   # GET /users.json
@@ -10,12 +11,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find((params[:id]))
     @user_o = Organization.all
-
     @user_events = Event.where("user_id = ?", @user.id)
-    @assisting_events = EventM.joins(:event).where(user_id: $current_user[0].id)
-    @pi= Invite.where(user_id: $current_user[0].id)
+    @assisting_events = EventM.joins(:event).where(user_id: current_user.id)
+    @pi= Invite.where(user_id: current_user.id)
     @event_members= EventM.all
   end
 
@@ -71,11 +70,11 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find((params[:id]))
     end
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.fetch(:user, {}).permit(:userName, :email, :password, :adm, :user_pic)
+      params.fetch(:user, {}).permit(:userName,:name, :lastName, :bio, :address,  :email, :password, :adm, :user_pic)
     end
 end

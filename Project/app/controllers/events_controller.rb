@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy, :photos, :videos, :files]
+  before_action :authenticate_user!
   # GET /events
   # GET /events.json
   #
@@ -45,7 +46,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    @event.user_id = $current_user[0].id
+    @event.user_id = current_user.id
     @event.organization_id = Organization.find(1).id
     @venues = Venue.all
   end

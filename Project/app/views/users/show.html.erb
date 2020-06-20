@@ -4,7 +4,7 @@
   <title>Profile</title>
 </head>
 
-<%if @user.id == $current_user[0].id%>
+<%if @user.id == current_user.id%>
   <body>
   <div class = "row">
     <div class ="col-3 bg-dark"></div>
@@ -39,7 +39,7 @@
       </p>
 
       <%for uo in @user_o %>
-        <% if uo.user_id == $current_user[0].id %>
+        <% if uo.user_id == current_user.id %>
           <p class ="p_user"><strong>My Organization: </strong> <%=link_to uo.o_name, organization_path(uo.id)%> </p>
         <%else %>
         <%end %>
@@ -76,7 +76,7 @@
         <h3>Pending Invites</h3>
 
         <%@como_querai = [] %>
-        <% for id in EventM.where("user_id = ?", $current_user[0].id) %>
+        <% for id in EventM.where("user_id = ?", current_user.id ) %>
           <%@como_querai<<id.event_id %>
         <%end %>
 

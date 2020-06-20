@@ -7,7 +7,8 @@
 </head>
 
 <body>
-  <% @p_events.each do|v| %>
+  <% @p_events.each do|v,y| %>
+    <%y=0 %>
     <div>
       <div class="row">
         <div class="col-2">
@@ -41,13 +42,18 @@
 
             <h4><%=link_to 'Comments :', comment_path(v.id)%></h4>
             <% @p_comments.each do |x|  %>
-              <% if v.id == x.event_id   %>
-                <table>
-                  <tr>
-                    <td><p class="comment"><%= x.user.userName %>: <%= x.text %></p></td>
-                  </tr>
-                </table>
-              <% end %>
+              <%if y < 5 %>
+                <% if v.id == x.event_id   %>
+                  <table>
+                    <tr>
+                      <td><p class="comment"><%= x.user.userName %>: <%= x.text %></p></td>
+                    </tr>
+                  </table>
+                  <%y+=1 %>
+                <% end %>
+              <%else %>
+              <%break %>
+              <%end%>
             <% end %>
           </div>
         </div>

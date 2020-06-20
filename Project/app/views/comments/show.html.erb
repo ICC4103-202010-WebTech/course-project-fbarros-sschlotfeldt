@@ -7,8 +7,8 @@
     <span class ="box">
       <h3 align="left" ><%=@comment.event.e_name %></h3>
           <%for v in @comments do %>
-            <%if $current_user[0].id == v.user_id|| $current_user[0].admin==true%>
-              <span class ="text-left"> <%=v.user.userName%>: <%=v.text%></span> <span><%=link_to 'Edit', edit_comment_path(v) %></span>&nbsp<span><%= link_to 'Delete', v, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+            <%if current_user.id == v.user_id|| current_user.admin==true%>
+              <span class ="text-left"> <%=v.user.userName%>: <%=v.text%></span> <span><%=link_to 'Edit', edit_comment_path(v) %></span>&nbsp<span><%= link_to 'Delete', v, method: :delete, data: { confirm: 'Are you sure?' }%></span>
               <br>
               <%if v.atta.attached? %>
                 <div><%= link_to image_tag(v.atta, width: "40%", height: "30%"), url_for(v)%></div>

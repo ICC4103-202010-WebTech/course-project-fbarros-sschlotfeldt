@@ -7,7 +7,7 @@
 <% for c in @inbox_msg%>
   <%for u in @inbox_u %>
     <%if c.user_id == u.id %>
-      <%if u.id == $current_user[0].id %>
+      <%if u.id == current_user.id %>
       <%else %>
         <%=link_to u.userName, chat_path(c.chat_id) %>
       <%end %>

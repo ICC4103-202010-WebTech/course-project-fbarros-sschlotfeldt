@@ -15,7 +15,7 @@ class EventMsController < ApplicationController
   # GET /event_ms/new
   def new
     @event_m = EventM.new
-    @event_m.user_id = $current_user[0].id
+    @event_m.user_id = current_user.id
     @event =Event.find(params[:event_id])
     @event_m.event_id = @event.id
   end

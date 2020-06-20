@@ -1,5 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /organizations
   # GET /organizations.json
@@ -19,7 +20,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/new
   def new
     @organization = Organization.new
-    @organization.user_id = $current_user[0].id
+    @organization.user_id = current_user.id
 
   end
 

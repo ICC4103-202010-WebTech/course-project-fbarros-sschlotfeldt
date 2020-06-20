@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /comments
   # GET /comments.json
@@ -16,7 +17,7 @@ class CommentsController < ApplicationController
   # GET /comments/new
   def new
     @comment = Comment.new
-    @comment.user_id = $current_user[0].id
+    @comment.user_id = current_user.id
     @event = Event.find(params[:event_id])
     @comment.event_id = @event.id
   end
@@ -65,7 +66,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

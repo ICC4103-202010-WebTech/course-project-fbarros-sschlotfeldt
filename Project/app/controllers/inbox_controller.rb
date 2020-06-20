@@ -13,7 +13,7 @@ class InboxController < ApplicationController
     @inbox_c = Chat.where("inbox1_id = ? OR inbox2_id = ?", params[:id], params[:id])
     @inbox_msg = Message.where(chat_id:@inbox_c.ids)
     @inbox_u = User.all
-    @inbox = Inbox.find($current_user[0].id)
+    @inbox = Inbox.find(current_user.id)
   end
 
   # GET /inbox/new

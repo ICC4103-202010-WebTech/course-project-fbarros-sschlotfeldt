@@ -4,7 +4,7 @@
   <h1 class="text-light">Events</h1>
 </head>
 
-<%if $current_user[0].admin == true %>
+<%if current_user.admin == true %>
   <body>
     <div class="nav justify-content-lg-center">
       <%=form_tag events_path, :method => "get" do %>
