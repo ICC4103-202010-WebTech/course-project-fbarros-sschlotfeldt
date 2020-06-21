@@ -20,8 +20,14 @@
           <%else%>
             <td><%=@user_for_invite.find(x.id).userName %></td>
             <%@mem<< x.id %>
-            <td><button class="btn btn-outline-primary"><%=link_to( "Invite", { controller: "invites", action: "new" }) %></button></td>
-          <%end%>
+
+            <td><%=form_with model: @invite, local: true do |f| %></td>
+                <td><%=f.hidden_field :user_id, :value => x.id %></td>
+                <td><%=f.hidden_field :event_id, :value => $cureent_event.id %></td>
+                <td><%=f.submit :Invite, class: ["btn", "btn-primary"]%></td>
+            <%end%>
+
+        <%end%>
         </tr>
         </tbody>
 

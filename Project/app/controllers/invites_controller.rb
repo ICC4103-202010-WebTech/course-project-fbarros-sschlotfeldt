@@ -9,6 +9,11 @@ class InvitesController < ApplicationController
     @event_members = EventM.where(event_id: params[:event_id])
   end
 
+  def invite
+    @invite = Invite.create!(invite_params)
+    redirect_to event_path($cureent_event.id), notice: User.where(id:@invite.user_id).select('userName') + ' was successfully invited.'
+  end
+
   # GET /invites/1
   # GET /invites/1.json
   def show
@@ -26,22 +31,8 @@ class InvitesController < ApplicationController
   # POST /invites
   # POST /invites.json
   def create
-    begin
-      @invite = Invite.new(invite_params)
-
-      respond_to do |format|
-        if @invite.save
-          format.html { redirect_to @invite, notice: 'Invite was successfully created.' }
-          format.json { render :show, status: :created, location: @invite }
-        else
-          format.html { render :new }
-          format.json { render json: @invite.errors, status: :unprocessable_entity }
-        end
-      end
-    rescue
-      flash[:alert] = "This operation could not be executed"
-      redirect_back(fallback_location: root_path)
-    end
+    @invite = Invite.create!(user_id:params[:user_id], event_id:params[:event_id])
+    redirect_to event_path($cureent_event.id), notice: User.where(id:@invite.user_id).select('userName').to_s + ' was successfully invited.'
   end
 
   # PATCH/PUT /invites/1

@@ -85,10 +85,6 @@ class EventsController < ApplicationController
     end
   end
 
-  def start_date
-    $cureent_event.start_date
-  end
-
   def start_vote
     $cureent_event.update(start_vote: 1)
     redirect_to events_url
