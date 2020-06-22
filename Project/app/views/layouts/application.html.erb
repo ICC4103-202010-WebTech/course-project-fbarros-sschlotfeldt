@@ -15,34 +15,40 @@
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item ">
-        <a class="btn" ><%=link_to "Events", :events%></a>
+        <a class="btn" ><%=link_to "Events", :events, class: ["btn","btn-secondary"]%></a>
       </li>
 
       <li class="nav-item">
-        <a class="btn"  ><%=link_to "People", :users%></a>
+        <a class="btn"  ><%=link_to "People", :users, class: ["btn","btn-secondary"]%></a>
       </li>
 
       <li class="nav-item">
-        <a class="btn" ><%=link_to "Organizations", organizations_path%></a>
+        <a class="btn" ><%=link_to "Organizations", organizations_path, class: ["btn","btn-secondary"]%></a>
       </li>
       <%if current_user %>
         <li class="nav-item">
-          <a class="btn" ><%=link_to "Inbox", inbox_path(current_user.id)%></a>
+          <a class="btn" ><%=link_to "Inbox", inbox_path(current_user.id), class: ["btn","btn-secondary"]%></a>
         </li>
       <%end%>
 
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <%if current_user %>
-        <a class="btn mr-sm-2"><%=link_to "Profile", user_path(current_user.id)%></a>
+        <a class="btn mr-sm-2"><%=link_to "Profile", user_path(current_user.id), class: ["btn","btn-secondary"]%></a>
       <%end %>
       <span class="d-inline ml-3">
         <%if current_user %>
-          <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+          <%= link_to "Sign Out", destroy_user_session_path, class: ["btn","btn-primary"], method: :delete %>
         <%else %>
-          <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
-          <%= link_to "Sign Up", new_user_registration_path %>
-          <%= link_to "Sign In", new_user_session_path, method: :delete %>
+          <div>
+            <button class="btn btn-orange" style="background-color: orange">
+             <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: ["btn","text-white"] %>
+            </button>&nbsp
+            <%= link_to "Sign Up", new_user_registration_path, class: ["btn","btn-primary"] %>&nbsp
+            <%= link_to "Sign In", new_user_session_path, class: ["btn","btn-primary"] %>
+
+          </div>
+
         <%end %>
       </span>
     </form>
