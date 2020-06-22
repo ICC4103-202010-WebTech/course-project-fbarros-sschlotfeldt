@@ -32,7 +32,7 @@ class InvitesController < ApplicationController
   # POST /invites.json
   def create
     @invite = Invite.create!(user_id:params[:user_id], event_id:params[:event_id])
-    redirect_to event_path($cureent_event.id), notice: User.where(id:@invite.user_id).select('userName').to_s + ' was successfully invited.'
+    redirect_to event_path($cureent_event.id), notice: User.where(id:@invite.user_id).select('userName').userName + ' was successfully invited.'
   end
 
   # PATCH/PUT /invites/1

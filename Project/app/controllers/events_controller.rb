@@ -87,12 +87,12 @@ class EventsController < ApplicationController
 
   def start_vote
     $cureent_event.update(start_vote: 1)
-    redirect_to events_url
+    redirect_to event_path($cureent_event.id)
   end
 
   def end_vote
     $cureent_event.update(start_vote: 0)
-    redirect_to events_url
+    redirect_to event_path($cureent_event.id)
   end
 
   # DELETE /events/1

@@ -14,6 +14,16 @@
         <%else %>
           <%=link_to image_tag("thumbnail.svg", width: "100%", height: "450px", background: "#55595c", color: "#eceeef"), url_for(v) %>
         <%end %>
+
+        <%@winner=Vote.where(event_id:$cureent_event.id).order(n_votes: :desc).select('date').first.date%>
+        <%@winner_v=Vote.where(event_id:$cureent_event.id).order(n_votes: :desc).select('n_votes').first%>
+
+        <%if @winner_v.n_votes==0 %>
+          <p align='center'>There is no defined date just yet</p>
+        <%else %>
+          <p align='center'>The event will be on <%=Vote.all.order(n_votes: :desc).select('date').first.date%> with a total of <%=Vote.all.order(n_votes: :desc).select('n_votes').first.n_votes%> vote(s)</p>
+        <%end %>
+
         <div class = user_box >
 
           <p class ="p_user"><strong>Name:  </strong> <%=v.e_name%><br></p>
@@ -63,6 +73,7 @@
             <%= button_to 'End Vote', events_end_vote_path, end_vote: :post %>
           <%end%>
         <%end%>
+
         <br>
 
             <div>
