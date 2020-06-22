@@ -22,7 +22,7 @@
       <tbody>
       <% for v in @users %>
         <tr>
-          <%if v.userName != "Null" %>
+          <%if v.userName != "Null" && v.admin==false %>
             <%if v.userName!= current_user.userName%>
               <td><strong><%=v.name%>&nbsp<%=v.lastName%></strong></td>
               <td><strong><%=v.userName%></strong></td>
