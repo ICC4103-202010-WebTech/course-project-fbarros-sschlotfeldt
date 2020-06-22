@@ -26,9 +26,11 @@ class User < ApplicationRecord
 
     # Uncomment the section below if you want users to be created if they don't exist
      unless user
-         user = User.create(name: data['name'],
-            email: data['email'],
-            password: Devise.friendly_token[0,20]
+         user = User.create(name: data['name'].map[0],
+                            lastName: data['name'].map[1],
+                            email: data['email'],
+                            user_pic: data['picture'] ,
+                            password: Devise.friendly_token[0,20]
          )
      end
     user
