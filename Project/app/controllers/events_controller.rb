@@ -95,6 +95,15 @@ class EventsController < ApplicationController
     redirect_to event_path($cureent_event.id)
   end
 
+  def vote_link
+    redirect_to vote_path($cureent_event.id)
+    for em in EventM.all
+      if em.user_id == current_user.id
+        em.update(vote_status:true)
+      end
+    end
+  end
+
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy

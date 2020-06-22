@@ -48,8 +48,9 @@
 
         <%if $cureent_event.start_vote==1 %>
           <%for m in EventM.where(event_id:$cureent_event.id) %>
-            <%if m.user_id == current_user.id #or $cureent_event.user_id==current_user.id %>
+            <%if m.user_id == current_user.id %>
               <table>
+                <%if m.vote_status == false %>
                 <h2>Choose your available dates!:</h2>
                       <%for vo in @votes %>
                         <tr>
@@ -59,7 +60,11 @@
                           </td>
                         </tr>
                       <%end %>
-                <%= link_to "Go Vote" , vote_path(params[:id]) %>
+                 <%= button_to "Go Vote" , events_vote_link_path, method: :post %>
+
+              <%else %>
+                  <h2>You have already vote</h2>
+                <%end %>
               </table>
               <br>
             <%end %>

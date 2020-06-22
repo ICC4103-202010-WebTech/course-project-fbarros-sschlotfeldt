@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   post 'events/start_vote'
   post 'events/end_vote'
+  post 'events/vote_link'
 
   post 'invites/invite'
 
