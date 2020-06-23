@@ -4,7 +4,7 @@
   <title>Profile</title>
 </head>
 
-<%if @user.id == current_user.id%>
+<%if @user.id == current_user.id || current_user.admin == true%>
   <body>
   <div class = "row">
     <div class ="col-3 bg-dark"></div>
@@ -104,7 +104,8 @@
       <div class="col-9"></div>
       <div class="col-3" >
         <div align="left" >
-          <button class="btn btn-light"><%= link_to 'Edit', edit_user_path(params[:id])  %></button>
+          <%= link_to 'Edit', edit_user_path(params[:id]), class: ["btn" , "btn-light"] %>
+          <%= link_to 'Delete',@user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %>
         </div>
       </div>
     </div>
