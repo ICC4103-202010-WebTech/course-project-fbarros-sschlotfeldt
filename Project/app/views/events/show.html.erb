@@ -67,7 +67,7 @@
                  <%= button_to "Go Vote" , events_vote_link_path, method: :post %>
 
               <%else %>
-                  <h2>You have already vote</h2>
+                  <h2 align="center">You have already voted</h2>
                 <%end %>
               </table>
               <br>
@@ -128,8 +128,8 @@
             <%end %>
           <%end %>
           </div>
-
         </div >
+
           <%if @mem.include? @event_users.find(current_user.id).name%>
             <div align="right">
                 <span><%=link_to 'Comments', comment_path(v.id), class: "btn btn-light"%></span>
@@ -146,8 +146,8 @@
               <%=link_to 'Join event', new_event_event_m_path(v.id), class: ["btn", "btn-light"]%>
             </div>
           <%end%>
-
       </div>
+
       <div class="col-3 bg-dark"></div>
     </div>
     <%end%>
@@ -171,16 +171,11 @@
 
 
 <footer>
-  <div class="row">
-    <div class="col-9"></div>
-    <div class="col-3">
-      <div align="left">
+      <div align="center">
         <button class="btn"><%= link_to 'Back', events_path %></button>
         <% if current_user.id == @event[0].user_id || current_user.admin==true%>
           <button class="btn"><%= link_to 'Edit', edit_event_path(@event.ids) %></button>
           <%= button_to 'Delete', @organization, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %>
         <%end %>
       </div>
-  </div>
-  </div>
 </footer>

@@ -8,12 +8,18 @@
       <%=chat.user.userName %>
       : <%=chat.text %>
     </li>
-<% end %>
+<% end %><br>
 
+    <%=form_with model: @message, local: true do |f| %>
+      <%=f.hidden_field :user_id, :value => current_user.id %>
+      <%=f.hidden_field :chat_id, :value => params[:id] %>
+
+        <%= f.text_area :text, class: "form-control" %><br>
+
+      <td><%=f.submit :Send, class: ["btn", "btn-primary"]%></td>
+    <%end%>
   </div>
 </div>
 
 <footer>
-<br>
-<%= link_to 'Back', root_path %>
 </footer>
