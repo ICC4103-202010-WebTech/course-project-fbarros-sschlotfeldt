@@ -8,6 +8,11 @@ class UsersController < ApplicationController
     @users = User.search(params[:search])
   end
 
+  def start_chat
+    @chat = Chat.create!(inbox1_id: params[:inbox1_id], inbox2_id: params[:inbox2_id])
+    redirect_to chat_path(@chat.id)
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show

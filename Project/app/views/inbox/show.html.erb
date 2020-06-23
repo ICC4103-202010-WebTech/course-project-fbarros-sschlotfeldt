@@ -10,29 +10,29 @@
   <div class="row">
     <div class="col-3"></div>
     <div class="col-6">
+      <table class = "table bg-light">
+        <thead>
+        <tr>
+          <th>Chats</th>
+          <th>Last Message</th>
+        </tr>
+        </thead>
+        <tbody>
       <% for c in @inbox_msg%>
         <%for u in @inbox_u %>
           <%if c.user_id == u.id %>
             <%if u.id == current_user.id %>
             <%else %>
-              <table class = "table bg-light">
-                <thead>
-                  <tr>
-                    <th>Chats</th>
-                    <th>Last Message</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
+                <tr>
                     <td><%=link_to u.userName, chat_path(c.chat_id), class: ["btn", "btn-light"]%></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
+                  <td><%= truncate(Message.where(chat_id:c.chat_id).order(created_at: :desc).first.text, :length => 80) %></td>
+                </tr>
             <%end %>
           <%end %>
         <%end %>
       <%end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </body>

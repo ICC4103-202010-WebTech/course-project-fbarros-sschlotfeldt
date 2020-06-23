@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :event
   end
 
+  post 'users/start_chat'
+
   post 'chats/send_msg'
 
   post 'events/start_vote'

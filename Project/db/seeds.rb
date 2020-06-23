@@ -77,21 +77,6 @@ comment2= Comment.create!(user_id: u2.id, text: "txt2", event_id:e2.id)
 comment3= Comment.create!(user_id: u1.id, text: "txt3", event_id:e2.id)
 comment4= Comment.create!(user_id: u3.id, text: "txt4", event_id:e3.id)
 
-inbox1= Inbox.create!(user_id: u1.id)
-inbox2= Inbox.create!(user_id: u2.id)
-inbox3= Inbox.create!(user_id: u3.id)
-inbox4= Inbox.create!(user_id: u4.id)
-inbox5= Inbox.create!(user_id: u5.id)
-inbox6= Inbox.create!(user_id: u6.id)
-inbox7= Inbox.create!(user_id: u7.id)
-inbox8= Inbox.create!(user_id: u8.id)
-inbox9= Inbox.create!(user_id: u9.id)
-
-chat1= Chat.create!(inbox1_id: inbox1.id, inbox2_id: inbox2.id)
-
-msg1= Message.create!(user_id: u1.id, text:"Hola, como estay?", chat_id:chat1.id)
-msg2= Message.create!(user_id: u2.id, text:"Hola. Bien gracias, y tu?", chat_id:chat1.id)
-
 i1= Invite.create!(user_id: u1.id, event_id: e4.id)
 i2= Invite.create!(user_id: u1.id, event_id: e5.id)
 i3= Invite.create!(user_id: u1.id, event_id: e6.id)
