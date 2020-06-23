@@ -25,7 +25,10 @@ Rails.application.routes.draw do
   post 'events/start_vote'
   post 'events/end_vote'
   post 'events/vote_link'
+
   post 'invites/invite'
+
+  post 'inbox/open_chat'
 
   get 'users/information/:id', to: "users#information", as: 'info'
 

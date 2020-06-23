@@ -3,6 +3,16 @@ class InboxController < ApplicationController
 
   # GET /inbox
   # GET /inbox.json
+  def open_chat
+    redirect_to chat_path(params[:chat_id])
+    for msg in Message.where(chat_id: params[:chat_id])
+      if msg.msg_status == false
+        msg.update(msg_status:true)
+      else
+      end
+    end
+  end
+
   def index
     @inboxes = Inbox.all
   end
@@ -11,7 +21,7 @@ class InboxController < ApplicationController
   # GET /inbox/1.json
   def show
     @inbox_c = Chat.where("inbox1_id = ? OR inbox2_id = ?", current_user.id, current_user.id)
-    @inbox_msg = Message.where(chat_id:@inbox_c.ids)
+    @inbox_msg = Message.where(chat_id:@inbox_c.ids).order(created_at: :desc).distinct
     @inbox_u = User.all
     @inbox = Inbox.find(current_user.id)
   end

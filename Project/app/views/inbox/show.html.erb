@@ -15,6 +15,7 @@
         <tr>
           <th>Chats</th>
           <th>Last Message</th>
+          <th>Unreaded</th>
         </tr>
         </thead>
         <tbody>
@@ -24,8 +25,16 @@
             <%if u.id == current_user.id %>
             <%else %>
                 <tr>
-                    <td><%=link_to u.userName, chat_path(c.chat_id), class: ["btn", "btn-light"]%></td>
-                  <td><%= truncate(Message.where(chat_id:c.chat_id).order(created_at: :desc).first.text, :length => 80) %></td>
+                  <%= form_tag({:chainboxts=>"post", :action=>"open_chat"}, method: :post) do %>
+                    <%= hidden_field_tag :chat_id, c.chat_id %>
+                    <td><%= submit_tag u.userName, class: ["btn", "btn-light"] %></td>
+                  <% end %>
+                  <td><%=truncate(Message.where(chat_id:c.chat_id).order(created_at: :desc).first.text, :length => 60) %></td>
+                  <%if Message.where(chat_id:c.chat_id).order(created_at: :desc).first.msg_status == false%>
+                  <td>Unreaded</td>
+                  <%else %>
+                  <td></td>
+                  <%end %>
                 </tr>
             <%end %>
           <%end %>
