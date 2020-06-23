@@ -7,6 +7,7 @@ class InvitesController < ApplicationController
     @invites = Invite.all
     @user_for_invite = User.all
     @event_members = EventM.where(event_id: params[:event_id])
+    @users_invited = Invite.where(event_id: params[:event_id])
   end
 
   def invite
@@ -32,7 +33,8 @@ class InvitesController < ApplicationController
   # POST /invites.json
   def create
     @invite = Invite.create!(user_id:params[:user_id], event_id:params[:event_id])
-    redirect_to event_path($cureent_event.id), notice: User.where(id:@invite.user_id).select('userName').userName + ' was successfully invited.'
+    @invited =  User.where("id = ?", @invite.user_id).select('userName').to_s
+    redirect_to event_path($cureent_event.id), notice: "#{@invited} was successfully invited."
   end
 
   # PATCH/PUT /invites/1

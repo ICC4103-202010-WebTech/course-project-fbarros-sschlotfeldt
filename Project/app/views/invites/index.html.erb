@@ -9,23 +9,32 @@
         <th>Invite</th>
       </tr>
       </thead>
-      <%@mem=[1] %>
+      <%@mem=[] %>
+      <%@mem2=[] %>
       <%@event_members.each do |y|  %>
         <%@mem << y.user_id %>
+      <% end %>
+      <%@users_invited.each do |y|  %>
+        <%@mem2 << y.user_id %>
       <% end %>
       <%@user_for_invite.each do |x|%>
         <tbody>
         <tr>
-          <%if @mem.include? x.id %>
+          <%if x.id==current_user.id  %>
+          <%elsif @mem.include? x.id %>
+            <td><%=x.userName %></td>
+            <td>Is already attending</td>
+          <%elsif @mem2.include? x.id %>
+            <td><%=x.userName %></td>
+            <td>has already been invited</td>
           <%else%>
             <td><%=@user_for_invite.find(x.id).userName %></td>
-            <%@mem<< x.id %>
 
-            <td><%=form_with model: @invite, local: true do |f| %></td>
-                <td><%=f.hidden_field :user_id, :value => x.id %></td>
-                <td><%=f.hidden_field :event_id, :value => $cureent_event.id %></td>
+            <%=form_with model: @invite, local: true do |f| %>
+                <%=f.hidden_field :user_id, :value => x.id %></td>
+                <%=f.hidden_field :event_id, :value => $cureent_event.id %>
                 <td><%=f.submit :Invite, class: ["btn", "btn-primary"]%></td>
-            <%end%>
+          <%end%>
 
         <%end%>
         </tr>
