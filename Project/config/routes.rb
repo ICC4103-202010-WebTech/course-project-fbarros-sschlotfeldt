@@ -25,7 +25,6 @@ Rails.application.routes.draw do
 
   get 'users/information/:id', to: "users#information", as: 'info'
 
-
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :venues
