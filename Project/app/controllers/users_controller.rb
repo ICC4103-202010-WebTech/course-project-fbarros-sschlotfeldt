@@ -27,7 +27,9 @@ class UsersController < ApplicationController
   def edit
   end
 
+  # GET /users/1
   def information
+    @user=User.find(params[:id])
   end
   # POST /users
   # POST /users.json

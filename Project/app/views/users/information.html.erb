@@ -9,17 +9,17 @@
   </div>
 
   <div class="row">
-    <div class="col-3">
+    <div class="col-3 bg-light">
       <div>
-        <strong>Last time Signed:  </strong> <%=@user.last_sign_in_at%>
+        <strong>Last time Signed-In: </strong> <%=@user.last_sign_in_at%>
       </div>
       <%if @user.admin == true %>
         <div>
-          <strong>User Role:   </strong> <p>'Admin'</p>
+          <strong>User Role:   </strong> <span>'Admin'</span>
         </div>
       <%else %>
         <div>
-          <strong>User Role:   </strong> <p>'Social User'</p>
+          <strong>User Role:   </strong> <span>'Social User'</span>
         </div>
       <%end %>
     </div>

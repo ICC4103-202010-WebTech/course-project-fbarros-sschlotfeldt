@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   post 'events/vote_link'
   post 'invites/invite'
 
-  get 'users/information', to: "users#information"
+  get 'users/information/:id', to: "users#information", as: 'info'
 
 
   namespace :api, defaults: { format: :json } do
