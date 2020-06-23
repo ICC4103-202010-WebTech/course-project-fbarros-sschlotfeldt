@@ -9,8 +9,18 @@ class UsersController < ApplicationController
   end
 
   def start_chat
-    @chat = Chat.create!(inbox1_id: params[:inbox1_id], inbox2_id: params[:inbox2_id])
-    redirect_to chat_path(@chat.id)
+    @all_chats = Chat.where("inbox1_id = ? AND inbox2_id = ?", params[:inbox2_id], params[:inbox1_id] )
+    if @all_chats.first == nil
+      @all_chats2 = Chat.where("inbox1_id = ? AND inbox2_id = ?", params[:inbox1_id], params[:inbox2_id] )
+      if @all_chats2.first == nil
+        @chat = Chat.create!(inbox1_id: params[:inbox1_id], inbox2_id: params[:inbox2_id])
+        redirect_to chat_path(@chat.id)
+      else
+        redirect_to chat_path(@all_chats2.ids)
+      end
+    else
+      redirect_to chat_path(@all_chats.ids)
+    end
   end
 
   # GET /users/1
