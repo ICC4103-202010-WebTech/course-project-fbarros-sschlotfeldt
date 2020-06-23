@@ -4,6 +4,11 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
+  def accept_invite
+    @event_m = EventM.create!(user_id: current_user.id, event_id: params[:event_id])
+    redirect_to user_path(current_user.id)
+  end
+
   def index
     @users = User.search(params[:search])
   end

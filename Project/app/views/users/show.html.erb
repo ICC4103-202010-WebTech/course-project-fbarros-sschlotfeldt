@@ -75,24 +75,27 @@
   <div class= row>
     <div class ="col-3 bg-dark"></div>
     <div class ="col-6">
-      <div align="left">
+      <span align="left">
         <h3>Pending Invites</h3>
 
         <%@como_querai = [] %>
         <% for id in EventM.where("user_id = ?", current_user.id ) %>
           <%@como_querai<<id.event_id %>
         <%end %>
-
         <%for pi in @pi %>
           <%if @como_querai.include? pi.event_id %>
           <%else %>
-            <ul>
-              <li ><%=Event.find(pi.event_id).e_name %>&nbsp
-                <button class="btn btn-sm"><%= link_to 'Accept', new_event_event_m_path(pi.event_id)  %></button></li>
-            </ul>
+              <div>
+                <%= form_tag({:chats=>"post", :action=>"accept_invite"}, method: :post) do %>
+                    <%= hidden_field_tag :event_id, pi.event_id %>
+                    <%=Event.find(pi.event_id).e_name %>&nbsp
+                    <%= submit_tag :Accept, class: ["btn", "btn-primary"] %>
+                <%end %><br>
+                </div>
           <%end %>
         <%end %>
 
+        </span>
       </div>
     </div>
     <div class ="col-3 bg-dark"></div>

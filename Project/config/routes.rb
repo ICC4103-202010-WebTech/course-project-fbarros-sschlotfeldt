@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   post 'users/start_chat'
+  post 'users/accept_invite'
 
   post 'chats/send_msg'
 
