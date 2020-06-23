@@ -19,24 +19,31 @@
         </tr>
         </thead>
         <tbody>
+
+        <%@mem = [] %>
       <% for c in @inbox_msg%>
         <%for u in @inbox_u %>
           <%if c.user_id == u.id %>
             <%if u.id == current_user.id %>
+
             <%else %>
                 <tr>
-                  <%= form_tag({:chainboxts=>"post", :action=>"open_chat"}, method: :post) do %>
-                    <%= hidden_field_tag :chat_id, c.chat_id %>
-                    <td><%= submit_tag u.userName, class: ["btn", "btn-light"] %></td>
-                  <% end %>
-                  <td><%=truncate(Message.where(chat_id:c.chat_id).order(created_at: :desc).first.text, :length => 60) %></td>
-                  <%if Message.where(chat_id:c.chat_id).order(created_at: :desc).first.msg_status == false%>
-                  <td>Unreaded</td>
+                  <%if @mem.include? u.userName %>
                   <%else %>
-                  <td></td>
+                    <%= form_tag({:chat=>"post", :action=>"open_chat"}, method: :post) do %>
+                      <%= hidden_field_tag :chat_id, c.chat_id %>
+                      <td><%= submit_tag u.userName, class: ["btn", "btn-light"] %></td>
+                    <% end %>
+                    <td><%=truncate(Message.where(chat_id:c.chat_id).order(created_at: :desc).first.text, :length => 60) %></td>
+                    <%if Message.where(chat_id:c.chat_id).order(created_at: :desc).first.msg_status == false%>
+                    <td>Unreaded</td>
+                    <%else %>
+                    <td></td>
+                    <%end %>
                   <%end %>
                 </tr>
-            <%end %>
+                <%@mem << u.userName %>
+        <%end %>
           <%end %>
         <%end %>
       <%end %>

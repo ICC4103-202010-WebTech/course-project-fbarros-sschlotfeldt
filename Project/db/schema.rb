@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2020_06_23_051208) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "msg_status", default: false
+    t.boolean "msg_status2", default: false
     t.index ["chat_id"], name: "index_messages_on_chat_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end

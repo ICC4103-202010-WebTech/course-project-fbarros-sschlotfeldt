@@ -21,7 +21,7 @@ class InboxController < ApplicationController
   # GET /inbox/1.json
   def show
     @inbox_c = Chat.where("inbox1_id = ? OR inbox2_id = ?", current_user.id, current_user.id)
-    @inbox_msg = Message.where(chat_id:@inbox_c.ids).order(created_at: :desc).distinct
+    @inbox_msg = Message.where(chat_id:@inbox_c.ids).order(created_at: :desc)
     @inbox_u = User.all
     @inbox = Inbox.find(current_user.id)
   end
