@@ -3,6 +3,12 @@ class ChatsController < ApplicationController
 
   # GET /chats
   # GET /chats.json
+
+  def send_msg
+    Message.create!(user_id: current_user.id, text: params[:text], chat_id: params[:chat_id])
+    redirect_to chat_path(params[:chat_id])
+  end
+
   def index
     @chats = Message.where(chat_id: params[:id])
   end

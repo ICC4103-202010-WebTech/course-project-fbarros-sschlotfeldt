@@ -77,7 +77,6 @@ comment2= Comment.create!(user_id: u2.id, text: "txt2", event_id:e2.id)
 comment3= Comment.create!(user_id: u1.id, text: "txt3", event_id:e2.id)
 comment4= Comment.create!(user_id: u3.id, text: "txt4", event_id:e3.id)
 
-
 inbox1= Inbox.create!(user_id: u1.id)
 inbox2= Inbox.create!(user_id: u2.id)
 inbox3= Inbox.create!(user_id: u3.id)

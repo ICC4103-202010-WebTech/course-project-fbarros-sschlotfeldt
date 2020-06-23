@@ -31,7 +31,7 @@
             <td><%=@user_for_invite.find(x.id).userName %></td>
 
             <%=form_with model: @invite, local: true do |f| %>
-                <%=f.hidden_field :user_id, :value => x.id %></td>
+                <%=f.hidden_field :user_id, :value => x.id %>
                 <%=f.hidden_field :event_id, :value => $cureent_event.id %>
                 <td><%=f.submit :Invite, class: ["btn", "btn-primary"]%></td>
             <%end%>
