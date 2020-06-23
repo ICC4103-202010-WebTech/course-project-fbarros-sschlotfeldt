@@ -25,6 +25,7 @@
       <li class="nav-item">
         <a class="btn" ><%=link_to "Organizations", organizations_path, class: ["btn","btn-secondary"]%></a>
       </li>
+
       <%if current_user %>
         <li class="nav-item">
           <a class="btn" ><%=link_to "Inbox", inbox_path(current_user.id), class: ["btn","btn-secondary"]%></a>

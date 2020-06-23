@@ -15,14 +15,18 @@
           <%=link_to image_tag("thumbnail.svg", width: "100%", height: "450px", background: "#55595c", color: "#eceeef"), url_for(v) %>
         <%end %>
 
-        <%@winner=Vote.where(event_id:$cureent_event.id).order(n_votes: :desc).select('date').first.date%>
-        <%@winner_v=Vote.where(event_id:$cureent_event.id).order(n_votes: :desc).select('n_votes').first%>
+        <%begin %>
+          <%@winner=Vote.where(event_id:$cureent_event.id).order(n_votes: :desc).select('date').first.date%>
+          <%@winner_v=Vote.where(event_id:$cureent_event.id).order(n_votes: :desc).select('n_votes').first%>
 
-        <%if @winner_v.n_votes==0 %>
+          <%if @winner_v.n_votes==0 %>
+            <p align='center'>There is no defined date just yet</p>
+          <%else %>
+            <p align='center'>The event will be on <%=Vote.all.order(n_votes: :desc).select('date').first.date%> with a total of <%=Vote.all.order(n_votes: :desc).select('n_votes').first.n_votes%> vote(s)</p>
+          <%end %>
+        <%rescue %>
           <p align='center'>There is no defined date just yet</p>
-        <%else %>
-          <p align='center'>The event will be on <%=Vote.all.order(n_votes: :desc).select('date').first.date%> with a total of <%=Vote.all.order(n_votes: :desc).select('n_votes').first.n_votes%> vote(s)</p>
-        <%end %>
+      <%end %>
 
         <div class = user_box >
 
@@ -174,7 +178,7 @@
         <button class="btn"><%= link_to 'Back', events_path %></button>
         <% if current_user.id == @event[0].user_id || current_user.admin==true%>
           <button class="btn"><%= link_to 'Edit', edit_event_path(@event.ids) %></button>
-          <%= link_to 'Delete', @organization, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %>
+          <%= button_to 'Delete', @organization, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %>
         <%end %>
       </div>
   </div>
