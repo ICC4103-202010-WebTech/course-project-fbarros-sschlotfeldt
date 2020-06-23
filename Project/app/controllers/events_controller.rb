@@ -69,6 +69,7 @@ class EventsController < ApplicationController
           format.json { render json: @event.errors, status: :unprocessable_entity }
         end
       end
+      EventM.create!(user_id: current_user.id, event_id:@event.id)
   end
 
   # PATCH/PUT /events/1

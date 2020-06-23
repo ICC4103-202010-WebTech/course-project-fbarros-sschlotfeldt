@@ -52,8 +52,8 @@
       <%for e in @user_events %>
 
           <a>
-            <%=link_to e.e_name, event_path(e.id), class: ["btn", "btn-light"] %><br>
-          </a>
+            <%=link_to e.e_name, event_path(e.id), class: ["btn", "btn-light"] %>
+          </a><br><br>
 
       <%end %>
       <br>
