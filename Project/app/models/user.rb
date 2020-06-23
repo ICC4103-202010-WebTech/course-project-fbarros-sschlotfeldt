@@ -18,6 +18,8 @@ class User < ApplicationRecord
 
   validates_uniqueness_of :userName
 
+  before_create :build_inbox
+
   devise :omniauthable, omniauth_providers: [:google_oauth2]
 
   def self.from_omniauth(access_token)
