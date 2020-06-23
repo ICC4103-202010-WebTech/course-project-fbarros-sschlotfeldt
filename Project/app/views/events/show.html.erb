@@ -64,7 +64,7 @@
                           </td>
                         </tr>
                       <%end %>
-                 <%= button_to "Go Vote" , events_vote_link_path, method: :post %>
+                 <%= button_to "Go Vote" , events_vote_link_path, method: :post, class: ["btn", "btn-light"] %>
 
               <%else %>
                   <h2 align="center">You have already voted</h2>
@@ -77,9 +77,9 @@
 
         <%if current_user.id==$cureent_event.user_id%>
           <%if $cureent_event.start_vote==0 %>
-            <%= button_to 'Start Vote', events_start_vote_path, start_vote: :post %>
+            <%= button_to 'Start Vote', events_start_vote_path, start_vote: :post, class: ["btn", "btn-light"] %>
           <%elsif $cureent_event.start_vote==1%>
-            <%= button_to 'End Vote', events_end_vote_path, end_vote: :post %>
+            <%= button_to 'End Vote', events_end_vote_path, end_vote: :post, class: ["btn", "btn-light"] %>
           <%end%>
         <%end%>
 
@@ -172,10 +172,10 @@
 
 <footer>
       <div align="center">
-        <button class="btn"><%= link_to 'Back', events_path %></button>
+        <%= link_to 'Back', events_path, class:["btn","btn-light"] %>
         <% if current_user.id == @event[0].user_id || current_user.admin==true%>
-          <button class="btn"><%= link_to 'Edit', edit_event_path(@event.ids) %></button>
-          <%= button_to 'Delete', @organization, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %>
+          <%= link_to 'Edit', edit_event_path(@event.ids), class:["btn","btn-light"] %>
+          <%= link_to 'Delete', Event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %>
         <%end %>
       </div>
 </footer>

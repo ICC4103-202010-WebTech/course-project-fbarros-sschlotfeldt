@@ -32,7 +32,7 @@
                   <td><%=event.e_name %>
                   <td><%=event.e_description %></td>
                   <td><%=w.o_name%></td>
-                  <td><button><%=link_to 'Go to Event', event_path(event.id)%></button></td>
+                  <td><%=link_to 'Go to Event', event_path(event.id), class:["btn","btn-secondary"]%></td>
                   <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %></td>
                 </tr>
                 </tbody>
@@ -46,7 +46,7 @@
                   <td><%=event.e_name %>
                   <td><%=event.e_description %></td>
                   <td><%=w.userName%></td>
-                  <td><button><%=link_to 'Go to Event', event_path(event.id)%></button></td>
+                  <td><%=link_to 'Go to Event', event_path(event.id), class:["btn","btn-secondary"]%></td>
                   <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %></td>
                 </tr>
               <%end %>
@@ -85,7 +85,7 @@
                   <td><%=event.e_name %>
                   <td><%=event.e_description %></td>
                   <td><%=w.o_name%></td>
-                  <td><button><%=link_to 'Go to Event', event_path(event.id)%></button></td>
+                  <td><%=link_to 'Go to Event', event_path(event.id), class:["btn","btn-secondary"]%></td>
                 </tr>
                 </tbody>
               <%end %>
@@ -98,7 +98,7 @@
                     <td><%=event.e_name %>
                     <td><%=event.e_description %></td>
                     <td><%=w.userName%></td>
-                    <td><button><%=link_to 'Go to Event', event_path(event.id)%></button></td>
+                    <td><%=link_to 'Go to Event', event_path(event.id), class:["btn","btn-secondary"]%></td>
                   </tr>
               <%end %>
             <% end %>
@@ -113,7 +113,7 @@
 
 <footer>
   <div class="float-lg-right">
-    <button class="btn"><%= link_to 'Create new Event', new_event_path %></button>
-    <button class="btn"><%= link_to 'Back', root_path %></button>
+    <%= link_to 'Create new Event', new_event_path, class:["btn","btn-light"] %>
+    <%= link_to 'Back', root_path, class:["btn","btn-light"] %>
   </div>
 </footer>

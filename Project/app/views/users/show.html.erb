@@ -68,7 +68,7 @@
 
       <%end %>
       <h4>Change Password</h4>
-      <%= link_to "Change your password", edit_user_registration_path, class: ["btn", "btn-primary"]  %>
+      <%= link_to "Change your password", edit_user_registration_path, class: ["btn", "btn-light"]  %>
     </div>
     <div class ="col-3 bg-dark"></div>
   </div>
@@ -89,7 +89,7 @@
                 <%= form_tag({:chats=>"post", :action=>"accept_invite"}, method: :post) do %>
                     <%= hidden_field_tag :event_id, pi.event_id %>
                     <%=Event.find(pi.event_id).e_name %>&nbsp
-                    <%= submit_tag :Accept, class: ["btn", "btn-primary"] %>
+                    <%= submit_tag :Accept, class: ["btn", "btn-light"] %>
                 <%end %><br>
                 </div>
           <%end %>
@@ -97,8 +97,8 @@
 
         </span>
       </div>
-    </div>
     <div class ="col-3 bg-dark"></div>
+    </div>
   </div>
   </body>
 
@@ -167,7 +167,7 @@
       <div class="col-9"></div>
       <div class="col-3" >
         <div align="left" >
-          <button class="btn"><%= link_to 'Back', users_path %></button>
+          <%= link_to 'Back', users_path, class: ["btn", "btn-light"] %>
         </div>
       </div>
     </div>
