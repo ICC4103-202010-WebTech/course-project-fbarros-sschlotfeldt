@@ -91,7 +91,7 @@
             <%if em.event_id == v.id%>
               <ul>
                 <%if @mem.include? @event_users.find(em.user_id).name%>
-                  <%flash[:alert]= 'Ya fue Agregado al Evento'%>
+                  <%flash[:alert]= 'Has been added to the event'%>
                 <%else %>
                   <%=@event_users.find(em.user_id).name %>
                   <%@mem<<@event_users.find(em.user_id).name %>

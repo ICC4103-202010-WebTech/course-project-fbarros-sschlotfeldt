@@ -1,6 +1,8 @@
-
+<br>
 <%= form_for @vote do |form| %>
 
-    <%= form.submit :Submit, class: ["btn", "btn-primary"] %>
+    <span><%= form.submit :Yes, class: ["btn", "btn-primary"] %><br>
+    <%= button_to "No", vote_path($cureent_event.id), method: :get %></span>
 
 <% end %>
+<br>
