@@ -174,7 +174,7 @@
 
 <footer>
       <div align="center">
-        <%= link_to 'Back', events_path, class:["btn","btn-light"] %>
+        <%= link_to "Back", :back, class:["btn","btn-light"] %>
         <% if current_user.id == @event[0].user_id || current_user.admin==true%>
           <%= link_to 'Edit', edit_event_path(@event.ids), class:["btn","btn-light"] %>
           <%= link_to 'Delete', Event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %>

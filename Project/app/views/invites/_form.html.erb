@@ -11,6 +11,7 @@
         <%= v.collection_select(:user_id, User.all.order(userName: :asc).except(user_id: current_user.id), :id, :userName, {}, { class: "form-control" }) %>
       </div>
       <%= v.submit "Invite", class: ["btn", "btn-primary"] %>
-    <%end%>
+      <%= link_to "Back", :back, class:["btn","btn-light"] %>
+  <%end%>
   </div>
 </div>

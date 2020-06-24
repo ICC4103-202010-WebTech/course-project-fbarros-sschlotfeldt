@@ -27,7 +27,7 @@
   </div>
 </body>
 <footer align="center"><br>
-  <button class="btn"><%= link_to 'Back', events_path %><br></button>
+  <%= link_to "Back", :back, class:["btn","btn-light"] %>
   <button class="btn"><%=link_to 'New Comment', new_event_comment_path(@comment.event_id) %></button>
 </footer>
 
