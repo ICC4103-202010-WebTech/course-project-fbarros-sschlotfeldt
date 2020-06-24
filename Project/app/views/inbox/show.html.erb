@@ -32,13 +32,16 @@
               <%end %>
                 <td><%=truncate(Message.where(chat_id:c.id).order(created_at: :desc).first.text, :length => 60) %></td>
                 <%if Message.where(chat_id:c.id).order(created_at: :desc).first.msg_status == false%>
-                  <td>Unreaded</td>
+                  <%if Message.where(chat_id:c.id).order(created_at: :desc).first.user_id == current_user.id %>
+                  <%else %>
+                    <td>Unreaded</td>
+                  <%end %>
                 <%else %>
                   <td></td>
                 <%end %>
               <%@mem << User.find(c.inbox2_id).userName %>
             <%end %>
-          <%elsif c.inbox1_id == current_user.id%>
+          <%elsif c.inbox2_id == current_user.id%>
               <%if @mem.include? User.find(c.inbox1_id).userName %>
               <%else %>
                 <%= form_tag({:chat=>"post", :action=>"open_chat"}, method: :post) do %>
@@ -47,7 +50,10 @@
                 <%end %>
                 <td><%=truncate(Message.where(chat_id:c.id).order(created_at: :desc).first.text, :length => 60) %></td>
                 <%if Message.where(chat_id:c.id).order(created_at: :desc).first.msg_status == false%>
-                  <td>Unreaded</td>
+                  <%if Message.where(chat_id:c.id).order(created_at: :desc).first.user_id == current_user.id %>
+                  <%else %>
+                    <td>Unreaded</td>
+                  <%end %>
                 <%else %>
                   <td></td>
                 <%end %>
