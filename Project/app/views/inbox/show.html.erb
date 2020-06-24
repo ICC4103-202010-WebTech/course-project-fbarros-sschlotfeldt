@@ -20,33 +20,46 @@
         </thead>
         <tbody>
 
-        <%@mem = [] %>
-      <% for c in @inbox_msg%>
+      <%@mem=[] %>
+      <%for c in @inbox_c %>
         <%for u in @inbox_u %>
-          <%if c.user_id == u.id %>
-            <%if u.id == current_user.id %>
-
+          <%if c.inbox1_id == current_user.id %>
+            <%if @mem.include? User.find(c.inbox2_id).userName %>
             <%else %>
-                <tr>
-                  <%if @mem.include? u.userName %>
-                  <%else %>
-                    <%= form_tag({:chat=>"post", :action=>"open_chat"}, method: :post) do %>
-                      <%= hidden_field_tag :chat_id, c.chat_id %>
-                      <td><%= submit_tag u.userName, class: ["btn", "btn-light"] %></td>
-                    <% end %>
-                    <td><%=truncate(Message.where(chat_id:c.chat_id).order(created_at: :desc).first.text, :length => 60) %></td>
-                    <%if Message.where(chat_id:c.chat_id).order(created_at: :desc).first.msg_status == false%>
-                    <td>Unreaded</td>
-                    <%else %>
-                    <td></td>
-                    <%end %>
-                  <%end %>
-                </tr>
-                <%@mem << u.userName %>
-        <%end %>
+              <%= form_tag({:chat=>"post", :action=>"open_chat"}, method: :post) do %>
+                <%= hidden_field_tag :chat_id, c.id %>
+                <td><%= submit_tag User.find(c.inbox2_id).userName, class: ["btn", "btn-light"] %></td>
+              <%end %>
+                <td><%=truncate(Message.where(chat_id:c.id).order(created_at: :desc).first.text, :length => 60) %></td>
+                <%if Message.where(chat_id:c.id).order(created_at: :desc).first.msg_status == false%>
+                  <td>Unreaded</td>
+                <%else %>
+                  <td></td>
+                <%end %>
+              <%@mem << User.find(c.inbox2_id).userName %>
+            <%end %>
+          <%elsif c.inbox1_id == current_user.id%>
+              <%if @mem.include? User.find(c.inbox1_id).userName %>
+              <%else %>
+                <%= form_tag({:chat=>"post", :action=>"open_chat"}, method: :post) do %>
+                  <%= hidden_field_tag :chat_id, c.id %>
+                  <td><%= submit_tag User.find(c.inbox1_id).userName, class: ["btn", "btn-light"] %></td>
+                <%end %>
+                <td><%=truncate(Message.where(chat_id:c.id).order(created_at: :desc).first.text, :length => 60) %></td>
+                <%if Message.where(chat_id:c.id).order(created_at: :desc).first.msg_status == false%>
+                  <td>Unreaded</td>
+                <%else %>
+                  <td></td>
+                <%end %>
+                <%@mem << User.find(c.inbox1_id).userName %>
+              <%end %>
+          <%else %>
           <%end %>
         <%end %>
       <%end %>
+
+
+
         </tbody>
       </table>
     </div>
