@@ -1,25 +1,28 @@
 <div class="row ml-0">
+  <%= form_with model: event, local: true do |form| %>
+    <div class="form-group">
+      <%= form.label :event_pic %>
+      <%= form.file_field :event_pic, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :Name %>
+      <%= form.text_field :e_name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :Description %>
+      <%= form.text_area :e_description, class: "form-control" %>
+    </div>
 
-<%= form_with model: event, local: true do |form| %>
-  <div class="form-group">
-    <%= form.label :event_pic %>
-    <%= form.file_field :event_pic, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= form.label :Name %>
-    <%= form.text_field :e_name, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= form.label :Description %>
-    <%= form.text_area :e_description, class: "form-control" %>
-  </div>
     <div class="form-group">
       <%= form.label :venue_id %>
       <%= form.collection_select(:venue_id, Venue.all.order(v_name: :asc), :id, :v_name, {}, { class: "form-control" }) %>
-  <div class="form-group">
-    <%= form.label :Public %>
-    <%= form.check_box :visibility %>
-  </div>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :Public %>
+      <%= form.check_box :visibility %>
+    </div>
+
     <div class="form-group">
       <%= form.label :photos, "Upload Event Photo" %>
       <%= form.file_field :photos, multiple: true, class: "form-control"  %>
@@ -36,9 +39,9 @@
     </div>
 
     <div class="form-group mt-2">
-    <%= form.submit :Update, class: ["btn", "btn-primary"] %>
-    <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
-  </div>
-  </div>
-    <%end %>
+      <%= form.submit :Update, class: ["btn", "btn-primary"] %>
+      <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+    </div>
+
+  <%end%>
 </div>
