@@ -1,39 +1,46 @@
 <head>
-  <title>Information</title>
+  <title align="center">Information</title>
 </head>
 <body>
-  <div class="row">
-    <div class="col-3">
-      <h2>Information</h2>
-    </div>
+  <div class="col-1"></div>
+  <div>
+    <h2><strong>Information<strong></h2>
   </div>
 
-  <div class="row">
-    <div class="col-3 bg-light">
-      <div>
-        <%if @user.last_sign_in_at.nil? %>
-          <strong>Last time Signed-In: </strong> <%=@user.created_at%>
-        <%else %>
-          <strong>Last time Signed-In: </strong> <%=@user.last_sign_in_at%>
-        <%end %>
-      </div>
-      <%if @user.admin == true %>
-        <div>
-          <strong>User Role:   </strong> <span>'Admin'</span>
-        </div>
-      <%else %>
-        <div>
-          <strong>User Role:   </strong> <span>'Social User'</span>
-        </div>
-      <%end %>
-    </div>
+
+
+  <div class ="row m-lg-5 col-lg-11">
+    <table class = "table bg-light">
+      <thead>
+        <tr>
+          <th>Last Time Signed In</th>
+          <th>User Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <%if @user.last_sign_in_at.nil? %>
+            <td> <%=@user.created_at%></td>
+          <%else %>
+            <td> <%=@user.last_sign_in_at%></td>
+          <%end %>
+
+          <%if @user.admin == true %>
+              <td><span>'Admin'</span></td>
+          <%else %>
+              <td><span>'Social User'</span></td>
+          <%end %>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
 </body>
 
 <footer>
   <div class="row">
-    <div class="col-9"></div>
-    <div class="col-3" >
+    <div class="col-10"></div>
+    <div class="col-2" >
       <div align="left" >
         <button class="btn"><%= link_to 'Back', users_path %></button>
       </div>
