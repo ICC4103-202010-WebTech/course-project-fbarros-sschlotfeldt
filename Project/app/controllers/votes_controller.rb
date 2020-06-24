@@ -20,8 +20,8 @@ class VotesController < ApplicationController
   # GET /votes/new
   def new
     @vote = Vote.new
-    @event = $cureent_event
-    @vote.event_id = @event.id
+    @vote.event_id = params[:event_id]
+    @vote.date = params[:date]
   end
 
   # GET /votes/1/edit
@@ -31,17 +31,8 @@ class VotesController < ApplicationController
   # POST /votes
   # POST /votes.json
   def create
-      @vote = Vote.new(vote_params)
-
-      respond_to do |format|
-        if @vote.save
-          format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
-          format.json { render :show, status: :created, location: @vote }
-        else
-          format.html { render :new }
-          format.json { render json: @vote.errors, status: :unprocessable_entity }
-        end
-      end
+    @vote = Vote.create!(event_id:$cureent_event.id, date:params[:date], n_votes:0)
+    redirect_to event_path(@vote.event_id), notice: 'Date was successfully created.'
   end
 
   # PATCH/PUT /votes/1
