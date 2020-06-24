@@ -27,7 +27,11 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.search(params[:search])
+    if current_user.admin == true
+      @events = Event.search2(params[:search2])
+    else
+      @events = Event.search(params[:search])
+    end
   end
 
   # GET /events/1
