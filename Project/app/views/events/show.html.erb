@@ -77,10 +77,12 @@
 
         <%if current_user.id==$cureent_event.user_id%>
           <%if $cureent_event.start_vote==0 %>
-            <%= button_to 'Start Vote', events_start_vote_path, start_vote: :post, class: ["btn", "btn-light"] %>
-          <%elsif $cureent_event.start_vote==1%>
+            <div><%= button_to 'Start Vote', events_start_vote_path, start_vote: :post, class: ["btn", "btn-light"] %>
+            <%=link_to 'Add Dates', new_vote_path, class: ["btn", "btn-light"] %></div>
+      <%elsif $cureent_event.start_vote==1%>
             <%= button_to 'End Vote', events_end_vote_path, end_vote: :post, class: ["btn", "btn-light"] %>
-          <%end%>
+            <%=link_to 'Add Dates', new_vote_path, class: ["btn", "btn-light"] %>
+        <%end%>
         <%end%>
 
         <br>

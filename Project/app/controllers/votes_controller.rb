@@ -3,6 +3,10 @@ class VotesController < ApplicationController
 
   # GET /votes
   # GET /votes.json
+  def new_date
+    Vote.create!(event_id:params[:event_id], date: params[:date], n_votes:0)
+  end
+
   def index
     @votes = Vote.all
   end
@@ -68,7 +72,11 @@ class VotesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_vote
-      @vote = Vote.find(params[:id])
+      begin
+        @vote = Vote.find(params[:id])
+      rescue
+
+      end
     end
 
     # Only allow a list of trusted parameters through.

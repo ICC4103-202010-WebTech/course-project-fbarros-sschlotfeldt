@@ -1,5 +1,20 @@
 <h1>New Vote</h1>
 
-<%= render 'form', vote: @vote %>
+<%= form_tag({:votes=>"post", :action=>"new_date"}, method: :post) do %>
+  <%= hidden_field_tag :event_id, $cureent_event.id %>
+  <%= date_field_tag :date, nil %>
+  <%= submit_tag 'create', name: nil %>
+<% end %>
 
-<%= link_to 'Back', votes_path %>
+<%=fields_for :ticket_types do |ticket_types_form| %>
+  <div id="ticket-type-nested-forms" class="form-group">
+    <%= ticket_types_form.label :description %>
+    <%= ticket_types_form.text_field :description, class: "form-control" %>
+    <%= ticket_types_form.label :ticket_price %>
+    <%= ticket_types_form.text_field :ticket_price, class: "form-control" %>
+    <% if action_name == 'edit' %>
+      <%= ticket_types_form.label "Delete"%>
+      <%= ticket_types_form.check_box :_destroy %>
+    <% end %>
+  </div>
+<% end %>

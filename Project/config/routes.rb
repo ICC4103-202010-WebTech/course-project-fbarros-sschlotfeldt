@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :event
   end
 
+  post 'votes/new_vote'
+
+  post 'users/destroy_u'
   post 'users/start_chat'
   post 'users/accept_invite'
 
