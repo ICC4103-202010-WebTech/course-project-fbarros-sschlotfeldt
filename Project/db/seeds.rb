@@ -9,7 +9,7 @@
 
 
 u1 = User.create!(userName: "Fcob95", name: "Francisco", lastName: "Barros", bio: "bio1", address: "Address1", email: "fjbarros1@miuandes.cl", password: "123456", admin: false, )
-u2 = User.create!(userName: "SSch20", name: "Sebastian", lastName: "Schlotfeldt", bio: "bio2", address: "Address2", email: "sscholtfeldt@miuandes.cl", password: "123456", admin: false)
+u2 = User.create!(userName: "SSch20", name: "Sebastian", lastName: "Schlotfeldt", bio: "bio2", address: "Address2", email: "sschlotfeldt@miuandes.cl", password: "123456", admin: false)
 u3 = User.create!(userName: "Pepito", name: "Pepe", lastName: "Lagos", bio: "bio3", address: "Address3", email: "pepito@gmail.com", password: "123456", admin: false)
 u4 = User.create!(userName: "Marco56", name: "Marcos", lastName: "Mayer", bio: "bio4", address: "Address4", email: "marco@gmail.com", password: "123456", admin: false)
 u5 = User.create!(userName: "Esteb44", name: "Esteban", lastName: "Soto", bio: "bio5", address: "Address5",  email: "esteban@gmail.com", password: "123456", admin: false)
