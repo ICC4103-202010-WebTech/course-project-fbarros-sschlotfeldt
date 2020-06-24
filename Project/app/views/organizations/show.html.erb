@@ -48,7 +48,9 @@
           </ul>
         <%end %>
       <%end %>
-      <%=link_to 'Create New Organization Event',events_org_event_path, class: ["btn", "btn-light"] %>
+      <%if @organization.user_id == current_user.id || current_user.admin == true  %>
+        <%=link_to 'Create New Organization Event',events_org_event_path, class: ["btn", "btn-light"] %>
+      <%end%>
     </div>
   </div>
   <div class="col-3 bg-dark"></div>
