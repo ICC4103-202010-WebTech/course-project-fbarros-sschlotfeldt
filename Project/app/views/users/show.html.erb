@@ -50,13 +50,10 @@
     <div class="col-3">
       <h3>Your Events</h3>
       <%for e in @user_events %>
-
-          <a>
+          <span>
             <%=link_to e.e_name, event_path(e.id), class: ["btn", "btn-light"] %>
-          </a><br><br>
-
+          </span>
       <%end %>
-      <br>
       <h3>Assisting to</h3>
       <% @assis=[]%>
       <%for a in @assisting_events %>
@@ -65,17 +62,14 @@
             <a><%=link_to a.event.e_name, event_path(a.id), class: ["btn", "btn-light"]  %></a>
             <%@assis<<a.event.e_name %>
           <%end %>
-
       <%end %>
-      <h4>Change Password</h4>
-      <%= link_to "Change your password", edit_user_registration_path, class: ["btn", "btn-light"]  %>
     </div>
     <div class ="col-3 bg-dark"></div>
   </div>
   <div class= row>
     <div class ="col-3 bg-dark"></div>
-    <div class ="col-6">
-      <span align="left">
+    <div class ="col-3">
+      <span align="center">
         <h3>Pending Invites</h3>
 
         <%@como_querai = [] %>
@@ -94,10 +88,13 @@
                 </div>
           <%end %>
         <%end %>
-
         </span>
       </div>
-    <div class ="col-3 bg-dark"></div>
+      <div class="col-3">
+        <h4>Change Password</h4>
+        <%= link_to "Change your password", edit_user_registration_path, class: ["btn", "btn-light"]  %>
+      </div>
+      <div class ="col-3 bg-dark"></div>
     </div>
   </div>
   </body>

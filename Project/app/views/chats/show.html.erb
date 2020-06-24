@@ -1,23 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Chats</h1>
-<div class = "wrapper">
-  <div class ="box">
-  <% @chats.each do |chat| %>
-    <li>
-      <%=chat.user.userName %>
-      : <%=chat.text %>
-    </li>
-<% end %><br>
-
-    <%= form_tag({:chats=>"post", :action=>"send_msg"}, method: :post) do %>
-      <%= hidden_field_tag :chat_id, params[:id] %>
-      <%= text_field_tag :text %>
-      <%= submit_tag 'Send', name: nil %>
-    <% end %>
-
+<div class = "row">
+  <div class="col-4"></div>
+  <div class="col">
+    <h1>Chats</h1>
   </div>
 </div>
 
+<div class="container-fluid">
+  <div class = "row">
+    <div class="col-4"></div>
+    <div class="border-solid bg-light col-4" style="padding: 1em; margin: 0 0 .5em;">
+
+      <% @chats.each do |chat| %>
+        <div>
+          <strong><%=chat.user.userName %></strong>
+          : <%=chat.text %>
+        </div>
+      <% end %><br>
+    </div>
+  </div>
+  <div class="row flex-fill">
+    <div class="col-4 flex-fill"></div>
+    <div class="flex-fill">
+      <%= form_tag({:chats=>"post", :action=>"send_msg"}, method: :post) do %>
+        <%= hidden_field_tag :chat_id, params[:id] %>
+        <%= text_field_tag :text, nil, {:size=>58, :placeholder=> "Write your message here..."} %>
+        <%= submit_tag 'Send', name: nil %>
+      <% end %>
+    </div>
+  </div>
+</div>
 <footer>
 </footer>
