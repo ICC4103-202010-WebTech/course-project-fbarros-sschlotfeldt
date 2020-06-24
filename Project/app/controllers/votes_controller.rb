@@ -16,8 +16,7 @@ class VotesController < ApplicationController
   # GET /votes/new
   def new
     @vote = Vote.new
-    @vote.user_id = current_user.id
-    @event = Event.find(1)
+    @event = $cureent_event
     @vote.event_id = @event.id
   end
 

@@ -37,7 +37,14 @@
       <%= form.label :videos, "Upload Event Videos" %>
       <%= form.file_field :videos, multiple: true, class: "form-control" %>
     </div>
+    <%=form.fields_for :votes do |v_form| %>
+      <div class="form-group">
+        <%=v_form.label :Date %>
+        <%=v_form.datetime_local_field :date %>
+      </div>
+    <%end%>
 
+    <%#link_to 'Add Date', new_event_vote_path(@event.id), class: ["btn", "btn-light"], remote: true %>
     <div class="form-group mt-2">
       <%= form.submit :Update, class: ["btn", "btn-primary"] %>
       <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
