@@ -136,7 +136,7 @@
 
           <%if @mem.include? @event_users.find(current_user.id).name%>
             <div align="right">
-                <span><%=link_to 'Comments', comment_path(v.id), class: "btn btn-light"%></span>
+                <span><%=link_to 'Comments', comments_path, class: "btn btn-light"%></span>
                 <%if current_user.id == v.user_id %>
                   <span class="text-dark" >Can't exit </span>
                 <%else%>
@@ -146,7 +146,7 @@
             </div>
           <%else%>
             <div align="right">
-              <%=link_to 'Comments', comment_path(v.id), class: ["btn", "btn-light"]%>
+              <%=link_to 'Comments', comments_path(v.id), class: ["btn", "btn-light"]%>
               <%=link_to 'Join event', new_event_event_m_path(v.id), class: ["btn", "btn-light"]%>
             </div>
           <%end%>
