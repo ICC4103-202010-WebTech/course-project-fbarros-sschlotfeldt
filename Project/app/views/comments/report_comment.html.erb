@@ -1,0 +1,21 @@
+<h1>Report Event</h1>
+
+<%@reasons = ['Inappropriate content', 'Abusive language', 'Other...'] %>
+<%@comment = Comment.find(params[:id]) %>
+
+<div class="row ml-0">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Reporting: <%=@comment.text %>, written by: <%=User.find(@comment.user_id).userName %> </h5>
+      <p>Please enter the required information, so we can take the corresponding actions</p>
+      <%= form_tag report_comment_btn_path, method: :post do %>
+        <div id="ticket-type-nested-forms" class="form-group">
+          <hr>Reporting reason: <%=collection_select :select, :id, @reasons, :to_s, :to_s, { class: "form-control" } %>
+          <hr>Additional Information: <%=text_area_tag :text %>
+        </div>
+        <%= link_to 'Report', report_comment_btn_path, method: :post, class: "btn btn-danger" %>
+        <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+      <% end %>
+    </div>
+  </div>
+</div>

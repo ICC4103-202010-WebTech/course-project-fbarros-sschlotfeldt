@@ -9,8 +9,9 @@ Rails.application.routes.draw do
 
   get 'events/org_event'
   get 'events/report_event/:id', to: "events#report_event", as: 'report_event'
-  get 'comments/report_comment/:id', to: "comments#report_comments", as: 'report_comment'
+  get 'comments/report_comment/:id', to: "comments#report_comment", as: 'report_comment'
   get 'events/report_event_btn/:id', to: "events#report_event_btn", as: 'report_event_btn'
+  get 'comments/report_event_btn/:id', to: "comments#report_comment_btn", as: 'report_comment_btn'
 
   resources :events do
     resources :comments, shallow:true
@@ -22,8 +23,6 @@ Rails.application.routes.draw do
     resources :users
     resources :event
   end
-
-  post 'comments/report_event'
 
   post 'votes/new_vote'
 

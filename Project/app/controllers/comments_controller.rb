@@ -9,6 +9,12 @@ class CommentsController < ApplicationController
 
   end
 
+  def report_comment_btn
+    @comment = Comment.find(params[:id])
+    @comment.update(report_status: @comment.report_status + 1)
+    redirect_to event_path(params[:id]), notice: 'Your report was successfully submitted.'
+  end
+
   def index
     @comments = Comment.where(event_id:params[:id])
   end
@@ -84,7 +90,6 @@ class CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-
       params.fetch(:comment, {}).permit(:user_id, :text, :event_id, :atta)
     end
 end

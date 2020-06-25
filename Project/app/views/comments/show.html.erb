@@ -8,7 +8,11 @@
       <h3 align="left" ><%=@comment.event.e_name %></h3>
           <%for v in @comments do %>
             <%if current_user.id == v.user_id|| current_user.admin==true%>
-              <span class ="text-left"> <%=v.user.userName%>: <%=v.text%></span> <span><%=link_to 'Edit', edit_comment_path(v) %></span>&nbsp<span><%= link_to 'Delete', v, method: :delete, data: { confirm: 'Are you sure?' }%></span>
+              <%if v.report_status <= 10 %>
+              <span class ="text-left"> <%=v.user.userName%>: <%=v.text%></span> <span><%=link_to 'Edit', edit_comment_path(v) %></span>&nbsp<span><%= link_to 'Delete', v, method: :delete, data: { confirm: 'Are you sure?' }%></span><span><%= link_to 'Report', report_comment_path(v.id), method: :get %>
+</span>       <%else %>
+                This comment has been deleted due to clashes with our terms of services and uses
+              <%end %>
               <br>
               <%if v.atta.attached? %>
                 <div><%= link_to image_tag(v.atta, width: "40%", height: "30%"), url_for(v)%></div>
