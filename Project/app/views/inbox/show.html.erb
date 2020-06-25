@@ -18,7 +18,6 @@
           <th>Unreaded</th>
         </tr>
         </thead>
-        <tbody>
 
       <%@mem=[] %>
       <%for c in @inbox_c %>
@@ -26,47 +25,64 @@
           <%if c.inbox1_id == current_user.id %>
             <%if @mem.include? User.find(c.inbox2_id).userName %>
             <%else %>
-              <%= form_tag({:chat=>"post", :action=>"open_chat"}, method: :post) do %>
+                <tbody>
+                <%= form_tag({:chat=>"post", :action=>"open_chat"}, method: :post) do %>
                 <%= hidden_field_tag :chat_id, c.id %>
-                <td><%= submit_tag User.find(c.inbox2_id).userName, class: ["btn", "btn-light"] %></td>
-              <%end %>
-                <td><%=truncate(Message.where(chat_id:c.id).order(created_at: :desc).first.text, :length => 60) %></td>
-                <%if Message.where(chat_id:c.id).order(created_at: :desc).first.msg_status == false%>
-                  <%if Message.where(chat_id:c.id).order(created_at: :desc).first.user_id == current_user.id %>
+                  <%if Message.where(chat_id:c.id).order(created_at: :desc).first == nil %>
                   <%else %>
-                    <td>Unreaded</td>
+                    <td><%= submit_tag User.find(c.inbox2_id).userName, class: ["btn", "btn-light"] %></td>
                   <%end %>
-                <%else %>
+              <%end %>
+                <%if Message.where(chat_id:c.id).order(created_at: :desc).first == nil %>
                   <td></td>
+                <%else %>
+                  <td><%=truncate(Message.where(chat_id:c.id).order(created_at: :desc).first.text, :length => 60) %></td>
+                  <%if Message.where(chat_id:c.id).order(created_at: :desc).first.msg_status == false%>
+                    <%if Message.where(chat_id:c.id).order(created_at: :desc).first.user_id == current_user.id %>
+                    <%else %>
+                      <td>Unreaded</td>
+                    <%end %>
+                  <%else %>
+                    <td></td>
+                  <%end %>
                 <%end %>
-              <%@mem << User.find(c.inbox2_id).userName %>
-            <%end %>
+                <%@mem << User.find(c.inbox2_id).userName %>
+                </tbody>
+              <%end %>
           <%elsif c.inbox2_id == current_user.id%>
               <%if @mem.include? User.find(c.inbox1_id).userName %>
               <%else %>
+                <tbody>
                 <%= form_tag({:chat=>"post", :action=>"open_chat"}, method: :post) do %>
                   <%= hidden_field_tag :chat_id, c.id %>
-                  <td><%= submit_tag User.find(c.inbox1_id).userName, class: ["btn", "btn-light"] %></td>
-                <%end %>
-                <td><%=truncate(Message.where(chat_id:c.id).order(created_at: :desc).first.text, :length => 60) %></td>
-                <%if Message.where(chat_id:c.id).order(created_at: :desc).first.msg_status == false%>
-                  <%if Message.where(chat_id:c.id).order(created_at: :desc).first.user_id == current_user.id %>
+                  <%if Message.where(chat_id:c.id).order(created_at: :desc).first == nil %>
                   <%else %>
-                    <td>Unreaded</td>
+                  <td><%= submit_tag User.find(c.inbox1_id).userName, class: ["btn", "btn-light"] %></td>
                   <%end %>
-                <%else %>
-                  <td></td>
+                <%end %>
+                  <%if Message.where(chat_id:c.id).order(created_at: :desc).first == nil %>
+                    <td></td>
+                  <%else %>
+                    <td><%=truncate(Message.where(chat_id:c.id).order(created_at: :desc).first.text, :length => 60) %></td>
+                  <%if Message.where(chat_id:c.id).order(created_at: :desc).first.msg_status == false%>
+                    <%if Message.where(chat_id:c.id).order(created_at: :desc).first.user_id == current_user.id %>
+                    <%else %>
+                      <td>Unreaded</td>
+                    <%end %>
+                  <%else %>
+                    <td></td>
+                  <%end %>
                 <%end %>
                 <%@mem << User.find(c.inbox1_id).userName %>
+                </tbody>
               <%end %>
-          <%else %>
+            <%else %>
           <%end %>
         <%end %>
       <%end %>
 
 
 
-        </tbody>
       </table>
     </div>
   </div>
