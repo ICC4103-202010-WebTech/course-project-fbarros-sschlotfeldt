@@ -90,6 +90,11 @@
                   <td><%=event.e_name %>
                   <td><%=event.e_description %></td>
                   <td><%=w.o_name%></td>
+                  <%if event.report_status > 10 %>
+                    <td>Blocked due to Reports</td>
+                  <%else %>
+                    <td></td>
+                  <%end %>
                   <td><%=link_to 'Go to Event', event_path(event.id), class:["btn","btn-secondary"]%></td>
                 </tr>
                 </tbody>
@@ -103,6 +108,11 @@
                     <td><%=event.e_name %>
                     <td><%=event.e_description %></td>
                     <td><%=w.userName%></td>
+                    <%if event.report_status > 10 %>
+                    <td>Blocked due to Reports</td>
+                    <%else %>
+                    <td></td>
+                    <%end %>
                     <td><%=link_to 'Go to Event', event_path(event.id), class:["btn","btn-secondary"]%></td>
                   </tr>
               <%end %>
