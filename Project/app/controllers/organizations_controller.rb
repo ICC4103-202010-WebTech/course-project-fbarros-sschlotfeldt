@@ -9,6 +9,11 @@ class OrganizationsController < ApplicationController
     @user=User.all
   end
 
+  def join_organization
+    OrganizationM.create!(organization_id: params[:id],user_id: current_user.id)
+    redirect_to organization_path(params[:id]), notice: 'You have joined the organization successfully'
+  end
+
   # GET /organizations/1
   # GET /organizations/1.json
   def show

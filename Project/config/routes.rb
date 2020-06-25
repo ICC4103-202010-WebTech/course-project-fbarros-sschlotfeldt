@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'events/report_event_btn/:id', to: "events#report_event_btn", as: 'report_event_btn'
   get 'comments/report_event_btn/:id', to: "comments#report_comment_btn", as: 'report_comment_btn'
 
+  get 'organizations/join_organization/:id', to: "organizations#join_organization", as: 'join_organization'
+
   resources :events do
     resources :comments, shallow:true
     resources :votes, shallow:true
@@ -23,7 +25,11 @@ Rails.application.routes.draw do
     resources :users
     resources :event
   end
+  resources :organizations do
+    resources :organization_ms
+  end
 
+  resources :organization_ms
   post 'votes/new_vote'
 
   post 'users/destroy_u'
