@@ -29,7 +29,7 @@
             <td><%= v.o_name %></td>
             <td><%= @user.find(v.user.id).userName%></td>
             <td><%=link_to 'Go to Organization', organization_path(v.id), class:["btn","btn-secondary"]%></td>
-            <td><%= link_to 'Delete', v, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %></td>
+            <td><%= button_to 'Delete Organization', v, :method => :delete, data: { confirm: "Are you sure?"}, class: ["btn", "btn-danger"] %></td>
             </tr>
             </tbody>
           <%end%>

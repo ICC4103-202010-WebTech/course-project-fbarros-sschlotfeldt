@@ -65,7 +65,7 @@
           <%= link_to "Back", :back, class:["btn","btn-light"] %>
           <%if @organization.user_id == current_user.id || current_user.admin==true%>
             <button class="btn btn-light"><%= link_to 'Edit', edit_organization_path  %></button>
-            <%= link_to 'Delete', @organization, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %>
+            <%= button_to 'Delete', @organization, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %>
           <%end %>
         </div>
     </div>

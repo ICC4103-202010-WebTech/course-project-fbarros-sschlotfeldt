@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
-  has_one :user, dependent: :nullify
-  has_one :organization, dependent: :nullify
+  belongs_to :user, optional: true
+  belongs_to :organization, optional: true
   has_one :venue
   has_many :comments, dependent: :destroy
   has_many :eventMs, dependent: :destroy
