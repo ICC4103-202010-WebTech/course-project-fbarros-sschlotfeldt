@@ -1,0 +1,20 @@
+<h1>Report Event</h1>
+
+<%@reasons = ['Inappropriate content', 'Abusive language', 'Other...'] %>
+
+<div class="row ml-0">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Reporting: <%=$cureent_event.e_name %></h5>
+      <p>Please enter the required information, so we can take the corresponding actions</p>
+      <%= form_tag report_event_btn_path, method: :post do %>
+        <div id="ticket-type-nested-forms" class="form-group">
+          <hr>Reporting reason: <%=collection_select :select, :id, @reasons, :to_s, :to_s, { class: "form-control" } %>
+          <hr>Comment: <%=text_area_tag :text %>
+        </div>
+        <%= link_to 'Report', report_event_btn_path, method: :post, class: "btn btn-danger" %>
+        <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+      <% end %>
+    </div>
+  </div>
+</div>

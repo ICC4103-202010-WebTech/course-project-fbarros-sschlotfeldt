@@ -4,6 +4,11 @@ class CommentsController < ApplicationController
 
   # GET /comments
   # GET /comments.json
+
+  def report_comment
+
+  end
+
   def index
     @comments = Comment.where(event_id:params[:id])
   end

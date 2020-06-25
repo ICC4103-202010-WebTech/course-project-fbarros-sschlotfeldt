@@ -5,6 +5,15 @@ class EventsController < ApplicationController
   # GET /events.json
   #
 
+  def report_event
+
+  end
+
+  def report_event_btn
+    $cureent_event.update(report_status: $cureent_event.report_status + 1)
+    redirect_to event_path(params[:id]), notice: 'Your report was successfully submitted.'
+  end
+
   def photos
     if params[:photos] != nil
       @event.photos.attach(params[:photos])
@@ -126,6 +135,10 @@ class EventsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
+      begin
+        @event = Event.find(params[:id])
+      rescue
+      end
     end
 
     # Only allow a list of trusted parameters through.

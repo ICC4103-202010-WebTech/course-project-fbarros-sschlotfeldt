@@ -179,5 +179,6 @@
           <%= link_to 'Edit', edit_event_path(@event.ids), class:["btn","btn-light"] %>
           <%= link_to 'Delete', Event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %>
         <%end %>
+        <%= link_to 'Report', report_event_path, method: :get, class: "btn btn-danger" %>
       </div>
 </footer>
