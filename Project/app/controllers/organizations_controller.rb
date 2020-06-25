@@ -42,6 +42,7 @@ class OrganizationsController < ApplicationController
         format.json { render json: @organization.errors, status: :unprocessable_entity }
       end
     end
+    OrganizationM.create!(user_id: current_user.id, organization_id:@organization.id)
   end
 
   # PATCH/PUT /organizations/1
