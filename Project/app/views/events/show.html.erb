@@ -179,7 +179,7 @@
         <%= link_to "Back", :back, class:["btn","btn-light"] %>
         <% if current_user.id == @event[0].user_id || current_user.admin==true%>
           <%= link_to 'Edit', edit_event_path(@event.ids), class:["btn","btn-light"] %>
-          <%= link_to 'Delete', Event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %>
+          <%= button_to 'Delete', @event[0], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %>
         <%end %>
         <%= link_to 'Report', report_event_path, method: :get, class: "btn btn-danger" %>
       </div>
