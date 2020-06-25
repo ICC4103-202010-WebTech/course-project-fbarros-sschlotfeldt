@@ -38,7 +38,7 @@
                   <td><%=event.e_description %></td>
                   <td><%=w.o_name%></td>
                   <td><%=link_to 'Go to Event', event_path(event.id), class:["btn","btn-secondary"]%></td>
-                  <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %></td>
+                  <td><%= button_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %></td>
                 </tr>
                 </tbody>
               <%end %>
@@ -52,7 +52,7 @@
                   <td><%=event.e_description %></td>
                   <td><%=w.userName%></td>
                   <td><%=link_to 'Go to Event', event_path(event.id), class:["btn","btn-secondary"]%></td>
-                  <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %></td>
+                  <td><%= button_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %></td>
                 </tr>
               <%end %>
             <% end %>
