@@ -44,8 +44,23 @@ class EventsController < ApplicationController
   end
 
   def org_event
+    begin
+      @event = Event.new(event_params)
 
+      respond_to do |format|
+        if @event.save!
+          format.html { redirect_to @event, notice: 'Event was successfully created.' }
+          format.json { render :show, status: :created, location: @event }
+        else
+          format.html { render :new }
+          format.json { render json: @event.errors, status: :unprocessable_entity }
+        end
+      end
+      EventM.create!(user_id: current_user.id, event_id:@event.id)
+    rescue
+    end
   end
+
   # GET /events/1
   # GET /events/1.json
   def show
@@ -63,7 +78,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @event.user_id = current_user.id
-    @event.organization_id = Organization.find(1).id
+    @event.organization_id = params[:organization_id]
     @venues = Venue.all
   end
 

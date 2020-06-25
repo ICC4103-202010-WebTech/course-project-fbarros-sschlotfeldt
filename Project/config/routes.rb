@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do get '/users/sign_out' => 'devise/sessions#destroy' end
 
-  get 'events/org_event'
+  get 'events/org_event/:id', to: "events#org_event", as: 'org_event'
   get 'events/report_event/:id', to: "events#report_event", as: 'report_event'
   get 'comments/report_comment/:id', to: "comments#report_comment", as: 'report_comment'
   get 'events/report_event_btn/:id', to: "events#report_event_btn", as: 'report_event_btn'
@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   post 'events/start_vote'
   post 'events/end_vote'
   post 'events/vote_link'
+  post 'events/org_event'
 
   post 'invites/invite'
 

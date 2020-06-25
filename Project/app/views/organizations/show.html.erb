@@ -49,7 +49,7 @@
         <%end %>
       <%end %>
       <%if @organization.user_id == current_user.id || current_user.admin == true  %>
-        <%=link_to 'Create New Organization Event',events_org_event_path, class: ["btn", "btn-light"] %>
+        <%=link_to 'Create New Organization Event',org_event_path, class: ["btn", "btn-light"] %>
       <%end%>
     </div>
   </div>
