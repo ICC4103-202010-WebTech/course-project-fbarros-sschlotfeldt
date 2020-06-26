@@ -20,6 +20,7 @@ class OrganizationsController < ApplicationController
     @organization_users= User.all
     @org_members=OrganizationM.all
     @o_events = Event.where("organization_id = ?", params[:id])
+    $current_organization = Organization.find(params[:id])
   end
 
   # GET /organizations/new
@@ -77,7 +78,10 @@ class OrganizationsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_organization
-    @organization = Organization.find(params[:id])
+    begin
+      @organization = Organization.find(params[:id])
+    rescue
+    end
   end
 
   # Only allow a list of trusted parameters through.
