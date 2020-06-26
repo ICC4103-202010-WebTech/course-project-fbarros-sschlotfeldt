@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   get 'organizations/join_organization/:id', to: "organizations#join_organization", as: 'join_organization'
 
+  get 'votes/destoy_develda/:id', to: "votes#destoy_develda", as: 'destoy_develda'
+
   resources :events do
     resources :comments, shallow:true
     resources :votes, shallow:true

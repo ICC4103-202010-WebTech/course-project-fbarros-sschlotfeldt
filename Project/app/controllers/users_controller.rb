@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   def show
     @user_o = Organization.all
     @user_events = Event.where("user_id = ?", @user.id)
-    @assisting_events = EventM.joins(:event).where(user_id: current_user.id)
+    @assisting_events = EventM.joins(:event).where(user_id: params[:id])
     @pi= Invite.where(user_id: current_user.id)
     @event_members= EventM.all
   end

@@ -51,10 +51,19 @@ class VotesController < ApplicationController
 
   # DELETE /votes/1
   # DELETE /votes/1.json
+  def destoy_develda
+    @vote2 = Vote.find(params[:id])
+    @vote2.destroy
+    respond_to do |format|
+      format.html { redirect_to $cureent_event, notice: 'Vote was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   def destroy
     @vote.destroy
     respond_to do |format|
-      format.html { redirect_to votes_url, notice: 'Vote was successfully destroyed.' }
+      format.html { redirect_to votes_url, notice: 'Edit your date.' }
       format.json { head :no_content }
     end
   end
