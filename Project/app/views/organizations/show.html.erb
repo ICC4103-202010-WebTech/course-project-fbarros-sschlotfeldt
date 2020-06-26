@@ -34,7 +34,7 @@
     <div>
 
       <%@mem = [] %>
-      <h2><%link_to "Organization Members :", organization_m_path(params[:id]), method: :get %> </h2>
+      <h2><%=link_to "Organization Members :", organization_m_path(params[:id]), method: :get %> </h2>
       <%@org_members.each do |om|%>
         <%if om.organization_id == @organization.id%>
           <ul>

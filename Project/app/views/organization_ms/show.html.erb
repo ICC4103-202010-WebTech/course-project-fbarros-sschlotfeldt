@@ -1,4 +1,18 @@
 <p id="notice"><%= notice %></p>
 
+<%@mem = [] %>
+<%for om in @organization_ms %>
+  <%@mem << om.user_id %>
+<%end %>
+
+<%for u in User.all%>
+  <%if @mem.include? u.id %>
+    <ul>
+      <li><%=u.userName %></li><%= button_to 'Destroy', @organization_ms.where(user_id:u.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </ul>
+  <%end %>
+<%end %>
+
+
 <%= link_to 'Edit', edit_organization_m_path(@organization_m) %> |
 <%= link_to 'Back', organization_ms_path %>

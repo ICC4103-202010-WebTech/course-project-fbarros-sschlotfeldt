@@ -166,12 +166,12 @@ ActiveRecord::Schema.define(version: 2020_06_24_230748) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "events"
-  add_foreign_key "comments", "users"
-  add_foreign_key "event_ms", "events"
-  add_foreign_key "event_ms", "users"
-  add_foreign_key "events", "organizations"
-  add_foreign_key "events", "users"
+  add_foreign_key "comments", "events", on_delete: :cascade
+  add_foreign_key "comments", "users", on_delete: :cascade
+  add_foreign_key "event_ms", "events", on_delete: :cascade
+  add_foreign_key "event_ms", "users", on_delete: :cascade
+  add_foreign_key "events", "organizations", on_delete: :cascade
+  add_foreign_key "events", "users", on_delete: :cascade
   add_foreign_key "events", "venues"
   add_foreign_key "inboxes", "users"
   add_foreign_key "invites", "events"
@@ -180,6 +180,6 @@ ActiveRecord::Schema.define(version: 2020_06_24_230748) do
   add_foreign_key "messages", "users"
   add_foreign_key "organization_ms", "organizations"
   add_foreign_key "organization_ms", "users"
-  add_foreign_key "organizations", "users"
+  add_foreign_key "organizations", "users", on_delete: :cascade
   add_foreign_key "votes", "events"
 end

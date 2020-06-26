@@ -4,17 +4,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
 
-  has_many :events, dependent: :destroy
+  has_many :events
   has_one :organization
-  has_one :inbox, dependent: :destroy
-  has_many :messages, dependent: :destroy
+  has_one :inbox
+  has_many :messages
   has_many :organizationMs, dependent: :destroy
   has_many :eventMs, through: :events, dependent: :destroy
   has_many :votes, through: :events, dependent: :destroy
   has_many :comments, through: :events, dependent: :destroy
   has_many :invites, through: :events, dependent: :destroy
 
-  has_one_attached :user_pic
+  has_one_attached :user_pic, dependent: :destroy
 
   validates_uniqueness_of :userName
 

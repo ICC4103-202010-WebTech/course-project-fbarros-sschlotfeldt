@@ -10,6 +10,7 @@ class OrganizationMsController < ApplicationController
   # GET /organization_ms/1
   # GET /organization_ms/1.json
   def show
+    @organization_ms = OrganizationM.where(organization_id:params[:id])
   end
 
   # GET /organization_ms/new

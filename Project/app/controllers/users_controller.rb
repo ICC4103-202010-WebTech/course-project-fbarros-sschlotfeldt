@@ -84,8 +84,16 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   # DELETE /users/1.json
-  def destroy_u
-    User.find(params[:user_id]).destroy
+  def destroy
+    Invite.where(user_id: params[:id]).destroy_all
+    Comment.where(user_id: params[:id]).destroy_all
+    EventM.where(user_id: params[:id]).destroy_all
+    Event.where(user_id: params[:id]).destroy_all
+    OrganizationM.where(user_id: params[:id]).destroy_all
+    Organization.where(user_id: params[:id]).destroy_all
+    Chat.where("inbox1_id LIKE ? OR inbox2_id LIKE ?", params[:id], params[:id]).destroy_all
+    Inbox.find(params[:id]).destroy
+    @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
