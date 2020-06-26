@@ -67,7 +67,7 @@ class CommentsController < ApplicationController
       end
     end
     rescue
-      flash[:alert] = "This operation could not be executed"
+      flash[:danger] = "This operation could not be executed"
       redirect_back(fallback_location: root_path)
     end
   end

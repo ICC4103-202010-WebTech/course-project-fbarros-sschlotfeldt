@@ -65,7 +65,6 @@ class VotesController < ApplicationController
       begin
         @vote = Vote.find(params[:id])
       rescue
-
       end
     end
 

@@ -32,7 +32,7 @@ class EventMsController < ApplicationController
     @event =Event.find(@event_m.event_id)
     respond_to do |format|
       if @event_m.save
-        format.html { redirect_to @event, notice: 'Event m was successfully created.' }
+        format.html { redirect_to @event, notice: 'Added to the Event!' }
         format.json { render :show, status: :created, location: @event_m }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class EventMsController < ApplicationController
   def update
     respond_to do |format|
       if @event_m.update(event_m_params)
-        format.html { redirect_to events_path, notice: 'Event m was successfully updated.' }
+        format.html { redirect_to events_path, notice: 'Event Members were successfully updated.' }
         format.json { render :show, status: :ok, location: @event_m }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class EventMsController < ApplicationController
   def destroy
     @event_m.destroy
     respond_to do |format|
-      format.html { redirect_to $cureent_event, notice: 'Event m was successfully destroyed.' }
+      format.html { redirect_to $cureent_event, notice: 'Event Member was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

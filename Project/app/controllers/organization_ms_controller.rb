@@ -29,7 +29,7 @@ class OrganizationMsController < ApplicationController
 
     respond_to do |format|
       if @organization_m.save
-        format.html { redirect_to @organization_m, notice: 'Organization m was successfully created.' }
+        format.html { redirect_to @organization_m, notice: 'Organization Member was successfully added' }
         format.json { render :show, status: :created, location: @organization_m }
       else
         format.html { render :new }
@@ -57,7 +57,7 @@ class OrganizationMsController < ApplicationController
   def destroy
     @organization_m.destroy
     respond_to do |format|
-      format.html { redirect_to $current_organization, notice: 'Organization m was successfully destroyed.' }
+      format.html { redirect_to $current_organization, notice: 'Organization Member was successfully removed.' }
       format.json { head :no_content }
     end
   end

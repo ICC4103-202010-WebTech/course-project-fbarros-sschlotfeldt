@@ -58,13 +58,16 @@
 
 
   <body class="bg-secondary">
-  <% flash.each do |name, msg| %>
-    <%if name.class=="alert" %>
-      <%= content_tag :div, msg, class: "alert" %>
-    <%else%>
-      <%= content_tag :div, msg, class: "notice" %>
-    <%end%>
+
+
+  <% if notice.present? %>
+    <%= render partial: "notice" %>
   <% end %>
+  <% if alert.present? %>
+    <%= render partial: "alert" %>
+  <% end %>
+
+
     <%= yield %>
   </body>
 

@@ -40,7 +40,7 @@
             </div>
             <p>Description : <%=v.e_description%></p>
 
-            <h4><%=link_to 'Comments :', comment_path(v.id)%></h4>
+            <h4><%=link_to 'Comments', comments_path(v.id)%></h4>
             <% @p_comments.each do |x|  %>
               <%if y < 5 %>
                 <% if v.id == x.event_id   %>

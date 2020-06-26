@@ -34,7 +34,7 @@ class InvitesController < ApplicationController
   def create
     @invite = Invite.create!(user_id:params[:user_id], event_id:params[:event_id])
     @invited =  User.where("id = ?", @invite.user_id).select('userName').to_s
-    redirect_to event_invites_path
+    redirect_to event_invites_path, notice: 'Invite was sent to user'
   end
 
   # PATCH/PUT /invites/1
