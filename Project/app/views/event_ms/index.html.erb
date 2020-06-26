@@ -1,25 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Event Ms</h1>
-
+<h1><%=$cureent_event.e_name %>  Members</h1>
+<%for om in @event_ms %>
+  <%@mem << om.user_id %>
+<%end %>
 <table>
   <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th> User </th>
+    <th> Action </th>
+  </tr>
   </thead>
 
-  <tbody>
-    <% @event_ms.each do |event_m| %>
-      <tr>
-        <td><%= link_to 'Show', event_m %></td>
-        <td><%= link_to 'Edit', edit_event_m_path(event_m) %></td>
-        <td><%= link_to 'Destroy', event_m, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+<%for u in User.all%>
+  <%if @mem.include? u.id %>
+    <tbody>
+    <tr>
+      <td><%=u.userName %></td>
+      <%if $cureent_event.user_id == current_user.id %>
+        <%if current_user.id == u.id%>
+          <td>-->You are the event Host<--</td>
+        <%else %>
+          <td><%= button_to 'Destroy', @event_ms.find_by(user_id:u.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end %>
+      <%end %>
+    </tr>
+    </tbody>
+  <%end %>
+<%end %>
+
 </table>
 
 <br>
-
-<%= link_to 'New Event M', new_event_m_path %>
+<%= link_to "Back", :back, class:["btn","btn-light"] %>

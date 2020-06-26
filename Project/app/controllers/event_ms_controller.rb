@@ -4,7 +4,8 @@ class EventMsController < ApplicationController
   # GET /event_ms
   # GET /event_ms.json
   def index
-    @event_ms = EventM.all
+    @mem = []
+    @event_ms = EventM.where(event_id:$cureent_event.id)
   end
 
   # GET /event_ms/1
@@ -59,7 +60,7 @@ class EventMsController < ApplicationController
   def destroy
     @event_m.destroy
     respond_to do |format|
-      format.html { redirect_to @event, notice: 'Event m was successfully destroyed.' }
+      format.html { redirect_to $cureent_event, notice: 'Event m was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
