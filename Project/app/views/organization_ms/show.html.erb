@@ -8,7 +8,7 @@
 <%for u in User.all%>
   <%if @mem.include? u.id %>
     <ul>
-      <li><%=u.userName %></li><%= button_to 'Destroy', @organization_ms.where(user_id:u.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <li><%=u.userName %></li><%= button_to 'Destroy', @organization_ms.find_by(user_id:u.id), method: :delete, data: { confirm: 'Are you sure?' } %>
     </ul>
   <%end %>
 <%end %>

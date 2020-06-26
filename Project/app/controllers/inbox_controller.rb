@@ -1,6 +1,6 @@
 class InboxController < ApplicationController
   before_action :set_inbox, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /inbox
   # GET /inbox.json
   def open_chat

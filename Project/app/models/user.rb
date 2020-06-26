@@ -17,6 +17,8 @@ class User < ApplicationRecord
   has_one_attached :user_pic, dependent: :destroy
 
   validates_uniqueness_of :userName
+  validates :userName, presence: true
+  validates :name, presence: true
 
   before_create :build_inbox
 
@@ -41,7 +43,7 @@ class User < ApplicationRecord
 
   def self.search(search)
     if search
-      @users = User.where("userName LIKE ? OR name LIKE ? OR lastName LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%" )
+      @users = User.where("userName LIKE ? OR name LIKE ? ", "%#{search}%", "%#{search}%" )
       if @users
         self.where(id: @users)
       else

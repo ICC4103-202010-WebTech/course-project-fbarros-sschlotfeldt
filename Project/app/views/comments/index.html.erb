@@ -8,29 +8,29 @@
       <%@comments = Comment.where(event_id: $cureent_event.id)%>
       <h3 align="left" ><%=$cureent_event.e_name %></h3>
       <%for v in @comments do %>
+        <%if v.report_status <= 10 %>
             <%if current_user.id == v.user_id|| current_user.admin==true%>
-                <%if v.report_status <= 10 %>
                     <%=v.user.userName%>: <%=v.text%>
-                    <%=button_to 'Edit', edit_comment_path(v) %>
+                    <%=button_to 'Edit', edit_comment_path(v), method: :get  %>
                     <%= button_to 'Delete', v, method: :delete, data: { confirm: 'Are you sure?' }%>
-                    <%= button_to 'Report', report_comment_path(v.id), method: :get %>
-                <%else %>
-                This comment has been deleted due to clashes with our terms of services and uses
-                <%end %>
-          <br>
-          <%if v.atta.attached? %>
-                <div><%= link_to image_tag(v.atta, width: "40%", height: "30%"), url_for(v)%></div>
-              <%else%>
-          <%end%>
+                 <br>
+                <%if v.atta.attached? %>
+                    <div><%= link_to image_tag(v.atta, width: "40%", height: "30%"), url_for(v)%></div>
+                <%else%>
+                <%end%>
             <%else%>
-              <p class ="text-left"> <%=v.user.userName%>: <%=v.text%></p>
-          <%if v.atta.attached? %>
-                <div><%= link_to image_tag(v.atta, width: "100%", height: "100%"), url_for(v)%></div>
-                <div><%=v.user.userName%>: <%=v.text%></div>
-              <%else%>
-          <%end%>
+                <p class ="text-left"> <%=v.user.userName%>: <%=v.text%></p>
+               <%if v.atta.attached? %>
+                  <div><%= link_to image_tag(v.atta, width: "100%", height: "100%"), url_for(v)%></div>
+                  <div><%=v.user.userName%>: <%=v.text%></div>
+               <%else%>
+               <%end%>
+                <%= button_to 'Report', report_comment_path(v.id), method: :get %>
             <%end%>
+          <%else %>
+                      This comment has been deleted due to clashes with our terms of services and uses
           <%end %>
+      <%end %>
     </span>
 </div>
 </body>
