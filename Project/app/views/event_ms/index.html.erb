@@ -21,7 +21,7 @@
         <%if current_user.id == u.id%>
           <td>-->You are the event Host<--</td>
         <%else %>
-          <td><%= button_to 'Destroy', @event_ms.find_by(user_id:u.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= button_to 'Kick form Event', @event_ms.find_by(user_id:u.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <%end %>
       <%end %>
     </tr>

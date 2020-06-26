@@ -6,9 +6,12 @@ class InboxController < ApplicationController
   def open_chat
     redirect_to chat_path(params[:chat_id])
     for msg in Message.where(chat_id: params[:chat_id])
-      if msg.msg_status == false
-        msg.update(msg_status:true)
+      if msg.user_id == current_user.id
       else
+        if msg.msg_status == false
+          msg.update(msg_status:true)
+        else
+        end
       end
     end
   end
