@@ -1,36 +1,43 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Organization Members</h1>
-<%for om in @organization_ms %>
-  <%@mem << om.user_id %>
-<%end %>
-<table>
-  <thead>
-    <tr>
-      <th> User </th>
-      <th> Action </th>
-    </tr>
-  </thead>
-
-<%for u in User.all%>
-  <%if @mem.include? u.id %>
-    <tbody>
-    <tr>
-    <td><%=u.userName %></td>
-    <%if $current_organization.user_id == current_user.id %>
-        <%if current_user.id == u.id%>
-          <td>-->You are the event Host<--</td>
-        <%else %>
-          <td><%= button_to 'Destroy', @organization_ms.find_by(user_id:u.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <%end %>
-      <%end %>
-    </tr>
-    </tbody>
+<head>
+  <title></title>
+</head>
+<body>
+  <h1>Organization Members</h1>
+  <%for om in @organization_ms %>
+    <%@mem << om.user_id %>
   <%end %>
-<%end %>
+  <table class="table bg-light">
+    <thead>
+      <tr>
+        <th> User </th>
+        <th> Action </th>
+      </tr>
+    </thead>
 
-</table>
+  <%for u in User.all%>
+    <%if @mem.include? u.id %>
+      <tbody>
+      <tr>
+      <td><%=u.userName %></td>
+      <%if $current_organization.user_id == current_user.id %>
+          <%if current_user.id == u.id%>
+            <td>-->You are the event Host<--</td>
+          <%else %>
+            <td><%= button_to 'Kick from Organization', @organization_ms.find_by(user_id:u.id), method: :delete%></td>
+          <%end %>
+        <%end %>
+      </tr>
+      </tbody>
+    <%end %>
+  <%end %>
 
-<br>
-<%= link_to "Back", :back, class:["btn","btn-light"] %>
+  </table>
 
+  <br>
+</body>
+<footer>
+  <div align="right">
+    <%= link_to "Back", :back, class:["btn","btn-light"] %>
+  </div>
+</footer>

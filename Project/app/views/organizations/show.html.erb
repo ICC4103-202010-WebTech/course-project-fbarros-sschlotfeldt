@@ -37,23 +37,20 @@
       <h2><%=link_to "Organization Members :", organization_ms_path, method: :get %> </h2>
       <%@org_members.each do |om|%>
         <%if om.organization_id == @organization.id%>
-          <ul>
-            <li><%=@organization_users.find(om.user_id).name %></li>
+            <%=link_to User.find(om.user_id).name, User.find(om.user_id), class: ["btn","btn-light"] %>
             <%@mem << om.user_id %>
-          </ul>
         <%end%>
       <%end%>
+      <h2>Join Organization: </h2>
       <%if @mem.include? current_user.id%>
       <%else%>
-        <%= button_to 'Join Organization', join_organization_path, method: :get %>
+        <%= button_to 'Join Organization', join_organization_path, method: :get, class: ["btn","btn-light"] %>
       <%end%>
 
       <h2>Public Events: </h2>
       <%for oe in @o_events %>
         <%if oe.visibility == true %>
-          <ul>
-            <li><%=oe.e_name %></li>
-          </ul>
+            <%=link_to Event.find(oe.id).e_name,Event.find(oe.id), class: ["btn","btn-light"] %>
         <%end %>
       <%end %>
 
@@ -61,15 +58,14 @@
         <h2>Private Events: </h2>
         <%for oe in @o_events %>
           <%if oe.visibility == false %>
-            <ul>
-              <li><%=oe.e_name %></li>
-            </ul>
+            <%=link_to Event.find(oe.id).e_name,Event.find(oe.id), class: ["btn","btn-light"] %>
           <%end %>
         <%end %>
       <%end%>
 
       <%if @organization.user_id == current_user.id || current_user.admin == true  %>
-        <%=link_to 'Create New Organization Event',org_event_path, class: ["btn", "btn-light"] %>
+        <h2>Create New Organization: </h2>
+        <br><%=link_to 'Create New Organization Event',org_event_path, class: ["btn", "btn-light"] %>
       <%end%>
     </div>
   </div>
@@ -84,8 +80,8 @@
         <div align="left">
           <%= link_to "Back", :back, class:["btn","btn-light"] %>
           <%if @organization.user_id == current_user.id || current_user.admin==true%>
-            <button class="btn btn-light"><%= link_to 'Edit', edit_organization_path  %></button>
-            <%= button_to 'Delete', @organization, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: false %>
+           <%= link_to 'Edit', edit_organization_path, class: ["btn","btn-light"]  %>
+            <%= button_to 'Delete', @organization, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", form: {style: 'display:inline-block;'} %>
           <%end %>
         </div>
     </div>
