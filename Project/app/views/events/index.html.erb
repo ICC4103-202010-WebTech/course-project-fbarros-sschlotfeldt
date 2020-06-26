@@ -74,12 +74,13 @@
     <div class ="row m-lg-5 col-lg-11">
       <table class = "table bg-light">
         <thead>
-        <tr>
-          <th>Event Name</th>
-          <th>Event Description</th>
-          <th>Event Host</th>
-          <th>Link</th>
-        </tr>
+          <tr>
+            <th>Event Name</th>
+            <th>Event Description</th>
+            <th>Event Host</th>
+            <td><strong>Status</strong></td>
+            <th>Link</th>
+          </tr>
         </thead>
         <% @events.each do |event| %>
           <%if event.user_id == nil %>
@@ -87,13 +88,13 @@
               <% if event.organization_id == w.id   %>
                 <tbody>
                 <tr>
-                  <td><%=event.e_name %>
+                  <td><%=event.e_name %></td>
                   <td><%=event.e_description %></td>
                   <td><%=w.o_name%></td>
                   <%if event.report_status > 10 %>
                     <td>Blocked due to Reports</td>
                   <%else %>
-                    <td></td>
+                  <td>Avalible</td>
                   <%end %>
                   <td><%=link_to 'Go to Event', event_path(event.id), class:["btn","btn-secondary"]%></td>
                 </tr>
@@ -111,7 +112,7 @@
                     <%if event.report_status > 10 %>
                     <td>Blocked due to Reports</td>
                     <%else %>
-                    <td></td>
+                    <td>Avalible</td>
                     <%end %>
                     <td><%=link_to 'Go to Event', event_path(event.id), class:["btn","btn-secondary"]%></td>
                   </tr>
@@ -129,6 +130,6 @@
 <footer>
   <div class="float-lg-right">
     <%= link_to 'Create new Event', new_event_path, class:["btn","btn-light"] %>
-    <%= link_to "Back", :back, class:["btn","btn-light"] %>
+    <%= link_to "Back", root_path, class:["btn","btn-light"] %>
   </div>
 </footer>

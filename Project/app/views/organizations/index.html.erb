@@ -23,56 +23,56 @@
       </tr>
       </thead>
       <% @organizations.each do |v| %>
-        <tbody>
-        <tr>
-          <% if v.o_name != "Null" %>
-            <td><%= v.o_name %></td>
-            <td><%= @user.find(v.user.id).userName%></td>
-            <td><%=link_to 'Go to Organization', organization_path(v.id), class:["btn","btn-secondary"]%></td>
-            <td><%= button_to 'Delete Organization', v, :method => :delete, data: { confirm: "Are you sure?"}, class: ["btn", "btn-danger"] %></td>
+          <tbody>
+            <tr>
+              <% if v.o_name != "Null" %>
+                <td><%= v.o_name %></td>
+                <td><%= @user.find(v.user.id).userName%></td>
+                <td><%=link_to 'Go to Organization', organization_path(v.id), class:["btn","btn-secondary"]%></td>
+                <td><%= button_to 'Delete Organization', v, :method => :delete, data: { confirm: "Are you sure?"}, class: ["btn", "btn-danger"] %></td>
+              <%end%>
             </tr>
-            </tbody>
-          <%end%>
+          </tbody>
       <%end%>
     </table>
   </div>
   </body>
 <%else%>
   <body>
-  <div class="nav justify-content-lg-center">
-    <%=form_tag organizations_path, :method => "get" do %>
-      <%=text_field_tag :search, params[:search] %>
-      <%= submit_tag("Search", :name => nil ) %>
-    <%end %>
-  </div>
-  <div class ="row m-lg-5 col-lg-11">
-    <table class = "table bg-light">
-      <thead>
-      <tr>
-        <th>Organization</th>
-        <th>Organization Admin</th>
-        <th>Link</th>
-      </tr>
-      </thead>
-      <% @organizations.each do |v| %>
-        <tbody>
-        <tr>
-          <% if v.o_name != "Null" %>
-            <td><%= v.o_name %></td>
-            <td><%= @user.find(v.user.id).userName%></td>
-            <td><%=link_to 'Go to Organization', organization_path(v.id), class:["btn","btn-secondary"]%></td>
+    <div class="nav justify-content-lg-center">
+      <%=form_tag organizations_path, :method => "get" do %>
+        <%=text_field_tag :search, params[:search] %>
+        <%= submit_tag("Search", :name => nil ) %>
+      <%end %>
+    </div>
+    <div class ="row m-lg-5 col-lg-11">
+      <table class = "table bg-light">
+        <thead>
+          <tr>
+            <th>Organization</th>
+            <th>Organization Admin</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <% @organizations.each do |v| %>
+          <tbody>
+            <tr>
+              <%if v.o_name != "Null" %>
+                <td><%= v.o_name %></td>
+                <td><%= @user.find(v.user.id).userName%></td>
+                <td><%=link_to 'Go to Organization', organization_path(v.id), class:["btn","btn-secondary"]%></td>
+              <%end%>
             </tr>
-            </tbody>
-          <%end%>
-      <%end%>
-    </table>
-  </div>
+          </tbody>
+        <%end%>
+      </table>
+    </div>
   </body>
 <%end%>
 
 <footer>
   <div class="float-lg-right">
     <%= link_to 'Create new Organization', new_organization_path, class:["btn","btn-light"] %>
-    <%= link_to "Back", :back, class:["btn","btn-light"] %>
+    <%= link_to "Back", root_path, class:["btn","btn-light"] %>
   </div>
 </footer>

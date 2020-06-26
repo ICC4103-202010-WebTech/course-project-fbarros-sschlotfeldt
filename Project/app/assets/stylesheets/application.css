@@ -17,3 +17,7 @@
 
 @import '@fortawesome/fontawesome-free';
 
+.button_to{
+    display: inline;
+}
+
