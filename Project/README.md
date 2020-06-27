@@ -36,12 +36,12 @@ In the superior right part of our application, you will have 3 options, sign in,
 The first one will allow you to enter the full experience (Not admin) of the page.
 Sign Up will allow you to create an account for the page, it will ask you a quantity of needed information and the will create an account.
 The sign In only works if you already have an account. You can enter as a normal user or if you are an admin from the same Sign In.
-If you forgot your password there's a link below the log in utton which will send you a password recovery link as long as you provide a registered email
+If you forgot your password there's a link below the log in button which will send you a password recovery link as long as you provide a registered email
 For matters of correction we'll provide two normal users (so you can try all the features like Inbox and Invites) and an Admin one. 
 
 (Normal User --> email: fjbarros1@miuandes.cl, password:123456)
 (Normal User --> email: sschlotfeldt@miuandes.cl, password:123456)
-(Administrator User --> email: administrator@gnail.com, password:123456)
+(Administrator User --> email: administrator@gmail.com, password:123456)
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -49,9 +49,9 @@ For matters of correction we'll provide two normal users (so you can try all the
 NORMAL USER EXPERIENCE
 
 EVENTS:
-	If you go to the Events page, that's above beside the page name, you will be allowed to See all public events with their
+	If you go to the Events page, that's above beside the page name, you will be allowed to See ALL PUBLIC events with their
 	Event Name, Description, Host, Status (this may be blocked if it was reported more than 10 times) and a Link that will redirect you to the event
-	Above in the middle area, you will also have search bar in wich you can sear events by a substring in their title or description, creator or organization.
+	Above in the middle area, you will also have search bar in wich you can search for events by a substring in their title or description, creator or organization.
 	
 	OWN EVENT'S
 		Inside your own event you will have the name of your Event, it's Host, Venue, Description, Creation Date and if it's public or private.
@@ -61,11 +61,11 @@ EVENTS:
 		Continiuing, you will be able to see the event members, and if you click on the link it will show you a list of them and you'll be able to kick them from your event
 		You can also view the different photos, videos or files you have uploaded to your Event.
 		You can Invite all the different users, if you click on the button a list will be displayed where you can see all of the users, if they are pending, assisting or will give you the option to invite them.
-		 If you enter to the comments of the event(below at the right) you are going to be able to see them, edit the, add a new one or delete them if you don't like them.
+		 If you enter to the comments of the event(below at the right) you are going to be able to see them, edit them, add a new one or delete them if you don't like them.
 		Finally at the bottom you will see 3 buttons, Back, Edit and  Delete.
 		Back will take you to the event's display page .
 		Edit will allow you to edit the Event pic, it's name, Description, Venue if it's private or public, and will allow you to upload files, photos and videos.
-		Delete, as it name says, will delete the ecent.
+		Delete, as it name says, will delete the event.
 	
 	OTHER PEOPLE EVENT'S
 		Inside another user's event, you will be able to see it's Name. Host, Venue, Desription, Creation Date and if it's public or not.
@@ -77,7 +77,7 @@ EVENTS:
 		Finally at the bottom you will se a Back utton which will redirect you to the event's page and a Report button to repport an Event (as we commented earlier if it's reported 10+ times it will be blocked)
 
 PEOPLE:
-	If you go inte the People's Page, you will be able ta all the Users (except yourself), with their usename
+	If you go inte the People's Page, you will be able ta ALL the Users (except yourself), with their usename
  	and a link to their profile page, and below right a back button that will lead you to the home page.
 	Inside their profile pae, you will be able to see their Name, Mail, Adress and Organization.
 	You will be able to send a message to the user, and by clicking this buttonyou will be able to see your chat with the user, and be able to compose a message to him.
@@ -91,8 +91,8 @@ ORGANIZATION:
 		As you enter you will be able to see the Organization's name, description and Host.
 		At the right you can see the organization Members, with links to their Profiles, if you enter to the link you will be able to see a list of Organization Members and the option to kick them out of the organization.
 		There will also be all the publc events and the private one's, being able to enter to their profile page of every one of them.
-		You can also create a new organization's event.
-		Finally at the bottom you will e able to see the edit button being able ot change the organization's flyer, name and desription, de Delete button wich will erase the Organization
+		YOU CAN ALSO CREATE AN ORGANIZATION EVENT THROUGH HERE IF YOU ARE THE ORGANIZATION ADMIN.
+		Finally at the bottom you will e able to see the edit button being able ot change the organization's flyer, name and desription, the Delete button wich will erase the Organization
 		And the back button wich will lead you to the all Organizations Page.
 
 	OTHER PEOPLE ORGANIZATION's
@@ -104,8 +104,8 @@ ORGANIZATION:
 
 INBOX:
 	You'll be able to see all of your chats, with the last message sended and a column that will tell you if you have or haven't read the message.
-	To start messaging someone you have to go to his or hers profile and send the a message!
-	If you press the Name of the one you are having a conversation, you will be shown to your chats page and can writte message's to heach other.
+        TO START MESSAGING SOMEONE YOU HAVE TO GO TO HIS/HER PROFILE AND SEND THEM A MESSAGE!
+	If you press the Name of the one you are having a conversation, you will be shown to your chats page and can writte message's to each other.
 	you will have a Back button that will lead you to your chats and there a Back button that will lead you to the home page.
 
 PROFILE
@@ -135,7 +135,7 @@ PEOPLE
 	If you enter, you'll be treated as if you were the user, meaning you will be able to see all of the user's information including their events, invites and  which events are they assissting.
 	You will also be able to change the password, but for safety reasons you will need the previous user password.
 	Finally you will have the Edit Button that will let you edit all of the user informetion, including his profile photo, and the Delete which will delete the specific user.
-	The Administrator will have the ability to make another user an administrator (you can see this in the edit).
+	The Administrator will have the ability to MAKE ANOTHER USER AN ADMINISTRATOR (you can see this in the edit).
 
 ORGANIZATION
 	As in Events, you will be granted with a delete butto to erase any organization you please.
@@ -152,5 +152,5 @@ There are no asked implementations missing from our project that were asked for 
 
 Have in mind we also implemented extra things in our project that weren't asked like the private event's in Organizations
 The Join Organization, Kick Organization Members, Accept Invites between many other, so if one of those doesn't work shouldn't be disscounted from the
-grade. Anyway everything should work smoothly. Also note the Bonus Google Sign In is implemented.
+grade. Anyway everything should work smoothly. Also note the Bonus Google Sign In is implementes.
 
