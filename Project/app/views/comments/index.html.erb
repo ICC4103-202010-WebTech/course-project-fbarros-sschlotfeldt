@@ -10,20 +10,20 @@
             <%if current_user.id == v.user_id|| current_user.admin==true%>
                     <%=v.user.userName%>: <%=v.text%>
                     <%=button_to 'Edit', edit_comment_path(v), method: :get, form: {style: 'display:inline-block;'} %>
-                    <%= button_to 'X', v, method: :delete, data: { confirm: 'Are you sure?' }, form: {style: 'display:inline-block;'}, class:["btn","btn-danger"]%>
-                 <br>
+                    <%= button_to 'X', v, method: :delete, data: { confirm: 'Are you sure?' }, form: {style: 'display:inline-block;'}, class:["btn","btn-danger"]%><br>
+
                 <%if v.atta.attached? %>
                     <div><%= link_to image_tag(v.atta, width: "40%", height: "30%"), url_for(v)%></div>
                 <%else%>
                 <%end%>
             <%else%>
-                <p class ="text-left"> <%=v.user.userName%>: <%=v.text%></p>
+                <span class ="text-left"> <%=v.user.userName%>: <%=v.text%></span>
                <%if v.atta.attached? %>
                   <div><%= link_to image_tag(v.atta, width: "100%", height: "100%"), url_for(v)%></div>
-                  <div><%=v.user.userName%>: <%=v.text%></div>
+                  <p><%=v.user.userName%>: <%=v.text%></p>
                <%else%>
                <%end%>
-                <%= button_to 'Report', report_comment_path(v.id), method: :get, form: {style: 'display:inline-block;'} %>
+                <%= button_to 'Report', report_comment_path(v.id), method: :get, form: {style: 'display:inline-block;'} %><br>
             <%end%>
           <%else %>
                       This comment has been deleted due to clashes with our terms of services and uses

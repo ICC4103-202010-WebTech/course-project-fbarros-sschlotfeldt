@@ -189,12 +189,15 @@
 
 <footer>
       <div align="center">
-        <%= link_to "Back", :back, class:["btn","btn-light"] %>
+        <%= link_to "Back", events_path, class:["btn","btn-light"] %>
         <% if current_user.id == @event[0].user_id || current_user.admin==true%>
           <%= link_to 'Edit', edit_event_path(@event.ids), class:["btn","btn-light"] %>
           <%= button_to 'Delete', @event[0], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", form: {style: 'display:inline-block;'}%>
         <%end %>
-        <%= link_to 'Report', report_event_path, method: :get, class: "btn btn-danger", form: {style: 'display:inline-block;'} %>
+        <%if current_user.id == @event[0].user_id || current_user.admin==true %>
+        <%else%>
+         <%= link_to 'Report', report_event_path, method: :get, class: "btn btn-danger", form: {style: 'display:inline-block;'} %>
+        <%end%>
       </div>
 </footer>
 <%else %>
