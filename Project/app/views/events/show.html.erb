@@ -153,7 +153,6 @@
                 <%if current_user.id == v.user_id %>
                   <span class="text-dark" >Can't exit </span>
                 <%else%>
-                  <%=#link_to 'Exit event', edit_event_event_m_path(v.id), class: "btn btn-light"%>
                   <%@mem.delete(@event_users.find(current_user.id).name) %>
                 <%end%>
             </div>
