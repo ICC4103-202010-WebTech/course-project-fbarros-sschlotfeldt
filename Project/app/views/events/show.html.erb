@@ -54,20 +54,29 @@
         <%if $cureent_event.start_vote==1 %>
           <%for m in EventM.where(event_id:$cureent_event.id) %>
             <%if m.user_id == current_user.id %>
-              <table>
+              <table class=" table bg-light">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Votes</th>
+                    <%if $cureent_event.user_id == current_user.id %>
+                      <th>Options</th>
+                      <%end%>
+                  </tr>
+                </thead>
                 <%if m.vote_status == false %>
                 <h2>Choose your available dates!:</h2>
                       <%for vo in @votes %>
                         <tr>
-                          <td>
-                            <%=vo.date%>
-                           (<%=vo.n_votes %>)
-                            <%if $cureent_event.user_id == current_user.id %>
-                              <%= button_to 'Delete', destoy_develda_url(vo.id), method: :get, form: {style: 'display:inline-block;'}%>
-                              <%= button_to 'Edit', vo, method: :delete, form: {style: 'display:inline-block;'}%>
+
+                          <td> <%=vo.date%></td>
+                          <td><%=vo.n_votes %></td>
+                          <%if $cureent_event.user_id == current_user.id %>
+                            <td> <%= button_to 'Delete', destoy_develda_url(vo.id), method: :get, form: {style: 'display:inline-block;'}%>
+                              <%= button_to 'Edit', vo, method: :delete, form: {style: 'display:inline-block;'}%></td>
                           <%else %>
                             <%end %>
-                          </td>
+
                         </tr>
                       <%end %>
                  <%= button_to "Go Vote" , events_vote_link_path, method: :post, class: ["btn", "btn-light"] %>
@@ -83,11 +92,11 @@
 
         <%if current_user.id==$cureent_event.user_id%>
           <%if $cureent_event.start_vote==0 %>
-            <div><%= button_to 'Start Vote', events_start_vote_path, start_vote: :post, class: ["btn", "btn-light"] %>
+            <div><%= button_to 'Start Vote', events_start_vote_path, start_vote: :post, class: ["btn", "btn-light"], form: {style: 'display:inline-block;'} %>
             <%=link_to 'Add Dates', votes_path, class: ["btn", "btn-light"] %></div>
       <%elsif $cureent_event.start_vote==1%>
-            <%= button_to 'End Vote', events_end_vote_path, end_vote: :post, class: ["btn", "btn-light"] %>
-            <%=link_to 'Add Dates', votes_path, class: ["btn", "btn-light"] %>
+            <%= button_to 'End Vote', events_end_vote_path, end_vote: :post, class: ["btn", "btn-light"], form: {style: 'display:inline-block;'} %>
+            <%=link_to 'Add Dates', votes_path, class: ["btn", "btn-light"], form: {style: 'display:inline-block;'} %>
         <%end%>
         <%end%>
 
