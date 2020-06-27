@@ -43,6 +43,9 @@ For matters of correction we'll provide two normal users (so you can try all the
 (Normal User --> email: sschlotfeldt@miuandes.cl, password:123456)
 (Administrator User --> email: administrator@gnail.com, password:123456)
 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 NORMAL USER EXPERIENCE
 
 EVENTS:
@@ -116,7 +119,7 @@ PROFILE
 
 ADMINISTRATOR EXPERIENCE
 
-	As an administrator you basically have the power to do anything.
+	As an administrator you basically have the power to do almost anything.
 
 EVENTS:
 	Besides the features you would have if you were a simple mortal, you are able to edit and delete all events in any way.
@@ -131,9 +134,23 @@ PEOPLE
 	Delete will let you Delete the user.
 	If you enter, you'll be treated as if you were the user, meaning you will be able to see all of the user's information including their events, invites and  which events are they assissting.
 	You will also be able to change the password, but for safety reasons you will need the previous user password.
-	Finally you will have the Edit Button that will let you edit all of the user informetion, including his profile photo, and the Delete which will delete the specific user
+	Finally you will have the Edit Button that will let you edit all of the user informetion, including his profile photo, and the Delete which will delete the specific user.
+	The Administrator will have the ability to make another user an administrator (you can see this in the edit).
 
 ORGANIZATION
 	As in Events, you will be granted with a delete butto to erase any organization you please.
-	IN the organization you wll be almost be treated as a host, 
-	
+	In the organization you wll be treated as the host, being able to see the same thing as an admin would.
+	Of course you will also be able to Delete the organization itself.
+
+The Inbox and profile don't have any difference with a normal user and will work as it would work on any user.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+
+THING'S MISSING FROM OUR PROYECT:
+
+There are no asked implementations missing from our project that were asked for in the project rubric.
+
+Have in mind we also implemented extra things in our project that weren't asked like the private event's in Organizations
+The Join Organization, Kick Organization Members, Accept Invites between many other, so if one of those doesn't work shouldn't be disscounted from the
+grade. Anyway everything should work smoothly. Also note the Bonus Google Sign In is implementes.
+
