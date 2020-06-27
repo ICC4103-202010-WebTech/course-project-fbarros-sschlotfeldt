@@ -152,5 +152,5 @@ There are no asked implementations missing from our project that were asked for 
 
 Have in mind we also implemented extra things in our project that weren't asked like the private event's in Organizations
 The Join Organization, Kick Organization Members, Accept Invites between many other, so if one of those doesn't work shouldn't be disscounted from the
-grade. Anyway everything should work smoothly. Also note the Bonus Google Sign In is implementes.
+grade. Anyway everything should work smoothly. Also note the Bonus Google Sign In is implemented.
 
