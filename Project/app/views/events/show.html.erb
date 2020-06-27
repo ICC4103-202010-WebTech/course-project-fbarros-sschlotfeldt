@@ -160,7 +160,9 @@
           <%else%>
             <div align="right">
               <%=link_to 'Comments', comments_path(v.id), class: ["btn", "btn-light"]%>
-              <%=link_to 'Join event', new_event_event_m_path(v.id), class: ["btn", "btn-light"]%>
+              <%if v.visibility ==true %>
+                <%=link_to 'Join event', new_event_event_m_path(v.id), class: ["btn", "btn-light"]%>
+              <%end %>
             </div>
           <%end%>
       </div>
