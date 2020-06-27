@@ -19,10 +19,14 @@
     <%if @mem.include? u.id %>
       <tbody>
       <tr>
-      <td><%=u.userName %></td>
-      <%if $current_organization.user_id == current_user.id %>
-          <%if current_user.id == u.id%>
-            <td>-->You are the event Host<--</td>
+      <td><%=button_to u.userName, user_path(u.id), method: :get, class: ["btn", "btn-light"]  %></td>
+      <%if $current_organization.user_id == current_user.id || current_user.admin==true %>
+          <%if $current_organization.id == u.id%>
+            <%if current_user.admin==true  %>
+              <td>-->Organization Admin<--</td>
+            <%else %>
+              <td>-->You are the Organization Admin<--</td>
+            <%end %>
           <%else %>
             <td><%= button_to 'Kick from Organization', @organization_ms.find_by(user_id:u.id), method: :delete%></td>
           <%end %>

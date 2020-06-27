@@ -52,7 +52,7 @@
         <%end %>
       <%end %>
 
-      <%if @mem.include? current_user.id%>
+      <%if  current_user.admin==true or @mem.include? current_user.id%>
         <h2>Private Events: </h2>
         <%for oe in @o_events %>
           <%if oe.visibility == false %>

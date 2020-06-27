@@ -15,10 +15,14 @@
   <%if @mem.include? u.id %>
     <tbody>
     <tr>
-      <td><%=u.userName %></td>
-      <%if $cureent_event.user_id == current_user.id %>
-        <%if current_user.id == u.id%>
-          <td>-->You are the event Host<--</td>
+      <td><%=button_to u.userName, user_path(u.id), method: :get, class: ["btn", "btn-light"]  %></td>
+      <%if $cureent_event.user_id == current_user.id || current_user.admin==true  %>
+        <%if $cureent_event.user_id == u.id %>
+            <%if current_user.admin==true  %>
+              <td>-->Event Host<--</td>
+            <%else %>
+              <td>-->You are the event Host<--</td>
+            <%end %>
         <%else %>
           <td><%= button_to 'Kick form Event', @event_ms.find_by(user_id:u.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <%end %>
