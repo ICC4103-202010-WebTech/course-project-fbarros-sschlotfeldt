@@ -58,7 +58,7 @@
       <%for a in @assisting_events %>
           <%if @assis.include? a.event.e_name %>
           <%else %>
-            <a><%=link_to a.event.e_name, event_path(a.id), class: ["btn", "btn-light"]  %></a>
+            <a><%=link_to a.event.e_name, event_path(a.event_id), class: ["btn", "btn-light"]  %></a>
             <%@assis<<a.event.e_name %>
           <%end %>
       <%end %>
