@@ -76,7 +76,9 @@
         <div class="col-3 bg-dark"></div>
         <div class="col-6">
           <div align="left" >
-            <%=link_to 'Invite Users', organization_o_invites_path(v.id), class: ["btn", "btn-light"]%>
+            <%if @organization.user_id == current_user.id || current_user.admin==true%>
+              <%=link_to 'Invite Users', organization_o_invites_path(v.id), class: ["btn", "btn-light"]%>
+            <%end %>
           </div>
         </div>
         <div class="col-3 bg-dark"></div>
