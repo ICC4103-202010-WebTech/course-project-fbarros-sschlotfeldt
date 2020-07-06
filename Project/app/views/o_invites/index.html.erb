@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-3 bg-dark"></div>
+  <div class="col-lg-6">
+    <table class="col-lg-12 bg-light">
+
+      <thead>
+      <tr>
+        <th>UserName</th>
+        <th>Invite</th>
+      </tr>
+      </thead>
+      <%@mem=[] %>
+      <%@mem2=[] %>
+      <%@organization_members .each do |y|  %>
+        <%@mem << y.user_id %>
+      <% end %>
+      <%@users_invited.each do |y|  %>
+        <%@mem2 << y.user_id %>
+      <% end %>
+      <%@user_for_invite.each do |x|%>
+        <tbody>
+        <tr>
+          <%if x.id==current_user.id  %>
+          <%elsif @mem.include? x.id %>
+            <td><%=x.userName %></td>
+            <td>Is already a member</td>
+          <%elsif @mem2.include? x.id %>
+            <td><%=x.userName %></td>
+            <td>has already been invited</td>
+          <%else%>
+            <td><%=@user_for_invite.find(x.id).userName %></td>
+
+            <%=form_with model: @invite, local: true do |f| %>
+              <%=f.hidden_field :user_id, :value => x.id %>
+              <%=f.hidden_field :organization_id, :value => $current_organization.id %>
+              <td><%=f.submit :Invite, class: ["btn", "btn-primary"]%></td>
+            <%end%>
+
+          <%end%>
+        </tr>
+        </tbody>
+
+      <%end %>
+      <tfoot>
+      </tfoot>
+
+    </table>
+  </div>
+  <div class="col-3 bg-dark">
+    <%= link_to "Back", :back, class:["btn","btn-light"] %>
+  </div>
+</div>

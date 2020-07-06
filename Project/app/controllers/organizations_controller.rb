@@ -21,6 +21,7 @@ class OrganizationsController < ApplicationController
     @org_members=OrganizationM.all
     @o_events = Event.where("organization_id = ?", params[:id])
     $current_organization = Organization.find(params[:id])
+    @c_organization = Organization.where(params[:id])
   end
 
   # GET /organizations/new

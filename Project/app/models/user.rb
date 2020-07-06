@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :votes, through: :events, dependent: :destroy
   has_many :comments, through: :events, dependent: :destroy
   has_many :invites, through: :events, dependent: :destroy
+  has_many :o_invites, through: :organization, dependent: :destroy
 
   has_one_attached :user_pic, dependent: :destroy
 

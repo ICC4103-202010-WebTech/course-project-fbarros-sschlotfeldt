@@ -27,8 +27,13 @@ Rails.application.routes.draw do
     resources :users
     resources :event
   end
+  resources :o_invites do
+    resources :users
+    resources :organizations
+  end
   resources :organizations do
     resources :organization_ms
+    resources :o_invites
   end
 
   resources :organization_ms
@@ -46,6 +51,7 @@ Rails.application.routes.draw do
   post 'events/org_event'
 
   post 'invites/invite'
+  post 'o_invites/invite'
 
   post 'inbox/open_chat'
 
@@ -77,7 +83,9 @@ Rails.application.routes.draw do
       resources :invites do
         resources :users
       end
-
+      resources :o_invites do
+        resources :users
+      end
 
     end
   end
@@ -92,4 +100,5 @@ Rails.application.routes.draw do
   resources :venues, defaults: { format: :html }
   resources :event_ms, defaults: { format: :html }
   resources :invites, defaults: { format: :html }
+  resources :o_invites, defaults: { format: :html }
 end

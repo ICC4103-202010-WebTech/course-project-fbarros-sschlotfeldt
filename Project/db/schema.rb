@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_24_230748) do
+ActiveRecord::Schema.define(version: 2020_07_05_223015) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -106,6 +106,15 @@ ActiveRecord::Schema.define(version: 2020_06_24_230748) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "o_invites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "organization_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["organization_id"], name: "index_o_invites_on_organization_id"
+    t.index ["user_id"], name: "index_o_invites_on_user_id"
+  end
+
   create_table "organization_ms", force: :cascade do |t|
     t.integer "organization_id", null: false
     t.integer "user_id", null: false
@@ -178,6 +187,8 @@ ActiveRecord::Schema.define(version: 2020_06_24_230748) do
   add_foreign_key "invites", "users"
   add_foreign_key "messages", "chats"
   add_foreign_key "messages", "users"
+  add_foreign_key "o_invites", "organizations"
+  add_foreign_key "o_invites", "users"
   add_foreign_key "organization_ms", "organizations"
   add_foreign_key "organization_ms", "users"
   add_foreign_key "organizations", "users", on_delete: :cascade

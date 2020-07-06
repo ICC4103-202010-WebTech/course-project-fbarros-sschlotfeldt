@@ -69,6 +69,22 @@
   </div>
   <div class="col-3 bg-dark"></div>
 </div>
+<%@c_organization.each do |v| %>
+  <%if v.user_id == current_user.id %>
+    <%if v.user_id == current_user.id %>
+      <div class="row">
+        <div class="col-3 bg-dark"></div>
+        <div class="col-6">
+          <div align="left" >
+            <%=link_to 'Invite Users', organization_o_invites_path(v.id), class: ["btn", "btn-light"]%>
+          </div>
+        </div>
+        <div class="col-3 bg-dark"></div>
+      </div>
+    <%end%>
+  <%end%>
+<%end%>
+</div>
 </body>
 
 <footer>
