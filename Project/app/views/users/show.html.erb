@@ -69,7 +69,7 @@
     <div class ="col-3 bg-dark"></div>
     <div class ="col-3">
       <span align="center">
-        <h3>Pending Invites</h3>
+        <h3>Pending Event Invites</h3>
 
         <%@como_querai = [] %>
         <% for id in EventM.where("user_id = ?", current_user.id ) %>
@@ -83,6 +83,26 @@
                     <%= hidden_field_tag :event_id, pi.event_id %>
                     <%=Event.find(pi.event_id).e_name %>&nbsp
                     <%= submit_tag :Accept, class: ["btn", "btn-light"] %>
+                <%end %><br>
+                </div>
+          <%end %>
+        <%end %>
+        </span>
+      <span align="center">
+        <h3>Pending Organization Invites</h3>
+
+        <%@como_querai2 = [] %>
+        <% for id in OrganizationM.where("user_id = ?", current_user.id ) %>
+          <%@como_querai2<<id.organization_id %>
+        <%end %>
+        <%for pi in @pi2 %>
+          <%if @como_querai2.include? pi.organization_id %>
+          <%else %>
+              <div>
+                <%= form_tag({:chats=>"post", :action=>"accept_o_invite"}, method: :post) do %>
+                    <%= hidden_field_tag :organization_id, pi.organization_id %>
+                  <%=Organization.find(pi.organization_id).o_name %>&nbsp
+                  <%= submit_tag :Accept, class: ["btn", "btn-light"] %>
                 <%end %><br>
                 </div>
           <%end %>

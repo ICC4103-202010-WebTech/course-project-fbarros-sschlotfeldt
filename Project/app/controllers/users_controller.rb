@@ -9,6 +9,11 @@ class UsersController < ApplicationController
     redirect_to user_path(current_user.id)
   end
 
+  def accept_o_invite
+    @event_m = OrganizationM.create!(user_id: current_user.id, organization_id: params[:organization_id])
+    redirect_to user_path(current_user.id)
+  end
+
   def index
     @users = User.search(params[:search])
   end
@@ -35,6 +40,7 @@ class UsersController < ApplicationController
     @user_events = Event.where("user_id = ?", @user.id)
     @assisting_events = EventM.joins(:event).where(user_id: params[:id])
     @pi= Invite.where(user_id: current_user.id)
+    @pi2= OInvite.where(user_id: current_user.id)
     @event_members= EventM.all
   end
 

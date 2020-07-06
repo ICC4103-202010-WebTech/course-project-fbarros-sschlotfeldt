@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   post 'users/destroy_u'
   post 'users/start_chat'
   post 'users/accept_invite'
+  post 'users/accept_o_invite'
 
   post 'chats/send_msg'
 
